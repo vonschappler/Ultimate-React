@@ -12,6 +12,6 @@ What is published here is the result of the code produced on each class, with th
 
 This section introduces the concepts of **front-end web development**.
 
-Notes about this section can be found [here](https://github.com/vonschappler/Web-Bootcamp/blob/main/Notes.md#section_01).
+Notes about this section can be found [here](https://github.com/vonschappler/Ultimate-React/blob/main/Notes.md#section_01).
 
 <hr>
