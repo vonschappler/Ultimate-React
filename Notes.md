@@ -1,4 +1,4 @@
-# Personal Notes
+# Personal notes taken
 
 ## Section_01:
 
@@ -17,3 +17,14 @@ Alongside components, React works with states and effects, which are used to upd
 Code for the first lession found online [here](https://3dvrtc-3000.csb.app/).
 </details>
 
+<hr>
+<br>
+
+## Section_02:
+
+A quick introduction and overview for the next section.
+
+<hr>
+<br>
+
+## Section_03
