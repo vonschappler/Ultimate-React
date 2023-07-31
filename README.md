@@ -31,3 +31,12 @@ Notes about this section can be found [here](https://github.com/vonschappler/Ult
 This section provides a first look over React.
 
 Notes about this section can be found [here](https://github.com/vonschappler/Ultimate-React/blob/main/Notes.md#section_03).
+
+<hr>
+<br>
+
+## Section_04:
+
+This section is focused in reviewing some of the basic concepts of JavaScript required to create React applications.
+
+Notes about this section can be found [here](https://github.com/vonschappler/Ultimate-React/blob/main/Notes.md#section_04).
