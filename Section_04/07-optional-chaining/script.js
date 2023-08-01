@@ -184,8 +184,8 @@ console.log(newGenresB);
 
 // const newBookWrong = { book, moviePublication: '2001-12-19' };
 // console.log(newBookWrong);
-const newBook = { ...book, moviePublication: '2001-12-19', pages: 1210 };
-console.log(newBook);
+const updateBook = { ...book, moviePublication: '2001-12-19', pages: 1210 };
+console.log(updateBook);
 
 // --------------------------
 // Literals
@@ -256,3 +256,27 @@ console.log(book.translations.bengali);
 
 const bengaliTranslation = book.translations.bengali || 'Not translated';
 console.log(bengaliTranslation);
+
+// --------------------------
+// Optional Chaining
+// --------------------------
+
+const newBook = getBook(3);
+
+function getTotalReviewCount(book) {
+  const gooodreads = book.reviews?.goodreads?.reviewsCount ?? 0;
+  const librarything = book.reviews?.librarything?.reviewsCount ?? 0;
+  return gooodreads + librarything;
+}
+
+console.log(getTotalReviewCount(newBook));
+
+const person = {
+  name: 'Alex',
+  surname: 'Crimsom',
+  //fullName: 'Alex Crimsom'
+};
+const greeting = `Hello ${person?.name} ${person.surname}! Is your full name ${
+  person?.fullName || 'Joe No One'
+}?`;
+console.log(greeting);
