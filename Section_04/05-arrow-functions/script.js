@@ -193,7 +193,7 @@ console.log(newBook);
 
 const summary = `${title} is ${pages}-page long book. It was written by ${author} and published in ${
   publicationDate.split('-')[0]
-}. The book has${hasMovieAdaptation ? '': ' not '}been adpted as a movie.`;
+}. The book has${hasMovieAdaptation ? '' : ' not '}been adpted as a movie.`;
 console.log(summary);
 
 // --------------------------
@@ -203,3 +203,28 @@ console.log(summary);
 const pagesRange = pages > 1000 ? 'over a thousand' : 'less than a thousand';
 console.log(`The book has ${pagesRange} pages.`);
 
+// --------------------------
+// Arrow functions
+// --------------------------
+
+// "Old way" also know as a declarative function
+// function getYear(str) {
+//   return str.split('-')[0];
+// }
+
+// Arrow function also know as function expression
+// with blocks - requires the return keyword at the end of the block
+const getYearBlock = (str) => {
+  const year = str.split('-')[0];
+  return year;
+};
+
+// without blocks
+const getYearNoBlock = (str) => str.split('-')[0];
+
+console.log(getYearNoBlock(publicationDate));
+
+const newSummary = `${title} is ${pages}-page long book. It was written by ${author} and published in ${getYearNoBlock(
+  publicationDate
+)}. The book has${hasMovieAdaptation ? '' : ' not '}been adpted as a movie.`;
+console.log(newSummary);
