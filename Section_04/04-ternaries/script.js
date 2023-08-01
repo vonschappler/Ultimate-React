@@ -193,5 +193,13 @@ console.log(newBook);
 
 const summary = `${title} is ${pages}-page long book. It was written by ${author} and published in ${
   publicationDate.split('-')[0]
-}.`;
+}. The book has${hasMovieAdaptation ? '': ' not '}been adpted as a movie.`;
 console.log(summary);
+
+// --------------------------
+// Ternaries
+// --------------------------
+
+const pagesRange = pages > 1000 ? 'over a thousand' : 'less than a thousand';
+console.log(`The book has ${pagesRange} pages.`);
+
