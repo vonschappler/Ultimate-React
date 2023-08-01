@@ -143,44 +143,55 @@ function getBook(id) {
   return data.find((d) => d.id === id);
 }
 
+// --------------------------
 // Destructuring Objects
+// --------------------------
 
 const book = getBook(1);
 console.log(book);
-
 //const title = book.title;
 //const author = book.author;
-
 const { title, author, pages, publicationDate, genres, hasMovieAdaptation } =
   book;
 
 console.log(author, title);
 
+// --------------------------
 // Destructuring with arrays
+// --------------------------
 
 // const primaryG = genres[0];
 // const secondaryG = genres[1];
-
 const [primaryG, secondaryG, ...otherGenres] = genres;
 console.log(primaryG, secondaryG, otherGenres);
 
+// --------------------------
 // Spread operator with arrays
+// --------------------------
 
 // const newGenresWrong = [genres, 'epic fantasy'];
 // console.log(newGenresWrong);
-
 // Creates a new array called newGenres with the item 'epic fantasy' as it last element
 const newGenresA = [...genres, 'epic fantasy'];
 console.log(newGenresA);
-
 // Creates a new array called newGenres with the item 'epic fantasy' as it first element
 const newGenresB = ['epic fantasy', ...genres];
 console.log(newGenresB);
 
+// --------------------------
 // Spread operator with objects to add and overwrite properties
+// --------------------------
 
 // const newBookWrong = { book, moviePublication: '2001-12-19' };
 // console.log(newBookWrong);
-
 const newBook = { ...book, moviePublication: '2001-12-19', pages: 1210 };
 console.log(newBook);
+
+// --------------------------
+// Literals
+// --------------------------
+
+const summary = `${title} is ${pages}-page long book. It was written by ${author} and published in ${
+  publicationDate.split('-')[0]
+}.`;
+console.log(summary);
