@@ -144,94 +144,12 @@ function getBook(id) {
 }
 
 // --------------------------
-// Destructuring Objects
+// Logical operators and short-circuiting
 // --------------------------
 
 const book = getBook(1);
-console.log(book);
-//const title = book.title;
-//const author = book.author;
 const { title, author, pages, publicationDate, genres, hasMovieAdaptation } =
   book;
-
-console.log(author, title);
-
-// --------------------------
-// Destructuring with arrays
-// --------------------------
-
-// const primaryG = genres[0];
-// const secondaryG = genres[1];
-const [primaryG, secondaryG, ...otherGenres] = genres;
-console.log(primaryG, secondaryG, otherGenres);
-
-// --------------------------
-// Spread operator with arrays
-// --------------------------
-
-// const newGenresWrong = [genres, 'epic fantasy'];
-// console.log(newGenresWrong);
-// Creates a new array called newGenres with the item 'epic fantasy' as it last element
-const newGenresA = [...genres, 'epic fantasy'];
-console.log(newGenresA);
-// Creates a new array called newGenres with the item 'epic fantasy' as it first element
-const newGenresB = ['epic fantasy', ...genres];
-console.log(newGenresB);
-
-// --------------------------
-// Spread operator with objects to add and overwrite properties
-// --------------------------
-
-// const newBookWrong = { book, moviePublication: '2001-12-19' };
-// console.log(newBookWrong);
-const newBook = { ...book, moviePublication: '2001-12-19', pages: 1210 };
-console.log(newBook);
-
-// --------------------------
-// Literals
-// --------------------------
-
-const summary = `${title} is ${pages}-page long book. It was written by ${author} and published in ${
-  publicationDate.split('-')[0]
-}. The book has${hasMovieAdaptation ? '' : ' not '}been adpted as a movie.`;
-console.log(summary);
-
-// --------------------------
-// Ternaries
-// --------------------------
-
-const pagesRange = pages > 1000 ? 'over a thousand' : 'less than a thousand';
-console.log(`The book has ${pagesRange} pages.`);
-
-// --------------------------
-// Arrow functions
-// --------------------------
-
-// "Old way" also know as a declarative function
-// function getYear(str) {
-//   return str.split('-')[0];
-// }
-
-// Arrow function also know as function expression
-// with blocks - requires the return keyword at the end of the block
-const getYearBlock = (str) => {
-  const year = str.split('-')[0];
-  return year;
-};
-
-// without blocks
-const getYearNoBlock = (str) => str.split('-')[0];
-
-console.log(getYearNoBlock(publicationDate));
-
-const newSummary = `${title} is ${pages}-page long book. It was written by ${author} and published in ${getYearNoBlock(
-  publicationDate
-)}. The book has${hasMovieAdaptation ? '' : ' not '}been adpted as a movie.`;
-console.log(newSummary);
-
-// --------------------------
-// Logical operators and short-circuiting
-// --------------------------
 
 // && operator short-circtuit when the first agument is a falsy value
 // || operator short-circuit when the first argument is a truthy value
@@ -250,9 +168,6 @@ console.log(false || 'Not a string');
 
 // Nulish coalescing - alternative to || when checking for the value 0 on data
 console.log(0 ?? 'I am a ZERO!');
-
-console.log(hasMovieAdaptation && 'This book as a movie!');
-console.log(book.translations.bengali);
 
 const bengaliTranslation = book.translations.bengali || 'Not translated';
 console.log(bengaliTranslation);
