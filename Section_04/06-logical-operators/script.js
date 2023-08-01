@@ -228,3 +228,31 @@ const newSummary = `${title} is ${pages}-page long book. It was written by ${aut
   publicationDate
 )}. The book has${hasMovieAdaptation ? '' : ' not '}been adpted as a movie.`;
 console.log(newSummary);
+
+// --------------------------
+// Logical operators and short-circuiting
+// --------------------------
+
+// && operator short-circtuit when the first agument is a falsy value
+// || operator short-circuit when the first argument is a truthy value
+// falsy values: 0, '', null, undefined, false
+// truthy values: everything else
+
+// && No short-circuit
+console.log(true && 'Some string');
+// && Short-circuit
+console.log(false && 'Not a string');
+
+// || No short-circuit
+console.log(true || 'Some string');
+// || Short-circuit - can be used to set default values, when the falsy value is not 0, becuase 0 (if as a data value) will make the code short-cirtuit instead of returning 0, as expected.
+console.log(false || 'Not a string');
+
+// Nulish coalescing - alternative to || when checking for the value 0 on data
+console.log(0 ?? 'I am a ZERO!');
+
+console.log(hasMovieAdaptation && 'This book as a movie!');
+console.log(book.translations.bengali);
+
+const bengaliTranslation = book.translations.bengali || 'Not translated';
+console.log(bengaliTranslation);
