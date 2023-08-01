@@ -270,13 +270,3 @@ function getTotalReviewCount(book) {
 }
 
 console.log(getTotalReviewCount(newBook));
-
-const person = {
-  name: 'Alex',
-  surname: 'Crimsom',
-  //fullName: 'Alex Crimsom'
-};
-const greeting = `Hello ${person?.name} ${person.surname}! Is your full name ${
-  person?.fullName || 'Joe No One'
-}?`;
-console.log(greeting);
