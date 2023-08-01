@@ -280,3 +280,20 @@ const greeting = `Hello ${person?.name} ${person.surname}! Is your full name ${
   person?.fullName || 'Joe No One'
 }?`;
 console.log(greeting);
+
+// --------------------------
+// Array Maps
+// --------------------------
+
+const books = getBooks();
+const titles = books.map((book) => book.title);
+
+console.log(titles);
+
+const essentialData = books.map((book) => ({
+  title: book.title,
+  author: book.author,
+  reviewsCount: getTotalReviewCount(book)
+}));
+
+console.log(essentialData)
