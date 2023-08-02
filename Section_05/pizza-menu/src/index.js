@@ -1,6 +1,6 @@
 import React from 'react';
 import ReactDOM from 'react-dom/client';
-import './index.css'
+import './index.css';
 
 const pizzaData = [
   {
@@ -57,33 +57,45 @@ function App() {
   );
 }
 
-function Pizza() {
-  return <div className='pizza'>
-      <img src='pizzas/prosciutto.jpg' alt='prociutto pizza' />
-      <h3>Pizza Prosciutto</h3>
-      <p>Tomato, mozarella, ham, aragula, and burrata cheese</p>
-    </div>
-  ;
-}
-
 function Header() {
-  const style = {}
-  return <header className='header'>
-    <h1 style={style}>Fast React Pizza Co.</h1>;
-  </header>
+  const style = {};
+  return (
+    <header className='header'>
+      <h1 style={style}>Fast React Pizza Co.</h1>;
+    </header>
+  );
 }
 
 function Menu() {
   return (
     <main className='menu'>
       <h2>Our menu</h2>
-      <Pizza />
-      <Pizza />
-      <Pizza />
-      <Pizza />
-      <Pizza />
-      <Pizza />
+      <Pizza
+        name='Pizza Prosciutto'
+        photoName='pizzas/prosciutto.jpg'
+        ingredients='Tomato, mozarella, ham, aragula, and burrata cheese'
+        price={10}
+      />
+      <Pizza
+        name='Pizza Funghi'
+        photoName='pizzas/funghi.jpg'
+        ingredients='Tomato, mozarella, mushrooms'
+        price={10}
+      />
     </main>
+  );
+}
+
+function Pizza(props) {
+  return (
+    <div className='pizza'>
+      <img src={props.photoName} alt={props.name} />
+      <div>
+        <h3>{props.name}</h3>
+        <p>{props.ingredients}</p>
+        <span>${props.price}</span>
+      </div>
+    </div>
   );
 }
 
