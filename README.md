@@ -40,3 +40,12 @@ Notes about this section can be found [here](https://github.com/vonschappler/Ult
 This section is focused in reviewing some of the basic concepts of JavaScript required to create React applications.
 
 Notes about this section can be found [here](https://github.com/vonschappler/Ultimate-React/blob/main/Notes.md#section_04).
+
+<hr>
+<br>
+
+## Section_05:
+
+This section is focused on the concepts of Components, Props and JSX used by React.
+
+Notes about this section can be found [here](https://github.com/vonschappler/Ultimate-React/blob/main/Notes.md#section_05).
