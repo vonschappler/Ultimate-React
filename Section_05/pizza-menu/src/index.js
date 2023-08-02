@@ -71,19 +71,30 @@ function Header() {
 }
 
 function Menu() {
-  return <div>
-    <h2>Our menu</h2>
-    <Pizza />
-    <Pizza />
-    <Pizza />
-    <Pizza />
-    <Pizza />
-    <Pizza />
-  </div>
+  return (
+    <div>
+      <h2>Our menu</h2>
+      <Pizza />
+      <Pizza />
+      <Pizza />
+      <Pizza />
+      <Pizza />
+      <Pizza />
+    </div>
+  );
 }
 
 function Footer() {
-  return <footer>It's {new Date().toLocaleDateString()} and we're currently open!</footer>;
+  const hour = new Date().getHours();
+  const openHour = 12;
+  const closeHour = 22;
+  const isOpen = hour >= openHour && hour <= closeHour;
+  console.log(isOpen);
+  return (
+    <footer>
+      It's {new Date().toLocaleDateString()} and we're currently open!
+    </footer>
+  );
 }
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
