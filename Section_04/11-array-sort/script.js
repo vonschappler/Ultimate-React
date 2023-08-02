@@ -155,3 +155,5 @@ function getTotalReviewCount(book) {
 
 const books = getBooks();
 
+const sortByPages = books.slice().sort((a, b) => b.pages - a.pages)
+console.log(sortByPages)
