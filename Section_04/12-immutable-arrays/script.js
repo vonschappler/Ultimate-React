@@ -155,13 +155,27 @@ const books = getBooks();
 // Adding elements to Immutable Arrays
 // --------------------------
 
+const newBook = {
+  id: 6,
+  title: 'Harry Potter and the Chamber of Secrets',
+  author: 'J. K. Rowling',
+};
+
+const addBook = [...books, newBook];
+console.log(addBook);
 
 // --------------------------
 // Deletings elements from Immutable Arrays
 // --------------------------
 
+const delBook = addBook.filter((book) => book.id !== 3);
+console.log(delBook);
 
 // --------------------------
 // Updating elements on Immutable Arrays
 // --------------------------
 
+const updtBook = delBook.map((book) =>
+  book.id === 1 ? { ...book, pages: 1210 } : book
+);
+console.log(updtBook);
