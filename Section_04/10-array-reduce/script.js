@@ -154,3 +154,6 @@ function getTotalReviewCount(book) {
 }
 
 const books = getBooks();
+
+const totalPages = books.reduce((acc, book) => acc + book.pages, 0);
+console.log(totalPages);
