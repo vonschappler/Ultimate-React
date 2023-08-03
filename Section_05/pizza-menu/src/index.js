@@ -4,7 +4,7 @@ import './index.css';
 
 const pizzaData = [
   {
-    name: 'Focaccia',
+    name: 'Pizza Focaccia',
     ingredients: 'Bread with italian olive oil and rosemary',
     price: 6,
     photoName: 'pizzas/focaccia.jpg',
@@ -47,16 +47,6 @@ const pizzaData = [
   },
 ];
 
-function App() {
-  return (
-    <div className='container'>
-      <Header />
-      <Menu />
-      <Footer />
-    </div>
-  );
-}
-
 function Header() {
   const style = {};
   return (
@@ -70,32 +60,26 @@ function Menu() {
   return (
     <main className='menu'>
       <h2>Our menu</h2>
-      <Pizza
-        name='Pizza Prosciutto'
-        photoName='pizzas/prosciutto.jpg'
-        ingredients='Tomato, mozarella, ham, aragula, and burrata cheese'
-        price={10}
-      />
-      <Pizza
-        name='Pizza Funghi'
-        photoName='pizzas/funghi.jpg'
-        ingredients='Tomato, mozarella, mushrooms'
-        price={10}
-      />
+      <ul className='pizzas'>
+        {pizzaData.map((pizza) => (
+          <Pizza pizzaObj={pizza} key={pizza.name} />
+        ))}
+      </ul>
     </main>
   );
 }
 
 function Pizza(props) {
+  console.log(props);
   return (
-    <div className='pizza'>
-      <img src={props.photoName} alt={props.name} />
+    <li className='pizza'>
+      <img src={props.pizzaObj.photoName} alt={props.pizzaObj.name} />
       <div>
-        <h3>{props.name}</h3>
-        <p>{props.ingredients}</p>
-        <span>${props.price}</span>
+        <h3>{props.pizzaObj.name}</h3>
+        <p>{props.pizzaObj.ingredients}</p>
+        <span>${props.pizzaObj.price}</span>
       </div>
-    </div>
+    </li>
   );
 }
 
@@ -107,8 +91,19 @@ function Footer() {
   console.log(isOpen);
   return (
     <footer className='footer'>
-      It's {new Date().toLocaleDateString()} and we're currently open!
+      It's {new Date().toLocaleTimeString()} and we're {isOpen ? '' : 'not'}{' '}
+      currently open!
     </footer>
+  );
+}
+
+function App() {
+  return (
+    <div className='container'>
+      <Header />
+      <Menu />
+      <Footer />
+    </div>
   );
 }
 
