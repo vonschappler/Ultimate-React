@@ -170,6 +170,7 @@ npm start
 will launch the created application.
 
 <hr>
+<br>
 
 ## Section_04:
 
@@ -224,9 +225,11 @@ const [pGenre, sGenre, <attribues...>] = genres
 
 </details>
 
-**NOTE: the names given (`pGenre`, `sGenre`, etc.) will assing the values in the order the items are inside the array (`genre[0]`, `*genre[1]*`, and so on).**
+**NOTE: the names given (`pGenre`, `sGenre`, etc.) will assing the values in the order the items are inside the array (`genre[0]`, `genre[1]`, and so on).**
 
-The code for this lesson can be found [here](Section_04/01-destructuring/).
+The code for this lesson can be found [here](Section_04/01-destructuring/script.js).
+
+<hr>
 
 ### Rest/Spread operator
 
@@ -274,7 +277,9 @@ const updatedBook = { book, moviePublicationDate: '2001-12-19', pages: 1210 };
 When it comes to objects, the spread operator is useful to add new properties to an existing objects or create a new property to them.
 When overwriting values of properties of objetcs, the spread object needs to come first.
 
-The code for this lesson can be found [here](Section_04/02-rest-spread/).
+The code for this lesson can be found [here](Section_04/02-rest-spread/script.js).
+
+<hr>
 
 ### Literals
 
@@ -286,7 +291,9 @@ To add any Javascript variable or oparation inside a literal, we use `${}` to cr
 const affirmation = `${title} is a book!`;
 ```
 
-The code for this lesson can be found [here](Section_04/03-literals/).
+The code for this lesson can be found [here](Section_04/03-literals/script.js).
+
+<hr>
 
 ### Ternaries
 
@@ -298,7 +305,9 @@ The syntax for this operation is displayed in the example below:
 pages > 1000 ? '' : ' ';
 ```
 
-The code for this lesson can be found [here](Section_04/04-ternaries/).
+The code for this lesson can be found [here](Section_04/04-ternaries/script.js).
+
+<hr>
 
 ### Arrow Functions (aka expression functions)
 
@@ -317,7 +326,9 @@ const getYearBlock = (str) => {
 const getYearNoBlock = (str) => str.split('-')[0];
 ```
 
-The code for this lesson can be found [here](Section_04/05-arrow-functions/).
+The code for this lesson can be found [here](Section_04/05-arrow-functions/script.js).
+
+<hr>
 
 ### Logical operators and short-circuiting
 
@@ -361,7 +372,7 @@ console.log('name' || 'Yes a do have a name!');
 console.log(null && 'I do not have a nickname...');
 ```
 
-### Nullish coalescing operator
+#### Nullish coalescing operator
 
 The Nullish coalescing operator (`??`) short-circuits when the condition checked as the first argument is `true`, automatically returning the the fisrt argument as a result. This is mostly used to define default values. This works as a substitute of `||` for the falsy values `null` and `undefined`, returing everything else as value, no matter the value provided as fisrt argument.
 
@@ -373,7 +384,9 @@ console.log(0 ?? 'It is a 0 value');
 console.log(null ?? 'Is it null?');
 ```
 
-The code for this lesson can be found [here](Section_04/06-logical-operators/).
+The code for this lesson can be found [here](Section_04/06-logical-operators/script.js).
+
+<hr>
 
 ### Optional Chaining
 
@@ -404,7 +417,9 @@ const greeting2 = `Hello ${person2.name} ${
 console.log(greeting2);
 ```
 
-The code for this lesson can be found [here](Section_04/07-optional-chaining/).
+The code for this lesson can be found [here](Section_04/07-optional-chaining/script.js).
+
+<hr>
 
 ### Array map
 
@@ -419,7 +434,9 @@ const multiplyByTwo = numbers.map((el) => el * 2);
 console.log(multiplyByTwo);
 ```
 
-The code for this lesson can be found [here](Section_04/08-array-map/).
+The code for this lesson can be found [here](Section_04/08-array-map/script.js).
+
+<hr>
 
 ### Array filter
 
@@ -432,7 +449,9 @@ const filter = numbers.filter((el) => el * 2 >= 10);
 console.log(filter);
 ```
 
-The code for this lesson can be found [here](Section_04/09-array-filter/).
+The code for this lesson can be found [here](Section_04/09-array-filter/script.js).
+
+<hr>
 
 ### Array reduce
 
@@ -449,7 +468,9 @@ const factor = numbers.reduce((acc, el) => el * acc, 1);
 console.log(factor);
 ```
 
-The code for this lesson can be found [here](Section_04/10-array-reduce/).
+The code for this lesson can be found [here](Section_04/10-array-reduce/script.js).
+
+<hr>
 
 ### Array Sort
 
@@ -473,7 +494,9 @@ console.log(sortDesc);
 console.log(numbers);
 ```
 
-The code for this lesson can be found [here](Section_04/11-array-sort/).
+The code for this lesson can be found [here](Section_04/11-array-sort/script.js).
+
+<hr>
 
 ### Immutable Arrays
 
@@ -506,7 +529,7 @@ const newNumbers = numbers.map((el) => (el == 3 ? (el = 6) : el));
 console.log(newNumbers);
 ```
 
-The code for this lesson can be found [here](Section_04/12-immutable-arrays/).
+The code for this lesson can be found [here](Section_04/12-immutable-arrays/script.js).
 
 ### Promises
 
@@ -528,7 +551,7 @@ fetch(API_URL)
   .catch(console.log('Some error handler message or function...'));
 ```
 
-The code for this lesson can be found [here](Section_04/13-promises/).
+The code for this lesson can be found [here](Section_04/13-promises/script.js).
 
 ### Async/Await
 
@@ -545,6 +568,436 @@ const myData = await getData();
 console.log(myData);
 ```
 
-The code for this lesson can be found [here](Section_04/14-async-await/).
+The code for this lesson can be found [here](Section_04/14-async-await/script.js).
 
 <hr>
+<br>
+
+## Section_05:
+
+### Rendering Root and Strict Mode
+
+The basic code to create and render any React application in scrict mode is displayed below. Note that React Strict Mode is used as developer tool for hightliing bugs and issues inside the React application codebase, provinding warnings as feedbacks for errors, without affecting the result, because will not render any visible UI.
+
+```javascript
+import React from 'react';
+import ReactDOM from 'react-dom/client';
+
+function App() {
+  return <h1>Hello React!</h1>;
+}
+
+const root = ReactDOM.createRoot(document.getElementById('root'));
+root.render(
+  <React.StrictMode>
+    <App />
+  </React.StrictMode>
+);
+```
+
+<hr>
+
+### Debugging React code
+
+Steps for debugging:
+
+1. Make sure the application is running by using `npm start`
+2. Stop the app (`Ctrl + C`) and restart it with `npm start`
+3. Hard reload the brower
+4. Keep both terminal and developer tools opened in the browser to check for errors
+5. Try googling for the error messages you got, if any error messages are displayed either on the console, developer tools or as an overlay in the browser where the application should be renderdered
+6. Always keep ESLint running - it will either warn you or show an error as a way to prevent those happen
+7. Remember to check both the **Problems** and **Output** tabs on VSCode terminal for errors and warnings
+8. Try comparing the code with the codes provided with the classes
+
+<hr>
+
+### React components
+
+React applications are entriely made of components, which are building blocks of an User Interface (UI). In technical terms, React renders components all together into that UI.
+
+Each component has its own **data/state**, **logic** and **appearance**, which defines how it works and should look like.
+
+So, it's reasonably to say that we "build complex UIs by **creating** multiple components and **combining** them if they were lego pieces".
+
+In React, components can be (and are) resued and/or nested inside each other, passing data between each other, using something called **props**.
+
+Components trees always help on how to break down UIs into components, helping in understanding their relationship (parent and child components) and how they interact with each other.
+
+### Creating and Reusing components
+
+In React, components are functions. Thise functions are defined as components when they:
+
+- Have their name started with a capital Letter
+- Return some markup language (mostly in HTML format)
+- Returns a single element defined by the markup language
+- The component is declared in the top level of the code
+
+Below there is an example of a simple component:
+
+```javascript
+function Title() {
+  return <h1>This is my title!</h1>;
+}
+```
+
+As mentioned components can be reused. The example below show how a component can be reused inside a React application:
+
+```javascript
+function Title() {
+  return <h1>This is my title!</h1>;
+}
+
+function App() {
+  return (
+    <div>
+      <Title />
+      <Title />
+      <Title />
+    </div>
+  );
+}
+```
+
+<hr>
+
+### What is JSX?
+
+JSX is a **declerative** syntax to **describe** what components **look like** and **how they work**. Each component must return a block of JSX.
+
+This syntax allow devs to combine embed **JavaScript**, **CSS**, and **other React components** into a single block of **HTML** code.
+
+The HTML code inside the JSX syntax gets converted into a **React.createElement** function call by a tool caled **Babel** which is added whenever a new project is created with the command `npm create-react-app <project_name>`.
+
+#### Diferences between declarative and imperative programming
+
+- Imperative (describes step-by-step what we want to see and how to do it):
+  - Requires manually DOM element selection, manipulation and transversing
+  - Each mutation to the DOM needs to be done step-by-step in the code
+- Declarative (describes what we want to see, without saying how to do it)
+  - Descibes how the DOM should look like using JSX, **based on the current data** (props and states) without any DOM manual manipulation
+  - React is then an **abstraction** away from the DOM, since developers don't need to "touch" the DOM
+  - The UI is then a "**reflection of the current data**" passed to it via the props and states
+
+<hr>
+
+### JavaScript logic in Compoments
+
+Because Components are written as JavaScript functions, it's possible to add any logic inside them. The code below shows a simple example of this.
+
+```javascript
+function Title() {
+  const hour = new Date().getHours();
+  const isMorning =
+    hour <= 11 ? `It's ${hour}h in the morning now!` : `It's not morning.`;
+  return <h1>{isMorning}</h1>;
+}
+```
+
+<hr>
+
+### Separation of Concerns
+
+At the rise of Interactive SPAs (single page application):
+
+- Traditional separation of concerns - one technology per file
+- The JavaScript is even more in charge of HTML
+- Logic and UI are tightly coupled
+
+So... "why keep files separated?" this then the why React and JSX get into place. JSX comes into action to colocate logic and UI that change together into a "single place". This colocation of logic and UI is the fundamental reason that defines the existence of components.
+
+React then:
+
+- Instead of having one tecnology per file, we have one component per file, which defines the **new separation of concerns**
+- These "concerns" have all tecnology necessary together
+- Keeps still logic and UI coupled, but in a different way
+
+### Styling components on React
+
+React "does not care" on how any component is styled. This means that styles can be applied to component in many ways:
+
+- Inline styling
+  Inline styling using the JSX syntax is a bit different than the usual inline styling we are used on normal HTML files, with any CSS properties added as JavaScript code inside an object.
+
+This object must containt a set of `"key": "values"` inside it, where the key makes reference to the CCS property (always entered into camel-case) and the value always as a string. The code below shows a quick example of how to it:
+
+```javascript
+function Title() {
+  const styles = {
+    color: 'red',
+    fontSize: '48px',
+    textTransform: 'uppercase',
+    textAlign: 'center',
+  };
+  return <h1 style={styles}>My title</h1>;
+}
+```
+
+- External CSS files
+  To add external CSS to a react component, we need first to import that file into the application / component file.
+
+After that, inside the component defined, we add a property/attribute called `className` and set it's value to the class inside the imported CSS file. The code below shows how this structure should be created:
+
+```javascript
+// react imports here...
+import 'path/to/css/file';
+
+function Title() {
+  return <h1 className='class-inside-css'>My Title</h1>;
+}
+
+function App() {
+  <Title />;
+}
+```
+
+- Tailwind css
+- Sass css
+
+<hr>
+
+### Passing and Receiving props
+
+Props can be defined as communication between parent and child components. This is the way of passing data betwen those components being part of one of the fundamentals of React.
+
+This is the way React uses to customize the components based on the data/state provided of each component.
+
+This is done into two steps:
+
+1. Each prop is defined as an attribute of the component in the parent element
+2. In the component we receive those attributes as the function parameter and make use of the inside JavaScript blocks
+
+The code below shows how to use props in React:
+
+```javascript
+function Title(props) {
+  return <h1>{props.text}</h1>;
+}
+
+function App() {
+  <Title text='Hello world!' />;
+}
+```
+
+<hr>
+
+### Props, Immutability and One-Way data flow
+
+Props are used to pass data from **parent components** to **child components**. They are an essential tool use for customization and configuration of components. Anything accecpted by JavaScript code can be passed as a prop: values, arrays, strings, objects, functions and **even** other components.
+
+Thanks to those props, the parent component controls how the child components will look and work.
+
+Keep in mind that even though props control can the look and feel of a component, they are not the **"only kind"** of data a component can use. Think as if the data passed to a component is divided into small pieces of data, being two of them the **Props** and **State**.
+
+The **State** is the part of data which can be updated by the internal logic of a component itself, while the **Props** is the part of data coming from the parent component, being updated only by the parent component, because it comes from outside the component.
+
+So, as a React (**strict**) rule, we take that Pros are **immutable**, being read-only. If we whish to make use of mutable props, they must be defined as a **State**.
+
+Props are immutable to prevent mutation on the parent component, causing possible side effects on the application. Remember that in JavaScript, when you create a copy of an object and mutate it, the original version of it is also mutated.
+
+Components in React have to be "pure functions" in termos of props and state, to prevent those side effects. Keeping components that way, React will optmize the application, preventing bugs and making it predictable.
+
+One-Way data flow is one of the principles of React, meaning that data only flows from parent components to child components, not the other way.
+
+The reasons for this:
+
+- Make applications predictable and easier to understand
+- Meke application easier to debug, as we know exactly where the data is coming from
+- Makes the application perform a lot better than in a two-way data flow, used by frameworks such as Angular, for example
+
+<hr>
+
+### Rules of JSX
+
+- General rules:
+  - JSX works similar to HTML, with a possibility of adding JavaScript to it, using `{}` (mostly on text and attributes)
+  - Inside `{}`, it's possible do enter any expression such as variable referencing, object/array creation, ternary operations
+  - Statements like `if/else`, `for`, `switch` are not allowed
+  - JSX always produces a JavaScript Expression - this make insertion of other JSX code inside `{}` as well as it makes it possoble to add any JSX code inside a component
+  - Each piece of JSX can have only a **one root element** - to make use of more root elements, make use of `<React.Fragment>` or `<>`
+
+<hr>
+  
+### Rendering lists
+
+Rendering a list is on it's simplest definition the rendering of components based on data provided in the form of an array, allowing to insert them dynamically on the application.
+
+This process can be achieved by using the map method, as displayed below. It's important to noticed though, that whenever rendering components using this method, a key parameter to uniquely identify the component (mostly used for React optmizations is required to be passed as a prop)
+
+```javascript
+const names = ['Maria', 'Joseph', 'Anthony'];
+
+function Greeting(props) {
+  return <h1>Hello {props.name}!</h1>;
+}
+
+function Greetings() {
+  return names.map((el) => {
+    return <Greeting name={el} key={el} />;
+  });
+}
+```
+
+<hr>
+
+### Conditional Rendering
+
+Coditional rendering is all about telling React how and if a component or JSX will be rendered based on a state/prop. This can be achived in three diferent ways:
+
+- Using the `&&` operator (renders nothing due to short-circuiting)
+
+```javascript
+function TimeOfDay() {
+  const hour = new Date().getHours();
+  const dayTime = 6;
+  const nightTime = 18;
+  const isMorning = hour >= dayTime && hour <= nightTime;
+  return <div>{isMorning && <p>The sun is up!</p>}</div>;
+}
+```
+
+- Using ternaries (allows providing an alternative rendering)
+
+```javascript
+function TimeOfDay() {
+  const hour = new Date().getHours();
+  const dayTime = 6;
+  const nightTime = 18;
+  const isMorning = hour >= dayTime && hour <= nightTime;
+  return (
+    <div>{isMorning ? <p>The sun is up!</p> : <p>It's nighttime!</p>} </div>
+  );
+}
+```
+
+- Multiple returns - (adding if clause outside the JSX returned by the component, mostly used to render or not an entire component)
+
+```javascript
+function MyMessage(props) {
+  const toRender = props.msg;
+  if (toRender === 'day') return <p>It's daytime!</p>;
+  if (toRender === 'night') return <p>It's nightime!</p>;
+}
+
+function TimeOfDay() {
+  const hour = new Date().getHours();
+  const dayTime = 6;
+  const nightTime = 18;
+  const isMorning = hour >= dayTime && hour <= nightTime;
+  if (!isMorning) {
+    return <MyMessage msg='night' />;
+  }
+  return (
+    <div>
+      <MyMessage msg='day' />
+    </div>
+  );
+}
+```
+
+**Recomendations:**
+
+1. Use the ternary operator when trying to render "pieces" of JSX based on conditions
+1. Use the multiple returns when trying to render or not an entire component based on conditions or even rendering a totally different component - this technique is also known as "early return"
+
+<hr>
+
+### Extracting JSX into new components
+
+Extracting JSX into new components helps to keep the code cleaner and it's really useful when a certain component starts getting too big.
+
+If the extracted component depends on states / pieces of data, the functional created need to receive its attributes (props), as already discussed in this session.
+
+<hr>
+
+### Destructuring Props
+
+To destructure a prop, all that is required is to pass over the prop name passed to a component as a destructured object to the function that defines the component. The code below is a small example of how to do that.
+
+```javascript
+// By doing this, it's easy to know that this component expects a prop defined as msg in order to be rendered correctly
+function MyMessage({ msg }) {
+  if (msg === 'day') return <p>It's daytime!</p>;
+  if (msg === 'night') return <p>It's nightime!</p>;
+}
+
+function TimeOfDay() {
+  const hour = new Date().getHours();
+  const dayTime = 6;
+  const nightTime = 18;
+  const isMorning = hour >= dayTime && hour <= nightTime;
+  if (!isMorning) {
+    return <MyMessage msg='night' />;
+  }
+  return (
+    <div>
+      <MyMessage msg='day' />
+    </div>
+  );
+}
+```
+
+<hr>
+
+### React Fragments
+
+React framents are used when we wish to render two or more components separatedly, by grouping them into a "virtual div".
+
+This is achived easly by adding `<></>` or `<React.Fragment></React.Fragment>` as a wrapper around the components to be rendered. The code below exemplifies the use of this:
+
+```javascript
+function TimeOfDay() {
+  const hour = new Date().getHours();
+  const dayTime = 6;
+  const nightTime = 18;
+  const isMorning = hour >= dayTime && hour <= nightTime;
+  if (!isMorning) {
+    return (
+      <React.Fragment key='any-key'>
+        <MyMessage msg='night' />
+        <p>Time to sleep! Go get some rest!</p>
+      </React.Fragment>
+    );
+  }
+  return (
+    <>
+      <MyMessage msg='day' />
+      <p>Wakey, wakey!!!!!</p>
+    </>
+  );
+}
+```
+
+As a general convention, `<React.Fragment>` is mostly used when rendering **lists of fragments**, because lists, as already discussed, need unique keys for each list item so React when better optmize the code. With fragments lists, the only way to pass the unique key is by creating the fragments with the `<React.Fragment key='key-unique-value'>` instead of using simply `<>` as wrapper.
+
+<hr>
+
+### Setting Classes and Text Conditionally
+
+The best way to set Classes and text condittionaly is by making use of the ternary operator.
+
+The example below is a demonstration of how to do it:
+
+```javascript
+function Car({ carObj }) {
+  return (
+    <li className={`car-item ${carObj.soldOut && 'sold-out'}`}>
+      <img src={carObj.photoName} alt={carObj.name} />
+      <div>
+        <h3>{carObj.model}</h3>
+        <p>{carObj.year}</p>
+        <span>{!carObj.soldOut ? `${carObj.price}` : `SOLD`}</span>
+      </div>
+    </li>
+  );
+}
+```
+
+<hr>
+
+The final code for this entire section can be found [here](Section_05/pizza-menu/).
+
+<hr>
+<br>
+
+## Section_06:
