@@ -62,17 +62,23 @@ function SkillList() {
   return (
     <div className='skill-list'>
       {skills.map((skill) => (
-        <Skill skill={skill} />
+        <Skill
+          language={skill.language}
+          color={skill.color}
+          level={skill.level}
+        />
       ))}
     </div>
   );
 }
 
-function Skill({ skill }) {
+function Skill({ language, color, level }) {
   return (
     <div>
-      <span className='skill' style={{ backgroundColor: skill.color }}>
-        {skill.language} {skill.level === 'advanced' ? '💪' : skill.level === 'intermediate' ? '🤔' : '📖'}
+      <span className='skill' style={{ backgroundColor: color }}>
+        {language} {level === 'advanced' && '💪'}
+        {level === 'intermediate' && '🤔'}
+        {level === 'beginner' && '📖'}
       </span>
     </div>
   );
