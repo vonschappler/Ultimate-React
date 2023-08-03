@@ -59,13 +59,13 @@ The (code for the) first project completed can be found [here](Section_05/).
 <details>
 <summary>Coding challenge 01:</summary>
 
-The (code for the) first challenge can be found [here](Challenges/01-Profile-Card).
+The (code for the) first challenge can be found [here](Challenges/01-profile-card/).
 </details>
 
 <details>
 <summary>Coding challenge 02:</summary>
 
-The (code for the) first challenge can be found [here](Challenges/02-Profile-Card-V2).
+The (code for the) first challenge can be found [here](Challenges/02-profile-card-v2/).
 </details>
 
 <hr>
