@@ -63,11 +63,17 @@ function Menu() {
     <main className='menu'>
       <h2>Our menu</h2>
       {numPizzas > 0 ? (
-        <ul className='pizzas'>
-          {pizzaData.map((pizza) => (
-            <Pizza pizzaObj={pizza} key={pizza.name} />
-          ))}
-        </ul>
+        <>
+          <p>
+            Authentic Italian cousine. 6 creative dishes to choose from. All
+            from our stone oven, all organic and delicious!
+          </p>
+          <ul className='pizzas'>
+            {pizzaData.map((pizza) => (
+              <Pizza pizzaObj={pizza} key={pizza.name} />
+            ))}
+          </ul>
+        </>
       ) : (
         <p>We're still working on our menu. Please come back later!</p>
       )}
@@ -136,3 +142,4 @@ root.render(
     <App />
   </React.StrictMode>
 );
+
