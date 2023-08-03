@@ -49,3 +49,20 @@ Notes about this section can be found [here](https://github.com/vonschappler/Ult
 This section is focused on the concepts of Components, Props and JSX used by React.
 
 Notes about this section can be found [here](https://github.com/vonschappler/Ultimate-React/blob/main/Notes.md#section_05).
+
+<details>
+<summary>Project Pizza Menu:</summary>
+
+The (code for the) first project completed can be found [here](Section_05/).
+</details>
+
+<details>
+<summary>Coding challenge 01:</summary>
+
+The (code for the) first challenge can be found [here](Challenges/01-Profile-Card).
+</details>
+
+<hr>
+<br>
+
+## Section_06:
