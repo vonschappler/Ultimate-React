@@ -62,7 +62,11 @@ The (code for the) first project completed can be found [here](Section_05/).
 The (code for the) first challenge can be found [here](Challenges/01-Profile-Card).
 </details>
 
+<details>
+<summary>Coding challenge 02:</summary>
+
+The (code for the) first challenge can be found [here](Challenges/02-Profile-Card-V2).
+</details>
+
 <hr>
 <br>
-
-## Section_06:
