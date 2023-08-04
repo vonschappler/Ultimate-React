@@ -995,9 +995,7 @@ function Car({ carObj }) {
 
 <hr>
 
-The final code for this entire section can be found [here](Section_05/pizza-menu/).
+The final code for this entire section can be found [here](Section_05/01-pizza-menu/).
 
 <hr>
 <br>
-
-## Section_06:
