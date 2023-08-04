@@ -3,13 +3,19 @@ import { useState } from 'react';
 function Control({ text, value, handlerD, handlerU }) {
   return (
     <div>
-      <button className='button' onClick={handlerD}>
+      <button className='btn-circle' onClick={handlerD}>
         &minus;
       </button>
-      <span>
-        {text}: {value}
-      </span>
-      <button className='button' onClick={handlerU}>
+      {text === 'Counter' && value !== 0 ? (
+        <span>
+          {text}: {value < 0 ? `${-value} days back` : `${value} days ahead`}
+        </span>
+      ) : (
+        <span>
+          {text}: {value}
+        </span>
+      )}
+      <button className='btn-circle' onClick={handlerU}>
         +
       </button>
     </div>
@@ -17,11 +23,11 @@ function Control({ text, value, handlerD, handlerU }) {
 }
 
 function Counter() {
-  const [step, setStep] = useState(0);
+  const [step, setStep] = useState(1);
   const [counter, setCounter] = useState(0);
   const [date, setDate] = useState(new Date(Date.now()).getTime());
   const handleStepDown = () => {
-    if (step > 0) {
+    if (step > 1) {
       setStep((currStep) => currStep - 1);
     }
   };
@@ -33,6 +39,11 @@ function Counter() {
   const handleCountUp = () => {
     setCounter((currCount) => currCount + step);
     setDate((currDate) => currDate + step * 86400000);
+  };
+  const handlerR = () => {
+    setStep(0);
+    setCounter(0);
+    setDate(new Date(Date.now()).getTime());
   };
 
   return (
@@ -58,6 +69,11 @@ function Counter() {
           {new Date(date).toDateString()}
         </span>
       )}
+      <div>
+        <button className='btn-reset' onClick={handlerR}>
+          Reset counter
+        </button>
+      </div>
     </>
   );
 }

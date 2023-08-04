@@ -3,11 +3,21 @@
   text-align: center;
 }
 
-.button {
+.btn-circle {
   background-color: #1b1c1d;
   width: 30px;
   height: 30px;
   color: #ffffff;
   border-radius: 50%;
   margin: 0.4rem;
+}
+
+.btn-reset {
+  margin: 0 auto;
+  background-color: #1b1c1d;
+  color: #ffffff;
+  border-radius: 5px;
+  margin: 0.4rem;
+  padding: 0.5rem;
+  font-size: medium;
 }
