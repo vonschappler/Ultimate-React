@@ -7,6 +7,15 @@ const messages = [
 ];
 
 export default function App() {
+  return (
+    <>
+      <Steps />
+      <Steps />
+    </>
+  );
+}
+
+function Steps() {
   const [step, setStep] = useState(1);
   const [isOpen, setIsOpen] = useState(true);
   function handlePrevious() {
@@ -20,7 +29,7 @@ export default function App() {
     }
   }
   return (
-    <>
+    <div>
       <button
         className='close'
         onClick={() => setIsOpen((currIsOpen) => !currIsOpen)}
@@ -53,6 +62,6 @@ export default function App() {
           </div>
         </div>
       )}
-    </>
+    </div>
   );
 }

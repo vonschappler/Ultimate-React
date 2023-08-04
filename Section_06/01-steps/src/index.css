@@ -76,7 +76,7 @@ h3 {
 }
 
 .close {
-  position: absolute;
+  position: relative;
   top: 16px;
   right: 16px;
   border: none;
