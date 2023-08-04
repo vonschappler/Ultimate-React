@@ -3,7 +3,7 @@ import { useState } from 'react';
 function Control({ text, value, handlerD, handlerU }) {
   return (
     <div>
-      <button className='btn-circle' onClick={handlerD}>
+      <button className='btn btn-circle' onClick={handlerD}>
         &minus;
       </button>
       {text === 'Counter' && value !== 0 ? (
@@ -15,7 +15,7 @@ function Control({ text, value, handlerD, handlerU }) {
           {text}: {value}
         </span>
       )}
-      <button className='btn-circle' onClick={handlerU}>
+      <button className='btn btn-circle' onClick={handlerU}>
         +
       </button>
     </div>
@@ -70,7 +70,7 @@ function Counter() {
         </span>
       )}
       <div>
-        <button className='btn-reset' onClick={handlerR}>
+        <button className='btn btn-reset' onClick={handlerR}>
           Reset counter
         </button>
       </div>
