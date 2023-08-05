@@ -53,7 +53,7 @@ Notes about this section can be found [here](https://github.com/vonschappler/Ult
 <details>
 <summary>Project Pizza Menu:</summary>
 
-The (code for the) first project completed can be found [here](Section_05/).
+The (code for the) first project completed can be found [here](Section_05/01-pizza-menu/).
 
 </details>
 
@@ -68,6 +68,43 @@ The (code for the) first challenge can be found [here](Challenges/01-profile-car
 <summary>Coding challenge 02:</summary>
 
 The (code for the) first challenge can be found [here](Challenges/02-profile-card-v2/).
+
+</details>
+
+<hr>
+<br>
+
+## Section_06:
+
+This section is focused on the creation of interactive components in react, by using states, events and forms.
+
+Notes about this section can be found [here](https://github.com/vonschappler/Ultimate-React/blob/main/Notes.md#section_06).
+
+<details>
+<summary>Project Far Away Travel list:</summary>
+
+The (code for the) first project completed can be found [here](Section_06/02-far-away/).
+
+</details>
+
+<details>
+<summary>Coding challenge 01:</summary>
+
+The (code for the) first challenge can be found [here](Challenges/03-date-counter-v1/).
+
+</details>
+
+<details>
+<summary>Exercise 01:</summary>
+
+The (code for the) first challenge can be found [here](Section_06/03-flashcard/).
+
+</details>
+
+<details>
+<summary>Coding challenge 02:</summary>
+
+The (code for the) first challenge can be found [here](Challenges/04-date-counter-v2/).
 
 </details>
 
