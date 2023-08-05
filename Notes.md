@@ -11,13 +11,6 @@ Those components always return a jsx output. JSX is a scripting format that allo
 
 Alongside components, React works with states and effects, which are used to update the page dynamically.
 
-<details>
-<summary>First React App on Sandbox</summary>
-
-Code for the first lession found online [here](https://3dvrtc-3000.csb.app/).
-
-</details>
-
 <hr>
 <br>
 
@@ -204,7 +197,9 @@ const {title, author, pages, <attribues...>} = book
 
 </details>
 
-**NOTE: Whne destructuring an array, the name of the attribute inside the `{}` need to match the name used during the definition of the object to destructure.**
+> **NOTE:**
+>
+> **When destructuring an array, the name of the attribute inside the `{}` need to match the name used during the definition of the object to destructure.**
 
 When destructuring an array, it's important to notice that instead of relying on the attribute name, destructuring relies on the number of items / index of the item to retrieve.
 
@@ -225,7 +220,9 @@ const [pGenre, sGenre, <attribues...>] = genres
 
 </details>
 
-**NOTE: the names given (`pGenre`, `sGenre`, etc.) will assing the values in the order the items are inside the array (`genre[0]`, `genre[1]`, and so on).**
+> **NOTE:**
+>
+> **The names given (`pGenre`, `sGenre`, etc.) will assing the values in the order the items are inside the array (`genre[0]`, `genre[1]`, and so on).**
 
 The code for this lesson can be found [here](Section_04/01-destructuring/script.js).
 
@@ -681,7 +678,7 @@ The HTML code inside the JSX syntax gets converted into a **React.createElement*
 
 <hr>
 
-### JavaScript logic in Compoments
+### JavaScript logic in components
 
 Because Components are written as JavaScript functions, it's possible to add any logic inside them. The code below shows a simple example of this.
 
@@ -895,10 +892,10 @@ function TimeOfDay() {
 }
 ```
 
-**Recomendations:**
-
-1. Use the ternary operator when trying to render "pieces" of JSX based on conditions
-1. Use the multiple returns when trying to render or not an entire component based on conditions or even rendering a totally different component - this technique is also known as "early return"
+> **Recomendations:**
+>
+> 1. Use the ternary operator when trying to render "pieces" of JSX based on conditions
+> 1. Use the multiple returns when trying to render or not an entire component based on conditions or even rendering a totally different component - this technique is also known as "early return"
 
 <hr>
 
@@ -996,6 +993,183 @@ function Car({ carObj }) {
 <hr>
 
 The final code for this entire section can be found [here](Section_05/01-pizza-menu/).
+
+<hr>
+<br>
+
+## Section_06:
+
+### Handling events the "**React way**"
+
+In React, as expected, events are handled in a declarative approach. This means that instead of using the imperative `addEventListener` (for example), we use something similar to **HTML inline event listeners**, always written in camel-case, like for example `onClick`, `onChange`, `onMouseOver`, etc.
+
+A quick example of the JSX syntax for adding a simple alert function to a button whne it's clicked is displayed below:
+
+```javascript
+function AlertButton() {
+  return <button onClick={() => alert('You clicked me!')}>Click me</button>;
+}
+```
+
+The function inside the "inline" event listener attribute (it's more accurate to call it as an event listener prop) which handle events are always callback functions, or else, React will execute them as soon as the component is rendered on screen intead of running the function when the expected event occurs.
+
+The best pratice to add event listeners on React is not to pass the functions directly into the JSX syntax (like it was done in the code above), but creating them as separated functions (usally inside the component itself) than passing the function name as the value of the event attribute, just like here:
+
+```javascript
+function AlertButton() {
+  // The "handle" part of the function name is part of some React conventions/standards to help developers to understand better the code.
+  //The function below could also be written as a declarative function instead of a expression function like did here
+  const handleAlert = () => alert('You clicked me!');
+  return <button onClick={handleAlert}>Click me</button>;
+}
+```
+
+<hr>
+
+### States in React
+
+State is the most important concept in React. States are data that a component can hold over time. They are the (in a analogical way), the "component's memory" because they hold information the component needs to "remember" during the application lifecicle.
+
+Each variable that defines the State of a component can be called as "Piece of state" or simply "state varible" and updating any of those "pieces of state" inside the full state of a component, causes React to re-render the whole component (also know as a component View).
+
+> **Note:**
+>
+> **All component Views together compose the user interface**
+
+States are then a tool which allow developers to:
+
+- Update the component view by re-rendering it when any piece of state changes
+- Persists local variables between renders
+
+To use states in React, three steps:
+
+1. Create one or more pieces of state
+1. Use those pieces of state inside the component
+1. Update the pieces of state using event handler functions
+
+The code below exemplifies shortly
+
+```javascript
+// other react imports
+import { useState } from 'react';
+
+function CounterButton() {
+  const [count, setCount] = useState(0);
+  const handleClick = () => {
+    setCount(count + 1);
+  };
+  return <button onClick={handleClick}>You clicked me {count} times.</button>;
+}
+```
+
+> **NOTES:**
+>
+> 1. **The function useState is a React hook. React functions which start with `use` are hooks. Hooks can only be called in the top level part of a component.**
+> 1. **State should be updated always by using the setter function defined in the destructuring of the array returned by the function `useState`, also known as setter function. Remember that React is all about immutability and updating a state manually mutates the state, which is _not a good practice_ when working with React.**
+>
+> ```javascript
+> // This helps to understand what each argment when creating a piece of state
+> const [stateName, setStateName] = useState(startNameValue);
+> ```
+
+<hr>
+
+### Updating States based on current State
+
+The best practice to update states based on the current state is by using a callback function inside the setter function, just like as the show in the code below:
+
+```javascript
+function CounterButton() {
+  const [count, setCount] = useState(0);
+  const handleClick = () => {
+    setCount((currCount) => currCount + 1);
+  };
+  return <button onClick={handleClick}>You clicked me {count} times.</button>;
+}
+```
+
+> **NOTES**
+>
+> **When not updating states based on the current value of itself, it's ok to use the direct value inside the setter function as shown previously [here](#states-in-react).**
+
+<hr>
+
+### A bit more about states and some guidelines:
+
+1. Each component has and manage its own state, no matter how many times it's rendered in the UI
+1. The UI a basicaly a a function of state. A React application is fundamentaly about change and update these states, which are reflected in the changes on the UI
+1. It then, safe to say, that the UI is a reflection of data (props and states) changes over time
+1. A new "piece" of state needs to be created whenever a component should keep track of any data over time. Remember that this piece of state will change, helping to create a dynamic component, which will be updated when the piece of state is updated.
+1. State updates usuly haappen inside event handlers
+1. Avoid using states for data which won't trigger/affect the component look and feel. This can cause lack of peformance, since it's make React to re-render that component without it been necessary
+
+<hr>
+
+### Forms in React
+
+In React, to work with forms, we add inside the JSX the `<form>` HTM element adding the form inputs afterwards just like if we were writing the form inside an HTML file.
+
+The code below is a simple example on how to create a form component using React and JSX:
+
+```javascript
+function MyForm() {
+  return (
+    <form>
+      <input placeholder='Any placehoder text' />
+      <input type='checkbox' / >Just a checkbox
+      <button>Submit</button>
+    </form>
+  );
+}
+```
+
+In order to make React to "react" to a form, it's necessary to add event handlers functions to that form, inside the JSX component that holds the form code.
+
+An implementation of these handlers is displayed below:
+
+```javascript
+function MyForm() {
+  const [text, setText] = useState('');
+  const handleTextChange = (e) => {
+    setText(e.target.value);
+  };
+  const handleSubmit = (e) => {
+    e.preventDefault();
+    console.log(text);
+  };
+  return (
+    <form onSubmit={handleSubmit}>
+      <input
+        placeholder='Any placehoder text'
+        onChange={handleTextChange}
+        value={text}
+        name='input'
+      />
+      <button>Submit</button>
+    </form>
+  );
+}
+```
+
+This technici follow the React concept/technique of controlled elements, which means that we need to add states to each form element in order to centralize the states in the component while removing them from the DOM (usual HTML of managing form states without React).
+
+<hr>
+
+### State vs Props
+
+- States:
+  1. Internal data, owned by the component
+  1. "Component memory"
+  1. Can be used by the component itself
+  1. Causes a component re-render if updated
+  1. Used to make components interactive
+
+- Props:
+  1. External data, owned by a parent component
+  1. Passed to the component as function parameters
+  1. They are read-only
+  1. A component is also re-rendered upon receiving new or updated props
+  1. Use by parent to configure child component settings
 
 <hr>
 <br>
