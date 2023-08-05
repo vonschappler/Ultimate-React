@@ -1,0 +1,23 @@
+.App {
+  font-family: sans-serif;
+  text-align: center;
+}
+
+.btn {
+  background-color: #1b1c1d;
+  margin: 0.4rem;
+  padding: 0.5rem;
+  border: none;
+  color: #ffffff;
+  font-size: medium;
+}
+
+.btn-circle {
+  width: 30px;
+  height: 30px;
+  border-radius: 50%;
+}
+
+.btn-reset {
+  border-radius: 5px;
+}
