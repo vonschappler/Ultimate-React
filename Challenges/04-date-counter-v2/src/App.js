@@ -1,45 +1,65 @@
 import { useState } from 'react';
 
-function Control({ text, value, handlerD, handlerU }) {
+function SliderController({ text, value, handler }) {
   return (
-    <div>
-      <button className='btn btn-circle' onClick={handlerD}>
-        &minus;
-      </button>
-      {text === 'Counter' && value !== 0 ? (
-        <span>
-          {text}: {value < 0 ? `${-value} days back` : `${value} days ahead`}
-        </span>
-      ) : (
-        <span>
-          {text}: {value}
-        </span>
-      )}
-      <button className='btn btn-circle' onClick={handlerU}>
-        +
-      </button>
-    </div>
+    <>
+      <span>
+        {text} {value}
+      </span>
+      <div>
+        <input
+          type='range'
+          min='0'
+          max='100'
+          onChange={handler}
+          value={value}
+        />
+      </div>
+    </>
+  );
+}
+
+function InputController({ value, handleChange }) {
+  return (
+    <input
+      className='input'
+      type='text'
+      value={value}
+      onChange={handleChange}
+    />
   );
 }
 
 function Counter() {
-  const [step, setStep] = useState(1);
+  const [step, setStep] = useState(0);
   const [counter, setCounter] = useState(0);
   const [date, setDate] = useState(new Date(Date.now()).getTime());
-  const handleStepDown = () => {
-    if (step > 1) {
-      setStep((currStep) => currStep - 1);
-    }
+
+  const handleSlideChange = (evt) => {
+    setStep(Number(evt.target.value));
   };
-  const handleStepUp = () => setStep((currStep) => currStep + 1);
-  const handleCountDown = () => {
-    setCounter((currCount) => currCount - step);
+
+  const handleBack = () => {
+    setCounter((currCounter) => currCounter - step);
     setDate((currDate) => currDate - step * 86400000);
   };
-  const handleCountUp = () => {
-    setCounter((currCount) => currCount + step);
+
+  const handleFwd = () => {
+    setCounter((currCounter) => currCounter + step);
     setDate((currDate) => currDate + step * 86400000);
   };
+
+  const handleChange = (evt) => {
+    console.log(evt.target.value);
+    setCounter(Number(evt.target.value));
+  };
+
+  const handleSubmit = (evt) => {
+    evt.preventDefault();
+    console.log(evt);
+    setDate(new Date(Date.now()).getTime() + counter * 86400000);
+  };
+
   const handlerR = () => {
     setStep(0);
     setCounter(0);
@@ -48,31 +68,37 @@ function Counter() {
 
   return (
     <>
-      <Control
-        text='Step'
+      <SliderController
+        text='Move days by: '
         value={step}
-        handlerD={handleStepDown}
-        handlerU={handleStepUp}
+        handler={handleSlideChange}
       />
-      <Control
-        text='Counter'
-        value={counter}
-        handlerD={handleCountDown}
-        handlerU={handleCountUp}
-      />
-      {counter === 0 ? (
-        <span>Today is {new Date(date).toDateString()}</span>
-      ) : (
-        <span>
-          {counter < 0 ? -counter : counter} days
-          {counter < 0 ? ' ago was ' : ' from today will be '}
-          {new Date(date).toDateString()}
-        </span>
-      )}
+      <button className='btn btn-circle' onClick={handleBack}>
+        &minus;
+      </button>
+      <form onSubmit={handleSubmit}>
+        <InputController value={counter} handleChange={handleChange} />
+      </form>
+      <button className='btn btn-circle' onClick={handleFwd}>
+        +
+      </button>
       <div>
-        <button className='btn btn-reset' onClick={handlerR}>
-          Reset counter
-        </button>
+        {counter === 0 ? (
+          <span>Today is {new Date(date).toDateString()}</span>
+        ) : (
+          <span>
+            {counter < 0 ? -counter : counter} days
+            {counter < 0 ? ' ago was ' : ' from today will be '}
+            {new Date(date).toDateString()}
+          </span>
+        )}
+        {(counter !== 0 || step !== 0) && (
+          <div>
+            <button className='btn btn-reset' onClick={handlerR}>
+              Reset counter
+            </button>
+          </div>
+        )}
       </div>
     </>
   );

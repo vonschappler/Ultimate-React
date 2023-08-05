@@ -1,6 +1,8 @@
 .App {
   font-family: sans-serif;
   text-align: center;
+  font-size: 1rem;
+  line-height: 1.5rem;
 }
 
 .btn {
@@ -9,7 +11,6 @@
   padding: 0.5rem;
   border: none;
   color: #ffffff;
-  font-size: medium;
 }
 
 .btn-circle {
@@ -20,4 +21,52 @@
 
 .btn-reset {
   border-radius: 5px;
+}
+
+form {
+  display: inline-block;
+  margin-bottom: 1rem;
+  margin-top: 1rem;
+}
+
+.input {
+  padding: 0.5rem;
+  border: none;
+  background-color: #cccccc;
+  border-bottom: solid 1px #1b1c1d;
+  border-top-right-radius: 5px;
+  border-top-left-radius: 5px;
+
+  font-weight: bold;
+}
+
+.input:focus {
+  outline: none;
+  background-color: #16b2ab88;
+}
+
+input[type='range'] {
+  display: inline-block;
+  text-align: center;
+  appearance: none;
+  margin: 10px 0;
+}
+input[type='range']:focus {
+  outline: none;
+}
+input[type='range']::-webkit-slider-runnable-track {
+  height: 7px;
+  cursor: pointer;
+  background: #16b2ab88;
+  border-radius: 10px;
+}
+input[type='range']::-webkit-slider-thumb {
+  box-shadow: 1px 1px 8px #000000;
+  height: 15px;
+  width: 15px;
+  border-radius: 50%;
+  background: #1b1c1d;
+  cursor: pointer;
+  appearance: none;
+  margin-top: -4.5px;
 }
