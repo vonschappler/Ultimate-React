@@ -10,9 +10,10 @@ function Logo() {
   return <h1>🌴 Far Away 💼</h1>;
 }
 
-function Form() {
+function Form({ onAddItem }) {
   const [qty, setQty] = useState(1);
   const [desc, setDesc] = useState('');
+
   function handleSubmit(evt) {
     evt.preventDefault();
     if (!desc) return;
@@ -22,8 +23,7 @@ function Form() {
       package: false,
       id: Date.now(),
     };
-    
-    console.log(newItem);
+    onAddItem(newItem);
     setDesc('');
     setQty(1);
   }
@@ -48,11 +48,11 @@ function Form() {
   );
 }
 
-function PackingList() {
+function PackingList({ items }) {
   return (
     <div className='list'>
       <ul>
-        {initialItems.map((item) => (
+        {items.map((item) => (
           <Item item={item} key={item.id} />
         ))}
       </ul>
@@ -81,11 +81,15 @@ function Stats() {
 }
 
 function App() {
+  const [items, setItems] = useState([]);
+  function handleAddItem(item) {
+    setItems((items) => [...items, item]);
+  }
   return (
     <div className='app'>
       <Logo />
-      <Form />
-      <PackingList />
+      <Form onAddItem={handleAddItem} />
+      <PackingList items={items} />
       <Stats />
     </div>
   );
