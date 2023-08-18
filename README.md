@@ -124,7 +124,6 @@ The (code for the) second project completed can be found [here](Section_07/01-fa
 
 </details>
 
-
 <details>
 <summary>Exercise 02:</summary>
 
@@ -143,6 +142,20 @@ The (code for the) third exercise can be found [here](Section_07/04-accordion/).
 <summary>Coding challenge 05:</summary>
 
 The (code for the) fifth challenge can be found [here](Challenges/05-tip-calculator/).
+
+</details>
+
+<hr>
+<br>
+
+## Section_08:
+
+This section is features the creation of a new project, namade **Eat'n Split**, to review the concepts discussed in previous lessons.
+
+<details>
+<summary>Project Eat'n Split:</summary>
+
+The (code for the) second project completed can be found [here](Section_08/01-eat-n-split/).
 
 </details>
 
