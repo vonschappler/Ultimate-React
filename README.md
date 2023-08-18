@@ -88,23 +88,61 @@ The (code for the) first project completed can be found [here](Section_06/02-far
 </details>
 
 <details>
-<summary>Coding challenge 01:</summary>
+<summary>Coding challenge 03:</summary>
 
-The (code for the) first challenge can be found [here](Challenges/03-date-counter-v1/).
+The (code for the) third challenge can be found [here](Challenges/03-date-counter-v1/).
 
 </details>
 
 <details>
 <summary>Exercise 01:</summary>
 
-The (code for the) first challenge can be found [here](Section_06/03-flashcard/).
+The (code for the) first exercise can be found [here](Section_06/03-flashcard/).
 
 </details>
 
 <details>
-<summary>Coding challenge 02:</summary>
+<summary>Coding challenge 04:</summary>
 
-The (code for the) first challenge can be found [here](Challenges/04-date-counter-v2/).
+The (code for the) fourth challenge can be found [here](Challenges/04-date-counter-v2/).
+
+</details>
+
+<hr>
+<br>
+
+## Section_07:
+
+This section is focused on providing details on how and when use states in React.
+
+Notes about this section can be found [here](https://github.com/vonschappler/Ultimate-React/blob/main/Notes.md#section_07).
+
+<details>
+<summary>Project Far Away Travel list:</summary>
+
+The (code for the) second project completed can be found [here](Section_07/01-far-away/).
+
+</details>
+
+
+<details>
+<summary>Exercise 02:</summary>
+
+The (code for the) second exercise can be found [here](Section_07/02-accordion/).
+
+</details>
+
+<details>
+<summary>Exercise 03:</summary>
+
+The (code for the) third exercise can be found [here](Section_07/04-accordion/).
+
+</details>
+
+<details>
+<summary>Coding challenge 05:</summary>
+
+The (code for the) fifth challenge can be found [here](Challenges/05-tip-calculator/).
 
 </details>
 
