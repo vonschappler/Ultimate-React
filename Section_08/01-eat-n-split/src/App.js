@@ -1,4 +1,4 @@
-import {useState} from 'react'
+import { useState } from 'react';
 
 const initialFriends = [
   {
@@ -21,8 +21,12 @@ const initialFriends = [
   },
 ];
 
-function Button({onClick, children }) {
-  return <button onClick={onClick} className='button'>{children}</button>;
+function Button({ onClick, children }) {
+  return (
+    <button onClick={onClick} className='button'>
+      {children}
+    </button>
+  );
 }
 
 function Friend({ friend }) {
@@ -46,8 +50,7 @@ function Friend({ friend }) {
   );
 }
 
-function FriendsList() {
-  const friends = initialFriends;
+function FriendsList({ friends }) {
   return (
     <ul>
       {friends.map((friend) => (
@@ -57,13 +60,47 @@ function FriendsList() {
   );
 }
 
-function FormAddFriend() {
+function FormAddFriend({ onAddFriend }) {
+  const [newFriendName, setNewFriendName] = useState('');
+  const [newFriendImage, setNewFriendImage] = useState(
+    'https://i.pravatar.cc/48'
+  );
+
+  function handleSubmit(evt) {
+    evt.preventDefault();
+    const id = crypto.randomUUID();
+    const newFriend = {
+      id,
+      name: newFriendName,
+      image: `${newFriendImage}?=${id}`,
+      balance: 0,
+    };
+
+    if (!newFriendName || !newFriendImage) {
+      return;
+    }
+
+    setNewFriendName('');
+    setNewFriendImage('https://i.pravatar.cc/48');
+    console.log(newFriend);
+
+    onAddFriend(newFriend);
+  }
+
   return (
-    <form className='form-add-friend'>
+    <form className='form-add-friend' onSubmit={handleSubmit}>
       <label>👥 Friend name: </label>
-      <input type='text' />
+      <input
+        type='text'
+        value={newFriendName}
+        onChange={(evt) => setNewFriendName(evt.target.value)}
+      />
       <label>📷 Image URL: </label>
-      <input type='text' />
+      <input
+        type='text'
+        value={newFriendImage}
+        onChange={(evt) => setNewFriendImage(evt.target.value)}
+      />
       <Button>Add</Button>
     </form>
   );
@@ -90,16 +127,25 @@ function FormSplitbill() {
 }
 
 function App() {
-  const [showAddFriend, setShowAddFriend] = useState(false)
+  const [showAddFriend, setShowAddFriend] = useState(false);
+  const [friends, setFriends] = useState(initialFriends);
   function handleShowAddFriend() {
-    setShowAddFriend(currShowAddFriend => !currShowAddFriend)
+    setShowAddFriend((currShowAddFriend) => !currShowAddFriend);
+  }
+  function handleAddFriends(friend) {
+    setFriends((currFriends) => [...currFriends, friend]);
+    setShowAddFriend(false);
   }
   return (
     <div className='app'>
       <div className='sidebar'>
-        <FriendsList />
-        {showAddFriend &&<FormAddFriend />}
-        <Button onClick={handleShowAddFriend}>{showAddFriend ? 'Close' : 'Add Friend'}</Button>
+        <FriendsList friends={friends} />
+        {showAddFriend && (
+          <FormAddFriend friends={friends} onAddFriend={handleAddFriends} />
+        )}
+        <Button onClick={handleShowAddFriend}>
+          {showAddFriend ? 'Close' : 'Add Friend'}
+        </Button>
       </div>
       <FormSplitbill />
     </div>
