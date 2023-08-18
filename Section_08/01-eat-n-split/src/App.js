@@ -1,3 +1,5 @@
+import {useState} from 'react'
+
 const initialFriends = [
   {
     id: 118836,
@@ -19,8 +21,8 @@ const initialFriends = [
   },
 ];
 
-function Button({children}) {
-  return <button className='button'>{children}</button>;
+function Button({onClick, children }) {
+  return <button onClick={onClick} className='button'>{children}</button>;
 }
 
 function Friend({ friend }) {
@@ -33,11 +35,7 @@ function Friend({ friend }) {
           You owe {friend.name} ${Math.abs(friend.balance)}
         </p>
       )}
-      {friend.balance === 0 && (
-        <p>
-          You and {friend.name} are even
-        </p>
-      )}
+      {friend.balance === 0 && <p>You and {friend.name} are even</p>}
       {friend.balance > 0 && (
         <p className='green'>
           {friend.name} oew you ${Math.abs(friend.balance)}
@@ -66,7 +64,7 @@ function FormAddFriend() {
       <input type='text' />
       <label>📷 Image URL: </label>
       <input type='text' />
-      <Button>Add Friend</Button>
+      <Button>Add</Button>
     </form>
   );
 }
@@ -80,7 +78,7 @@ function FormSplitbill() {
       <label>💶 Your expense: </label>
       <input type='text' />
       <label>💷 X's expense: </label>
-      <input type='text' disabled/>
+      <input type='text' disabled />
       <label>💷 Payer: </label>
       <select>
         <option value='user'>You</option>
@@ -92,12 +90,16 @@ function FormSplitbill() {
 }
 
 function App() {
+  const [showAddFriend, setShowAddFriend] = useState(false)
+  function handleShowAddFriend() {
+    setShowAddFriend(currShowAddFriend => !currShowAddFriend)
+  }
   return (
     <div className='app'>
       <div className='sidebar'>
         <FriendsList />
-        <FormAddFriend />
-        <Button>Add Friend</Button>
+        {showAddFriend &&<FormAddFriend />}
+        <Button onClick={handleShowAddFriend}>{showAddFriend ? 'Close' : 'Add Friend'}</Button>
       </div>
       <FormSplitbill />
     </div>
