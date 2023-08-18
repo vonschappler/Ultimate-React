@@ -19,6 +19,10 @@ const initialFriends = [
   },
 ];
 
+function Button({children}) {
+  return <button className='button'>{children}</button>;
+}
+
 function Friend({ friend }) {
   return (
     <li>
@@ -39,7 +43,7 @@ function Friend({ friend }) {
           {friend.name} oew you ${Math.abs(friend.balance)}
         </p>
       )}
-      <button className="button">Select</button>
+      <Button>Select</Button>
     </li>
   );
 }
@@ -55,12 +59,47 @@ function FriendsList() {
   );
 }
 
+function FormAddFriend() {
+  return (
+    <form className='form-add-friend'>
+      <label>👥 Friend name: </label>
+      <input type='text' />
+      <label>📷 Image URL: </label>
+      <input type='text' />
+      <Button>Add Friend</Button>
+    </form>
+  );
+}
+
+function FormSplitbill() {
+  return (
+    <form className='form-split-bill'>
+      <h2>Split a bill with Friend X</h2>
+      <label>💵 Bill value: </label>
+      <input type='text' />
+      <label>💶 Your expense: </label>
+      <input type='text' />
+      <label>💷 X's expense: </label>
+      <input type='text' disabled/>
+      <label>💷 Payer: </label>
+      <select>
+        <option value='user'>You</option>
+        <option value='friend'>X</option>
+      </select>
+      <Button>Split bill</Button>
+    </form>
+  );
+}
+
 function App() {
   return (
     <div className='app'>
       <div className='sidebar'>
         <FriendsList />
+        <FormAddFriend />
+        <Button>Add Friend</Button>
       </div>
+      <FormSplitbill />
     </div>
   );
 }
