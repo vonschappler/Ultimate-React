@@ -1,98 +1,84 @@
 import { useState } from 'react';
 
 function App() {
-  let totalBill = 0;
-  let totalTips = 0;
-  const [bill, setBill] = useState(0);
-  const [tips, setTips] = useState([0, 0]);
-  function handleChangeBill(value) {
-    setBill(Number(value));
-    totalBill = bill + (bill * totalTips) / 100;
-    console.log({ tips, totalTips, totalBill });
-  }
+  return <TipCalculator />;
+}
+
+function TipCalculator() {
+  const [bill, setBill] = useState('');
+  const [tip1, setTip1] = useState(0);
+  const [tip2, setTip2] = useState(0);
+  const totalTip = (bill * (tip1 + tip2)) / 200;
+  const totalBill = bill + totalTip;
   function handleReset() {
-    setBill(0);
-    setTips([0, 0]);
-  }
-  function handleChangePercent(id, value) {
-    if (id === 'tip-1') {
-      setTips((currTips) => [Number(value), currTips[1]]);
-    }
-    if (id === 'tip-2') {
-      setTips((currTips) => [currTips[0], Number(value)]);
-    }
-    totalTips = tips.reduce((total, tip) => total + tip, 0);
-    console.log({ tips, totalTips, totalBill });
+    setBill('');
+    setTip1(0);
+    setTip2(0);
   }
   return (
-    <>
-      <form onSubmit={(evt) => evt.preventDefault()}>
-        <Bill currBill={bill} onChangeBill={handleChangeBill}>
-          <label>How much did your order cost? </label>
-        </Bill>
-        <TipPercentage
-          onChangeTip={handleChangePercent}
-          key='tip-1'
-          id='tip-1'
-          value={tips[0]}
-        >
-          <label>How do you evaluate our service? </label>
-        </TipPercentage>
-        <TipPercentage
-          onChangeTip={handleChangePercent}
-          value={tips[1]}
-          id='tip-2'
-          key='tip-2'
-        >
-          <label>How does your friend evaluate our service? </label>
-        </TipPercentage>
-        <Output>
-          Your expenses were ${bill}.<br />
-          The tip to be paid for the service is ${totalTips}.
-          <br />
-          The total value of the bill will be ${totalBill}.
-        </Output>
-        <Button onReset={handleReset}>Reset</Button>
-      </form>
-    </>
+    <div>
+      <BillInput bill={bill} onSetBill={setBill} />
+      <SelectPercentage tip={tip1} onSelect={setTip1}>
+        How do you evaluate our service?
+      </SelectPercentage>
+      <SelectPercentage tip={tip2} onSelect={setTip2}>
+        How does your guests evaluate our service?
+      </SelectPercentage>
+      {bill > 0 && (
+        <>
+          <Output bill={bill} totalTip={totalTip} totalBill={totalBill} />
+          <Reset onReset={handleReset} />
+        </>
+      )}
+    </div>
   );
 }
 
-function Bill({ currBill, onChangeBill, children }) {
+function BillInput({ bill, onSetBill }) {
   return (
     <div>
-      {children}
+      <label>How much was your order expenses? </label>
       <input
-        value={currBill}
-        onChange={(evt) => onChangeBill(evt.target.value)}
+        type='text'
+        placeholder='Expenses / bill value'
+        value={bill}
+        onChange={(evt) => onSetBill(Number(evt.target.value))}
       />
     </div>
   );
 }
 
-function TipPercentage({ id, onChangeTip, children }) {
+function SelectPercentage({ tip, onSelect, children }) {
   return (
     <div>
-      {children}
+      <label>{children} </label>
       <select
-        id={id}
-        onChange={(evt) => onChangeTip(evt.target.id, evt.target.value)}
+        value={tip}
+        onChange={(evt) => onSelect(Number(evt.target.value))}
       >
-        <option value={0}>The service was a mess (0%)</option>
-        <option value={5}>The service was accectible (5%)</option>
-        <option value={10}>The service was good (10%)</option>
-        <option value={0}>The service was awesome! (20%)</option>
+        <option value='0'>It was a total mess (0%)</option>
+        <option value='5'>It was acceptable (5%)</option>
+        <option value='10'>It was good (10%)</option>
+        <option value='20'>It was awesome (20%)</option>
       </select>
     </div>
   );
 }
 
-function Output({ children }) {
-  return <h3>{children}</h3>;
+function Output({ bill, totalTip, totalBill }) {
+  return (
+    <h3>
+      Your expenses were: ${!bill ? 0 : bill}
+      <br />
+      Total tips to pay: ${totalTip}
+      <br />
+      The total value to pay (${!bill ? 0 : bill} + ${totalTip}): ${totalBill}
+    </h3>
+  );
 }
 
-function Button({ onReset, children }) {
-  return <button onClick={onReset}>{children}</button>;
+function Reset({ onReset }) {
+  return <button onClick={onReset}>Reset</button>;
 }
 
 export default App;
