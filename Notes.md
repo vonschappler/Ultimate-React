@@ -1116,7 +1116,8 @@ function MyForm() {
   return (
     <form>
       <input placeholder='Any placehoder text' />
-      <input type='checkbox' / >Just a checkbox
+      <input type='checkbox' />
+      Just a checkbox
       <button>Submit</button>
     </form>
   );
@@ -1163,7 +1164,6 @@ This technici follow the React concept/technique of controlled elements, which m
   1. Can be used by the component itself
   1. Causes a component re-render if updated
   1. Used to make components interactive
-
 - Props:
   1. External data, owned by a parent component
   1. Passed to the component as function parameters
@@ -1173,3 +1173,170 @@ This technici follow the React concept/technique of controlled elements, which m
 
 <hr>
 <br>
+
+## Section_07:
+
+### "Thinking in React"
+
+The React mindset required for any React developer can be defined in two parts:
+
+- Thinking about components, states, data-flow, effects
+- Thinking about state transitions instead of element mutations
+
+This process of thinking hae the following steps:
+
+1. Break the desired UI into components and stabilish the component tree
+1. Build a static version of the UI in React, without states
+1. Manage the states for the application:
+   1. Think about states:
+      1. When to use states
+      1. Which type of state (local vs global)
+      1. Where each piece of state needs to be placed
+   1. Establish the data flow:
+      1. One-way data flow
+      1. Child-to-parent communication
+      1. Accessing global states
+
+Keep in mind the process above is not something rigid, because it has a lot of back and forths but it can be used as a initial guide line for starters. By following those gidelines, the developer will be able to:
+
+- Break a UI into components
+- Make components reusable
+- Assemble a UI using those resuable components
+- Define which pieces of state, type and which components "own" them
+- Define the correct data flow for the application
+
+<hr>
+
+### Fundamentals of State Management
+
+State management is deciding when to create pieces of state, defining their type and where those states will be placed in the application, following the specific data flow direction set by the developer.
+
+States can either be local or global. The main difference between them is described below:
+
+- Local State:
+  - State used/needed only by one or few components
+  - Is defined inside a component and only that component and it's child components (if necessary) have access to it via props.
+- Global State:
+  - Many compoponents can use/need
+  - Is accessible to every component in the application
+  - Defined either using the React Context API or Redux
+
+<hr>
+
+### State lifting:
+
+State lifting is defined simply as the process of moving a local state from a component to its parent. This is necessary when a state crated by one component needs to be accessed by its siblings.
+
+The code below displays a small example of how to do that:
+
+```javascript
+function Child1({ onSetMessage }) {
+  handleSetMessage('John');
+}
+
+function Child2({ msg }) {
+  return <p>{msg}</p>;
+}
+
+function Parent() {
+  const [msg, setMsg] = useState('');
+  function handleSetMsg(name) {
+    setMsg(`Hello ${name}`);
+  }
+  return (
+    <>
+      <Child1 onSetMessage={handleSetMsg} />
+      <Child2 msg={msg} />
+    </>
+  );
+}
+```
+
+<hr>
+
+### Derived State:
+
+A derived state is a state computed based from an existing state or from props.
+
+When deriving a state, using regular variables ensure that a component is not re-rendered without being necessary, as well as it ensures the data is still in sync with the state which we are deriving from, because the single re-render of the component where the state lives in will automatically re-calculate the derived state.
+
+The code below shows a quick example of how a derived state can be used:
+
+```javascript
+/* some code */
+const people = [
+  { name: 'John', paycheck: 458 },
+  { name: 'Anna', paycheck: 722 },
+];
+const [person, setPerson] = useState(people);
+const employees = person.length;
+const totalPay = person.reduce((acc, currPay) => acc + currPay.paycheck, 0);
+const avrgPay = totalPay / employees;
+console.log(avrgPay);
+/* some more code*/
+```
+
+<hr>
+
+### Sorting Arrays
+
+To keep data immutable, the best practice to sort items is to create a new array of data based on the original one associated to the power of defived states.
+
+The code below shows an example this can be done using the array methods `slice` (to create a copy of the array) and `sort` (in order to sort the new array):
+
+```javascript
+/* some code */
+const people = [
+  { name: 'Paul', paycheck: 1200 },
+  { name: 'John', paycheck: 458 },
+  { name: 'Anna', paycheck: 722 },
+];
+let sortedPeopleName = people
+  .slice()
+  .sort((a, b) => a.name.localeCompare(b.name));
+console.log(sortedPeopleName);
+
+let sortedPeoplePay = people.slice().sort((a, b) => a.paycheck - b.paycheck);
+console.log(sortedPeoplePay);
+```
+
+<hr>
+
+### Splitting up the components into files
+
+To split a full application into a file per component, all that is necessary is to proceed as the following steps:
+
+1. Create a new \*.js file with the name of the component
+1. Remove the code of the component to be moved from the main Application
+1. Add the code removed to the new file created
+1. Import the necessary references in both files
+
+<hr>
+
+### "Children props"
+
+Components in React can also be declared by using `opening` and `closing tags`, as displayed below:
+
+```javascript
+<Component></Component>
+```
+
+Children props are automatically received by any component in React. This is defined by the content/jsx code placed between the `opening` and `closing` tag of a component, by making using of the special word `children`, as displayed below.
+
+```javascript
+function App() {
+  return <Component>Some content between tags</Component>;
+}
+
+function Component({ children }) {
+  return <div>{children}</div>;
+}
+```
+
+To sumarize:
+
+- Children props allow us to pass any JSX markup into an element
+- This tool is used to make REAL en CONFIGURABLE components, allowing ease edit of their content without the need of aditional props
+- This allow us to create generic components where no content was defined previously their use, as for example, components such as modals, buttons, etc.
+
+<hr>
