@@ -81,11 +81,7 @@ function NumResults({ movies }) {
 }
 
 function Navbar({ children }) {
-  return (
-    <nav className='nav-bar'>
-      {children}
-    </nav>
-  );
+  return <nav className='nav-bar'>{children}</nav>;
 }
 
 function Movie({ movie }) {
@@ -117,10 +113,7 @@ function Box({ children }) {
   const [isOpen, setIsOpen] = useState(true);
   return (
     <div className='box'>
-      <button
-        className='btn-toggle'
-        onClick={() => setIsOpen((open) => !open)}
-      >
+      <button className='btn-toggle' onClick={() => setIsOpen((open) => !open)}>
         {isOpen ? '–' : '+'}
       </button>
       {isOpen && children}
@@ -189,13 +182,8 @@ function WatchedMovieList({ watched }) {
   );
 }
 
-
 function Main({ children }) {
-  return (
-    <main className='main'>
-      {children}
-    </main>
-  );
+  return <main className='main'>{children}</main>;
 }
 
 export default function App() {
