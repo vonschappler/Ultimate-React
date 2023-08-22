@@ -1348,3 +1348,180 @@ A quick introduction and overview for the next section.
 
 <hr>
 <br>
+
+## Section_10:
+
+### How to Split an UI into Components?
+
+- Components side matters:
+  1. Making "huge" components is bad because:
+     1. Those have too many responsabilities
+     1. Might night too many props
+     1. Make them hard to reuse
+     1. They usually have complex code, making them hard to understand
+  1. Making "small" components is bad because:
+     1. An application will and up with hundreds of mini-components
+     1. Creates a confusing codebase
+     1. Makes the application too **"abstracted** (hiding implementation details of a specific component)
+
+To "solve" this problem, the ideal is to balance both sides of the component size spectrum extremes (huge and small). In order to reach this balance, it's advised to follow these four criteria:
+
+1. Each component must have a logical separation of content and/or layout:
+   - Does the component contain pieces of content or layout that **don't belong together**?
+1. The components created must be reusable
+   - Is it possible to reuse part of the component?
+   - Do you **want** or **need** to reuse the component?
+1. The components created should handle a single responsability and have little complexity
+   - Is the component doing too **many different things**?
+   - Does the component rely on too **many different props**?
+   - Does the component have too **many pieces of state** and/or **effectss**?
+   - Is the code, including JSX, too **complex and/or confusing**?
+1. The components should match the personal coding style
+   - Do you prever **smaller or bigger** functions / components?
+     > **NOTE:**
+     >
+     > This createria is subjective, but remember that each individual has a different way of coding and some people are more productive with large components while other prever smaller ones.
+
+Some guidelines to help in answering the questions above:
+
+- Be aware that creating a new component creates a new level of abstraction. Abtractions have a cost, because the more abstractions, the more mental energy is required to swtich back and forth between those components
+- Name a component according to what it does or what it displays. Don't be afraid of using long component names
+- Never declare a new component inside another - try to co-locate related components inside the same file before separating them into different files too early
+- It's normal that an application has components of different sizes
+  - Some very small components are necessary due their high reusability and low complexity
+  - Most apps will have a few huge components which are meant not to be reused
+
+<hr>
+
+### Component Categories:
+
+There are three main categories of components:
+
+1. Stateless / presentational:
+   - No state
+   - Resuable
+   - They receive some props and present data or other component
+   - Usually small components
+1. Stateful components:
+   - Have state
+   - Can still be reused
+1. Structural componentes:
+   - Pages
+   - Layouts
+   - Screens
+   - Result of composition
+   - Can be huge and no reusable
+
+### Prop Drilling:
+
+Prop Drilling was already discussed in this course, but as recap, this happens when "sibling" components share one or more states, requiring us to "lift" these states into the common parent, passing them as props to the components which make use of the state.
+
+<hr>
+
+### Component Composing
+
+Component composution is the technique used to create more reausable components, by passing inside and to the parent component the **children** prop, as already discussed in this course, using the opening and closing tags for the parent component, leaving a "blank" area which will be filled with the children passed.
+
+```javascript
+function Modal({ children }) {
+  return <div className='modal'>{children}</div>;
+}
+
+function Success() {
+  return <p>Sucess!</p>;
+}
+
+function Error() {
+  return <p>Error!</p>;
+}
+
+function App() {
+  return (
+    <>
+      <Modal>
+        <Success />
+      </Modal>
+      <Modal>
+        <Error />
+      </Modal>
+    </>
+  );
+}
+```
+
+This technique is quite useful when creating reusable and flexible components as well it helps on fixing the **prop drilling** issue, making this the best way of composing layouts.
+
+Another way to compose components is passing the prevously called **children** as a prop of the parent component, as displayed below:
+
+```javascript
+function Modal({ element }) {
+  return <div className='modal'>{element}</div>;
+}
+
+function Success() {
+  return <p>Sucess!</p>;
+}
+
+function Error() {
+  return <p>Error!</p>;
+}
+
+function App() {
+  return (
+    <>
+      <Modal element={<Success />} />
+      <Modal element={<Error />} />
+    </>
+  );
+}
+```
+
+<hr>
+
+### Props as Component API:
+
+Separing the concerns about component creator and component consumer, it's possíbel to assume component props as a "public api" of that component.
+
+For this, we need to consider the number of props we wish to expose for the consumer. With this under consideration we can get into two extreme scenarios where:
+
+- A component has too few props:
+  - The component is not flexible enough
+  - The component might not be useful
+- A component has too many props:
+  - Too hard to use
+  - Expose too much complextity of the component
+  - Hard-to-write code
+  - Makes it necessary to provide good default values
+
+This means the best practice is to find the best equilibrium of how much props we developers want to expose.
+
+<hr>
+
+### PropTypes
+
+PropTypes allow us to define which type of value can be passed as a prop to a reusable component. Although React allows us to do that, it's advised to make use of typescript to ensure the PropTypes are correctly specified. Also keep in mind that actually React developers do not use PropTypes frequently, prefering make the use of type script, because creating components with PropTypes is too time consuming.
+
+The code below shows how to make use of this:
+
+```javascript
+import PropTypes from 'prop-types';
+
+HelloComponent.propTypes = {
+  name: PropTypes.string,
+};
+
+function HelloComponent({ name }) {
+  return <h1>Hello, {name}! How are you today?</h1>;
+}
+
+function App() {
+  return (
+    <>
+      <HelloComponent name={'Mary'} />
+    </>
+  );
+}
+```
+
+<hr>
+<br>
