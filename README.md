@@ -166,5 +166,30 @@ The (code for the) second project completed can be found [here](Section_08/01-ea
 
 This section was an introductory section for the the following section.
 
+Notes about this section can be found [here](https://github.com/vonschappler/Ultimate-React/blob/main/Notes.md#section_09).
+
+<hr>
+<br>
+
+## Section_10:
+
+This section features composition of an application using **Composition**, how to make components reusable, how to split an application into components and how to build layouts using React.
+
+Notes about this section can be found [here](https://github.com/vonschappler/Ultimate-React/blob/main/Notes.md#section_10).
+
+<details>
+<summary>Project usePopCorn:</summary>
+
+The (code for the) second project completed can be found [here](Section_10/01-use-popcorn/).
+
+</details>
+
+<details>
+<summary>Coding challenge 06:</summary>
+
+The (code for the) fifth challenge can be found [here](Challenges/06-text-expander/).
+
+</details>
+
 <hr>
 <br>
