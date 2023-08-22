@@ -17,8 +17,8 @@ export default function App() {
       <br />
       <TextExpander
         collapsedNumWords={20}
-        expandButtonText=' Show text'
-        collapseButtonText=' Collapse text'
+        expandButtonText='Show text'
+        collapseButtonText='Collapse text'
         buttonColor='#ff6622'
       >
         Space travel requires some seriously amazing technology and
@@ -51,35 +51,34 @@ TextExpander.propTypes = {
 
 function TextExpander({
   collapsedNumWords = 10,
-  expandButtonText = ' Show more...',
-  collapseButtonText = ' Show less...',
-  buttonColor = 'blue',
+  expandButtonText = 'Show more...',
+  collapseButtonText = 'Show less...',
+  buttonColor = '#1f09cd',
   expanded = false,
   className = '',
   children,
 }) {
+  const buttonStyle = {
+    background: 'none',
+    border: 'none',
+    font: 'inherit',
+    cursor: 'pointer',
+    marginLeft: '6px',
+    color: buttonColor,
+  };
   const [isExpanded, setIsExpanded] = useState(expanded);
+  const displayText = isExpanded
+    ? children
+    : `${children.split(' ').slice(0, collapsedNumWords).join(' ')}...`;
   function handleCollapsed() {
     setIsExpanded((curr) => !curr);
   }
   return (
     <div className={className}>
-      <span>
-        {!isExpanded
-          ? `${children
-              .split(' ')
-              .filter((word, index) =>
-                index <= collapsedNumWords ? word : ''
-              )}...`
-          : children}
-      </span>
-      <span
-        role='button'
-        style={{ color: buttonColor }}
-        onClick={handleCollapsed}
-      >
-        {!isExpanded ? expandButtonText : collapseButtonText}
-      </span>
+      <span>{displayText}</span>
+      <button style={buttonStyle} onClick={handleCollapsed}>
+        {isExpanded ? collapseButtonText : expandButtonText}
+      </button>
     </div>
   );
 }
