@@ -26,6 +26,12 @@ export default function App() {
   );
 }
 
+// this is only to log what happens in react when a component is called inside the App
+console.log(<DifferentContent />)
+
+// do not make this, even though react calls the DifferentContent function as a component instance
+console.log(DifferentContent())
+
 function Tabbed({ content }) {
   const [activeTab, setActiveTab] = useState(0);
 
