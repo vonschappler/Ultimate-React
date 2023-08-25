@@ -1,20 +1,20 @@
-import { useState } from "react";
+import { useState } from 'react';
 
 const content = [
   {
-    summary: "React is a library for building UIs",
+    summary: 'React is a library for building UIs',
     details:
-      "Dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.",
+      'Dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.',
   },
   {
-    summary: "State management is like giving state a home",
+    summary: 'State management is like giving state a home',
     details:
-      "Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.",
+      'Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.',
   },
   {
-    summary: "We can think of props as the component API",
+    summary: 'We can think of props as the component API',
     details:
-      "Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur.",
+      'Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur.',
   },
 ];
 
@@ -27,17 +27,17 @@ export default function App() {
 }
 
 // this is only to log what happens in react when a component is called inside the App
-console.log(<DifferentContent />)
+// console.log(<DifferentContent />)
 
 // do not make this, even though react calls the DifferentContent function as a component instance
-console.log(DifferentContent())
+// console.log(DifferentContent())
 
 function Tabbed({ content }) {
   const [activeTab, setActiveTab] = useState(0);
 
   return (
     <div>
-      <div className="tabs">
+      <div className='tabs'>
         <Tab num={0} activeTab={activeTab} onClick={setActiveTab} />
         <Tab num={1} activeTab={activeTab} onClick={setActiveTab} />
         <Tab num={2} activeTab={activeTab} onClick={setActiveTab} />
@@ -45,7 +45,10 @@ function Tabbed({ content }) {
       </div>
 
       {activeTab <= 2 ? (
-        <TabContent item={content.at(activeTab)} key={content.at(activeTab).summary} />
+        <TabContent
+          item={content.at(activeTab)}
+          key={content.at(activeTab).summary}
+        />
       ) : (
         <DifferentContent />
       )}
@@ -56,7 +59,7 @@ function Tabbed({ content }) {
 function Tab({ num, activeTab, onClick }) {
   return (
     <button
-      className={activeTab === num ? "tab active" : "tab"}
+      className={activeTab === num ? 'tab active' : 'tab'}
       onClick={() => onClick(num)}
     >
       Tab {num + 1}
@@ -68,30 +71,56 @@ function TabContent({ item }) {
   const [showDetails, setShowDetails] = useState(true);
   const [likes, setLikes] = useState(0);
 
+  // shows just when the component is rendered and when setting multiple states at once will be printed a single time due to state update batching
+  console.log('RENDER');
+
   function handleInc() {
-    setLikes(likes + 1);
+    setLikes((likes) => likes + 1);
+  }
+
+  function handleTrippleInc() {
+    // this will not reproduce the output expected, because for each setLikes, likes is the same value and not an updated one.
+    // setLikes(likes + 1);
+    // setLikes(likes + 1);
+    // setLikes(likes + 1);
+
+    // this can reproduce the triple like function, because for each state we are calling the new "temporary" state created before the re-render
+    setLikes((likes) => likes + 1);
+    setLikes((likes) => likes + 1);
+    setLikes((likes) => likes + 1);
+  }
+
+  function handleUndo() {
+    setShowDetails(true);
+    setLikes(0);
+    // this will print the old value of likes, instead of the new state, 0 likes, because updating states is asynchronous
+    console.log(likes);
+  }
+
+  function handleUndoLater() {
+    setTimeout(handleUndo, 2000)
   }
 
   return (
-    <div className="tab-content">
+    <div className='tab-content'>
       <h4>{item.summary}</h4>
       {showDetails && <p>{item.details}</p>}
 
-      <div className="tab-actions">
+      <div className='tab-actions'>
         <button onClick={() => setShowDetails((h) => !h)}>
-          {showDetails ? "Hide" : "Show"} details
+          {showDetails ? 'Hide' : 'Show'} details
         </button>
 
-        <div className="hearts-counter">
+        <div className='hearts-counter'>
           <span>{likes} ❤️</span>
           <button onClick={handleInc}>+</button>
-          <button>+++</button>
+          <button onClick={handleTrippleInc}>+++</button>
         </div>
       </div>
 
-      <div className="tab-undo">
-        <button>Undo</button>
-        <button>Undo in 2s</button>
+      <div className='tab-undo'>
+        <button onClick={handleUndo}>Undo</button>
+        <button onClick={handleUndoLater}>Undo in 2s</button>
       </div>
     </div>
   );
@@ -99,7 +128,7 @@ function TabContent({ item }) {
 
 function DifferentContent() {
   return (
-    <div className="tab-content">
+    <div className='tab-content'>
       <h4>I'm a DIFFERENT tab, so I reset state 💣💥</h4>
     </div>
   );
