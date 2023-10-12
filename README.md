@@ -53,7 +53,7 @@ Notes about this section can be found [here](https://github.com/vonschappler/Ult
 <details>
 <summary>Project Pizza Menu:</summary>
 
-The (code for the) first project completed can be found [here](Section_05/01-pizza-menu/).
+The (code for the) project completed can be found [here](Section_05/01-pizza-menu/).
 
 </details>
 
@@ -83,7 +83,7 @@ Notes about this section can be found [here](https://github.com/vonschappler/Ult
 <details>
 <summary>Project Far Away Travel list:</summary>
 
-The (code for the) first project completed can be found [here](Section_06/02-far-away/).
+The (code for the) project completed can be found [here](Section_06/02-far-away/).
 
 </details>
 
@@ -120,7 +120,7 @@ Notes about this section can be found [here](https://github.com/vonschappler/Ult
 <details>
 <summary>Project Far Away Travel list:</summary>
 
-The (code for the) second project completed can be found [here](Section_07/01-far-away/).
+The (code for the) project completed can be found [here](Section_07/01-far-away/).
 
 </details>
 
@@ -155,7 +155,7 @@ This section is features the creation of a new project, namade **Eat'n Split**, 
 <details>
 <summary>Project Eat'n Split:</summary>
 
-The (code for the) second project completed can be found [here](Section_08/01-eat-n-split/).
+The (code for the) project completed can be found [here](Section_08/01-eat-n-split/).
 
 </details>
 
@@ -180,7 +180,7 @@ Notes about this section can be found [here](https://github.com/vonschappler/Ult
 <details>
 <summary>Project usePopCorn:</summary>
 
-The (code for the) second project completed can be found [here](Section_10/01-use-popcorn/).
+The (code for the) project completed can be found [here](Section_10/01-use-popcorn/).
 
 </details>
 
@@ -203,14 +203,14 @@ Notes about this section can be found [here](https://github.com/vonschappler/Ult
 <details>
 <summary>Project howReactWorks:</summary>
 
-The (code for the) second project completed can be found [here](Section_11/01-how-react-works/).
+The (code for the) project completed can be found [here](Section_11/01-how-react-works/).
 
 </details>
 
 <details>
 <summary>Project eat'n split (version 2):</summary>
 
-The (code for the) second project completed can be found [here](Section_11/02-eat-n-split/).
+The (code for the) project completed can be found [here](Section_11/02-eat-n-split/).
 
 </details>
 
