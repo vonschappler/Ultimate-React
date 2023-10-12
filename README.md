@@ -187,7 +187,30 @@ The (code for the) second project completed can be found [here](Section_10/01-us
 <details>
 <summary>Coding challenge 06:</summary>
 
-The (code for the) fifth challenge can be found [here](Challenges/06-text-expander/).
+The (code for the) sixth challenge can be found [here](Challenges/06-text-expander/).
+
+</details>
+
+<hr>
+<br>
+
+## Section_11:
+
+This section features the concepts of how React works, while discussing concepts such as **instances**, **render phases**, **diffing** and making use of the **key prop** to reset states.
+
+Notes about this section can be found [here](https://github.com/vonschappler/Ultimate-React/blob/main/Notes.md#section_11).
+
+<details>
+<summary>Project howReactWorks:</summary>
+
+The (code for the) second project completed can be found [here](Section_11/01-how-react-works/).
+
+</details>
+
+<details>
+<summary>Project eat'n split (version 2):</summary>
+
+The (code for the) second project completed can be found [here](Section_11/02-eat-n-split/).
 
 </details>
 

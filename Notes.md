@@ -1380,7 +1380,7 @@ To "solve" this problem, the ideal is to balance both sides of the component siz
    - Do you prever **smaller or bigger** functions / components?
      > **NOTE:**
      >
-     > This createria is subjective, but remember that each individual has a different way of coding and some people are more productive with large components while other prever smaller ones.
+     > This criteria is subjective, but remember that each individual has a different way of coding and some people are more productive with large components while other prever smaller ones.
 
 Some guidelines to help in answering the questions above:
 
@@ -1525,3 +1525,289 @@ function App() {
 
 <hr>
 <br>
+
+## Section_11:
+
+### Components, Instances and Elements:
+
+Components can be defined as the description of a piece of UI, with the main function of returning a React element (or element tree), usually written in JSX.
+
+A component can be seen as the "blueprint" (template) used to create what we call component instances.
+
+Instances are created when components are used in React. React insternally calls the functions which define each component every time it's used in the code, excecuting them on every call.
+
+Each instace holds its ony states, props and lifecylce inside the application - they are also responsible for retrnun react elements.
+
+React elements are basically the conversion of the JSX written when the function **React.createElement()** is called in the code. They hold all the information necessary to create **DOM** elements, redering those DOM elements on screen.
+
+DOM elements are the visual representation of a component instance in the browser.
+
+<hr>
+
+### How Rendering works
+
+In React, rendering is NOT updating the DOM or displaying elements on the screen. Rendering only happens internally, not producing visual changes in the UI.
+
+The "common sense of rendering" components in fact is splited into two phases:
+
+- **Render phase**: where React calls components funcions and figures out how the DOM should be updated
+- **Commit phase**: where React writes the changes to DOM, by updating, inserting and / or deleting elements.
+
+The render phase is triggered **TO THE ENTITE APPLICATION** by one of the two situations:
+
+1. Initial render - happens when the application is launched
+2. Status update in one or more component instances (also called re-render)
+
+Keep in mind that those renders are not triggered immediatelly, but they are scheduled for when the JS engine is "free" to run a batch of multiple `setState` calls in event handlers.
+
+<hr>
+
+### Render phase in details
+
+React's rendering is based on the idea of Virtual DOM, where all React elements are placed.
+
+Whenever a new render is triggered by nee of more component instance, the render phase starts. Updated React elements are created by the functions call of those components which triggered a render, generating a new Virtual DOM.
+
+This virtal DOM we have spoken of is in fact the whole React Element Tree, created with the instances of all component that are part of the component tree.
+
+Keep in mind that when a component is re-render, all child elements of this component will be re-rendered as well, no matter if their props changed or not.
+
+> **NOTE:**
+> This is necessary because React doesn't know if a children component of the re-rendered component will be affected by the re-render.
+
+The new virtual DOM will be then reconciliated and compared (using a process called diffing) to the current fiber tree by replacing the updated components instances and generating an updated Fiber tree with a list of DOM updates (called list of effects) to be done in the DOM, on the commit phase.
+
+> **NOTES:**
+>
+> 1.  Fiber trees are mutable objects containing a unit of work for each component instance. This unit of work is called "fiber" and it stores the current state, props, used hooks and also its reponsibla for mananing any side effect and the queue of work each component instance has.
+> 2.  The Fiber reconciler allows React to work asynchronously by spliting the rendering process in chunks, changing priority of certain tasks and controling if any component work should be paused, reused or thrown away - preventing long renders from blocking the whole JS engine.
+
+<hr>
+
+### Commit phase in details:
+
+The commit phase is a synchronous process, updating the DOM all at once, so no partial results are displayed in the UI. This phase happens right after the render phase, where, now, React takes the list of DOM updates and "flush" it to the DOM, making the updated fiber tree the "new" current fiber tree for the next render cycle.
+
+The browswer notices the changes in the DOM and then "paint" those changes on the screen, for the user/viewer.
+
+The commit phase is excecuted by a separated set of libraries called **renderers** (note that this name does not match the actual state of React, but it's called like that because it fits the common sense of "rendering").
+
+Examples of renderers:
+
+- ReactDom (web browsers)
+- ReactNative (mobiles)
+- Remotion (videos)
+- And many other third parties that can render things like word Microsoft Word docx files, pdf files , Figma templates, etc.
+
+<hr>
+
+### How Diffing works:
+
+Diffing uses 2 fundamental rules:
+
+1. Two elements of different types will produce twi different fiber trees
+1. Elements with a stable key prop stay the same across all renders
+
+By taking those two rules, React process 1000 operations per 1000 elements instead of 1000000000 operations per 1000 elements.
+
+These two rules take two things under consideration:
+
+- Same Position x different dom element or different react component instance:
+
+Assume this simple snippet of code:
+
+```html
+<!-- before update-->
+<App>
+  <div>
+    <button>Click me</button>
+  </div>
+  <main>
+    <h1>Some text</h1>
+  </main>
+</App>
+
+<!-- after update -->
+<App>
+  <nav>
+    <button>Click me</button>
+  </nav>
+  <main>
+    <h1>Some text</h1>
+  </main>
+</App>
+```
+
+When this kind of change happens in React, React assumes the whole subtree is no longer valid, so the old elements and everything inside it are destroyed. So, in this example, it causes the removal of everything inside `<div>` from the DOM - this removal process includes also any previous state of the children elements, replacing them with new instances of the components called by their functions, reseting any existent state.
+
+- Same position x same dom element or same component instance:
+
+For this case, assume the following inppet:
+
+```html
+<!-- before update-->
+<App>
+  <div className='links'>
+    <button>Click me</button>
+  </div>
+  <main>
+    <h1 name={'Anna'}>Some text for {name}</h1>
+  </main>
+</App>
+
+<!-- after update -->
+<App>
+  <div className='nav'>
+    <button>Click me</button>
+  </div>
+  <main>
+    <h1 name={'Maria'}>Some text for {name}</h1>
+  </main>
+</App>
+```
+
+In this situation, the elements (and it's chidlren) will be kept, including existent states. So what React will do in this case is to pass only the new props and/or attributes to the render when those are changed, keeping everything else.
+
+Those two process, because they mutate the fiber tree instead of re-creating it from scratch, allows React to be as efficient as possible.
+
+<hr>
+
+### The key prop
+
+The key prop is a special prop we use to tell the diffing algorithim that an element is unique, allowing React to make distinctions between multiple instances of the same component type.
+
+When the key prop stays the same across renders (called **stable key**), the element will be kept in the DOM, even if this position in the tree changes - this is one of the main reasons of why we use keys in lists of elements.
+
+Now, if the key prop is changed across renders (called **changing key**), the element will be completly destroyed - alongside its states - and a new one will be created (even if the element does not change its position in the tree).
+
+> **TIPS:**
+>
+> 1. Always use stable key props when using multple elements of the same type, to prevent unwanted rerendering of elements
+> 1. Remember that when you need to reset states by changing keys of elements when / if necessary.
+
+<hr>
+
+### How render works:
+
+React components have two types of logics:
+
+1. Render logic
+
+   - All the code located of the top level of the component function
+   - Participates in describing how the component view looks like
+   - It executed whenever the component renders
+
+2. Event Handler Functions
+
+- It is executed as consequence of the event that the handlers is listening for
+- All code that "does things": update states, peform requests, read fields, navigate to another page
+
+In order to understando those two types, let remember some of the **React functional programming principles**:
+
+1. **Side effect**: dependency on or modification of any data outside the function scope, interacting with "the outside world"
+2. **Pure functions**: a function that has no "side effect", always returning the same output if it's given to it the same input, making it totally predictable
+
+With this in mind, it's time to review the rules for render logic:
+
+- Components must be pure when it comes to render logic: given the same props, a component instance should always return the same JSX
+- Render logic must not produce any side effects: it does not interact with the outside world, meaning that in render logic:
+  - There is no peforming of network requests (API calls)
+  - There are no timers
+  - There is no direct use of the DOM API
+  - There is no mutation of objects or variables outside the function scope
+  - There is no update for states or refs - that can cause infinite loops
+
+<hr>
+
+### Batching state upates:
+
+In order to understand how React "batch" state updates, let's chack the snipet of code below:
+
+```javascript
+// some code
+
+const resetStates = () => {
+  setName('');
+  setSurname('');
+  setIncome(0);
+};
+
+// some more code
+```
+
+Using that snippet as some reference, it would be commom to assume that React would trigger a re-render for each setter function when the `resetStates` function is called on any event handler. But in fact what happens is that React merges the three setter functions into a single state (batched state) and just after completing the execution of the batch of updates it will then trigger the **Render** and **Commit** phases. This batching process happens automatically in **React 17** and **React 18+**, when it comes from any event handling!
+
+Keep in mind that updating states is an asynchronous action. This happens because updates to states just happen after the re-render. So in cases where it's necessary to make use of the current "updated" state immediately, inside the setter function we should define a callback, as follows:
+
+```javascript
+// some code
+
+const resetStates = () => {
+  setName('');
+  setSurname('');
+  setIncome((income) => (income = 0));
+};
+
+// some more code
+```
+
+**React 18+** also batches updating states for **timeouts**, **promises** and **DOM native events** - this is a new feature added. Just consider that this can be a bit problematic and a way to "fix" this issue (considering this is really an issue) is by wrapping the desired state updates into a `ReactDom.flushSync()` function.
+
+<hr>
+
+### How events works:
+
+Events are not triggered on the target itself - they are genereated on the top of a DOM tree and travel all the way from top to bottom of the tree until it reached the target element, on what is called **capturing phase** and move all the way back to the top of the tree on what we call **bubbling phase**.
+
+Event propagations in a DOM tree, by default, are listened by the handlers on the target and during the bubling phase. It's possible to prevent the bubbling phase making use of ``e.stopPropagation()`` in the code, although this is rarelly necessary to be done.
+
+This whole process allows devs to make use of a technique called **event elegation** - this technique consists into hadling events for multiple elements in on single common parent to all of them.
+
+This improves the application performance, since it means that instead of multiple handlers - one for each child element, we just need the handler on the common parent element, while checking which child triggered the event with ``e.target``.
+
+Basically, this is how React manages events. React register all event handlers of the same type in a "bundled" big handler inside the rootDom container instead of adding it to each React Element itself, as most people could imagine when they read the code below:
+
+```js
+<button
+  className='btn'
+  onClick={()=>setLoading(true)}
+/>
+```
+
+Keep in mind that when we create and event handler on React though, instead of the native DOM event object that vanilla javascript provides us, we have access to something called **SyntheticEvent**.
+
+Those SyntheticEvents are wrappers around the DOM's native event object, with the same interface as the DOM events, but with some fixed to prevent browser inconsistences, making them run exact the same way in all browsers.
+
+In React, the most important SyntheticEvents always bubble. The exeption for this rule scoll event.
+
+In React:
+ - Attributes for event handlers are named using camelCase, eg. onChange instead of onchange
+ - The only way to prevent the default behavior of an event is by using ``preventDefault()``
+ - If an event needs to be captured during the capture phase, just add "Capture" to the handler, eg. onClickCapture
+<hr>
+
+### Frameworks vs Libraries:
+
+#### Frameworks ("all-in-one kit")
+- A framework includes everything necessary to build a complete application
+- You are stuck the framework tools and conventions
+
+#### Library
+- Offers the freedom to pick only the required external (3rd-party) libraries required on the application we desire to build
+- You need to **research**, **download**, **learn** and **stay up-to-date** with multiple external libraries
+
+#### React Ecosystem:
+
+ 1. Routing: **React Router**, React Location
+ 1. HTTP requests: **Js fetch()**, Axios
+ 1. Remote state management: **React Query**, SWR, Apollo
+ 1. Global state managment: **Context API**, **Redux**, Zustant
+ 1. Styling: **Css Modules**, **Tailwindcss**
+ 1. Form management: **React Hook Form**, Formik
+ 1. Animations/transitions: Motion, React-spring
+ 1. UI components: Material UI, Chakra, Mantine
+
+<hr>
+<br>
+
+### Section_12:
