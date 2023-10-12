@@ -6,7 +6,7 @@ What is published here is the result of the code produced on each class, with th
 
 <hr>
 
-# Section details:
+# Sections details:
 
 ## Section_01:
 
