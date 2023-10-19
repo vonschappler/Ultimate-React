@@ -191,10 +191,11 @@ function Main({ children }) {
 export default function AppWrong() {
   const [movies, setMovies] = useState([]);
   const [watched, setWatched] = useState([]);
-  // 
+
+  // fetching like this will force a rerender of the component
   fetch(`https://www.omdbapi.com/?apikey=${OMDB_KEY}&s=matrix`)
     .then((res) => res.json())
-    .then((data) => console.log(data.Search));
+    .then((data) => setMovies(data.Search));
   
 
   return (
