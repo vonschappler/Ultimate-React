@@ -1,4 +1,6 @@
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
+
+const OMDB_KEY = process.env.REACT_APP_OMBD_KEY;
 
 const tempMovieData = [
   {
@@ -187,8 +189,18 @@ function Main({ children }) {
 }
 
 export default function App() {
-  const [movies, setMovies] = useState(tempMovieData);
-  const [watched, setWatched] = useState(tempWatchedData);
+  const [movies, setMovies] = useState([]);
+  const [watched, setWatched] = useState([]);
+
+  // useEffect(callback, dependecy_array)
+  // passing an empty arry as dependecy_array, means the useEffect will run only during the mount stage of the component lifecycle
+
+  useEffect(function () {
+    fetch(`https://www.omdbapi.com/?apikey=${OMDB_KEY}&s=matrix`)
+      .then((res) => res.json())
+      .then((data) => setMovies(data.Search));
+  }, []);
+
   return (
     <>
       <Navbar>
