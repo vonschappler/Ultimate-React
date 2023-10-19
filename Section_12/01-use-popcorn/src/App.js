@@ -191,14 +191,19 @@ function Main({ children }) {
 export default function App() {
   const [movies, setMovies] = useState([]);
   const [watched, setWatched] = useState([]);
-
-  // useEffect(callback, dependecy_array)
-  // passing an empty arry as dependecy_array, means the useEffect will run only during the mount stage of the component lifecycle
+  const query = 'matrix';
 
   useEffect(function () {
-    fetch(`https://www.omdbapi.com/?apikey=${OMDB_KEY}&s=matrix`)
-      .then((res) => res.json())
-      .then((data) => setMovies(data.Search));
+    // conversion from promise to async-await
+    async function fetchMovies() {
+      const res = await fetch(
+        `https://www.omdbapi.com/?apikey=${OMDB_KEY}&s=${query}`
+      );
+      const data = await res.json();
+      setMovies(data.Search);
+      console.log(data.Search);
+    }
+    fetchMovies();
   }, []);
 
   return (
