@@ -196,7 +196,6 @@ export default function AppWrong() {
   fetch(`https://www.omdbapi.com/?apikey=${OMDB_KEY}&s=matrix`)
     .then((res) => res.json())
     .then((data) => setMovies(data.Search));
-  
 
   return (
     <>
