@@ -82,6 +82,10 @@ function NumResults({ movies }) {
   );
 }
 
+function Loader() {
+  return <p className='loader'>Loading movies...</p>
+}
+
 function Navbar({ children }) {
   return <nav className='nav-bar'>{children}</nav>;
 }
@@ -191,17 +195,19 @@ function Main({ children }) {
 export default function App() {
   const [movies, setMovies] = useState([]);
   const [watched, setWatched] = useState([]);
+  const [isLoading, setIsLoading] = useState(false);
   const query = 'matrix';
 
   useEffect(function () {
     // conversion from promise to async-await
     async function fetchMovies() {
+      setIsLoading(true);
       const res = await fetch(
         `https://www.omdbapi.com/?apikey=${OMDB_KEY}&s=${query}`
       );
       const data = await res.json();
       setMovies(data.Search);
-      console.log(data.Search);
+      setIsLoading(false);
     }
     fetchMovies();
   }, []);
@@ -215,7 +221,7 @@ export default function App() {
       </Navbar>
       <Main>
         <Box>
-          <MovieList movies={movies} />
+          {isLoading ? <Loader/>: <MovieList movies={movies} />}
         </Box>
         <Box>
           <WatchedSummary watched={watched} />
