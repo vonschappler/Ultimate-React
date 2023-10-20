@@ -1,4 +1,4 @@
-import { useEffect, useState } from 'react';
+import { useEffect, useState, useRef } from 'react';
 import StarRating from './StarRating';
 
 const OMDB_KEY = process.env.REACT_APP_OMBD_KEY;
@@ -16,11 +16,25 @@ function Logo() {
 }
 
 function Search({ query, setQuery }) {
-  // "wrong way of selecting DOM elements on React"
-  useEffect(function () {
-    const el = document.querySelector('.search')
-    el.focus()
-  }, [])
+  // for DOM elements, we usually set the ref to null
+  const inputEl = useRef(null);
+
+  useEffect(
+    function () {
+      function callback(e) {
+        if (document.activeElement === inputEl.current) return;
+        if (e.code === 'Enter') {
+          inputEl.current.focus();
+          setQuery('');
+        }
+      }
+      inputEl.current.focus();
+      document.addEventListener('keydown', callback);
+      return () => document.addEventListener('keydown', callback);
+    },
+    [setQuery]
+  );
+
   return (
     <input
       className='search'
@@ -28,6 +42,7 @@ function Search({ query, setQuery }) {
       placeholder='Search movies...'
       value={query}
       onChange={(e) => setQuery(e.target.value)}
+      ref={inputEl}
     />
   );
 }
@@ -311,8 +326,8 @@ export default function App() {
   const [movies, setMovies] = useState([]);
   // const [watched, setWatched] = useState([]);
   const [watched, setWatched] = useState(function () {
-    const storedValue = localStorage.getItem('watched')
-    return JSON.parse(storedValue)
+    const storedValue = localStorage.getItem('watched');
+    return JSON.parse(storedValue);
   });
   const [isLoading, setIsLoading] = useState(false);
   const [error, setError] = useState('');
@@ -332,9 +347,12 @@ export default function App() {
     setWatched((watched) => [...watched, movie]);
   }
 
-  useEffect(function () {
-    localStorage.setItem('watched', JSON.stringify(watched));
-  }, [watched])
+  useEffect(
+    function () {
+      localStorage.setItem('watched', JSON.stringify(watched));
+    },
+    [watched]
+  );
 
   function handleDeleteWatched(id) {
     setWatched((watched) => watched.filter((movie) => movie.imdbID !== id));
