@@ -1759,19 +1759,16 @@ const resetStates = () => {
 
 Events are not triggered on the target itself - they are genereated on the top of a DOM tree and travel all the way from top to bottom of the tree until it reached the target element, on what is called **capturing phase** and move all the way back to the top of the tree on what we call **bubbling phase**.
 
-Event propagations in a DOM tree, by default, are listened by the handlers on the target and during the bubling phase. It's possible to prevent the bubbling phase making use of ``e.stopPropagation()`` in the code, although this is rarelly necessary to be done.
+Event propagations in a DOM tree, by default, are listened by the handlers on the target and during the bubling phase. It's possible to prevent the bubbling phase making use of `e.stopPropagation()` in the code, although this is rarelly necessary to be done.
 
 This whole process allows devs to make use of a technique called **event elegation** - this technique consists into hadling events for multiple elements in on single common parent to all of them.
 
-This improves the application performance, since it means that instead of multiple handlers - one for each child element, we just need the handler on the common parent element, while checking which child triggered the event with ``e.target``.
+This improves the application performance, since it means that instead of multiple handlers - one for each child element, we just need the handler on the common parent element, while checking which child triggered the event with `e.target`.
 
 Basically, this is how React manages events. React register all event handlers of the same type in a "bundled" big handler inside the rootDom container instead of adding it to each React Element itself, as most people could imagine when they read the code below:
 
 ```js
-<button
-  className='btn'
-  onClick={()=>setLoading(true)}
-/>
+<button className='btn' onClick={() => setLoading(true)} />
 ```
 
 Keep in mind that when we create and event handler on React though, instead of the native DOM event object that vanilla javascript provides us, we have access to something called **SyntheticEvent**.
@@ -1781,33 +1778,247 @@ Those SyntheticEvents are wrappers around the DOM's native event object, with th
 In React, the most important SyntheticEvents always bubble. The exeption for this rule scoll event.
 
 In React:
- - Attributes for event handlers are named using camelCase, eg. onChange instead of onchange
- - The only way to prevent the default behavior of an event is by using ``preventDefault()``
- - If an event needs to be captured during the capture phase, just add "Capture" to the handler, eg. onClickCapture
+
+- Attributes for event handlers are named using camelCase, eg. onChange instead of onchange
+- The only way to prevent the default behavior of an event is by using `preventDefault()`
+- If an event needs to be captured during the capture phase, just add "Capture" to the handler, eg. onClickCapture
 <hr>
 
 ### Frameworks vs Libraries:
 
 #### Frameworks ("all-in-one kit")
+
 - A framework includes everything necessary to build a complete application
 - You are stuck the framework tools and conventions
 
 #### Library
+
 - Offers the freedom to pick only the required external (3rd-party) libraries required on the application we desire to build
 - You need to **research**, **download**, **learn** and **stay up-to-date** with multiple external libraries
 
 #### React Ecosystem:
 
- 1. Routing: **React Router**, React Location
- 1. HTTP requests: **Js fetch()**, Axios
- 1. Remote state management: **React Query**, SWR, Apollo
- 1. Global state managment: **Context API**, **Redux**, Zustant
- 1. Styling: **Css Modules**, **Tailwindcss**
- 1. Form management: **React Hook Form**, Formik
- 1. Animations/transitions: Motion, React-spring
- 1. UI components: Material UI, Chakra, Mantine
+1.  Routing: **React Router**, React Location
+1.  HTTP requests: **Js fetch()**, Axios
+1.  Remote state management: **React Query**, SWR, Apollo
+1.  Global state managment: **Context API**, **Redux**, Zustant
+1.  Styling: **Css Modules**, **Tailwindcss**
+1.  Form management: **React Hook Form**, Formik
+1.  Animations/transitions: Motion, React-spring
+1.  UI components: Material UI, Chakra, Mantine
 
 <hr>
 <br>
 
-### Section_12:
+## Section_12:
+
+### Component (instance) lifecycle:
+
+The lifecycle of a compoment can be simply described in the following stages:
+
+**1. Mount / Initial render:**
+
+- The component instance is rendered for the **first time**, with fresh state and props
+
+**2. Re-Render:**
+
+- This re-render stage is an options stage and happens when:
+
+  1. The component **state** changes
+  1. The component **props** changes
+  1. The component **parent** re-renders
+  1. The componetn **context** changes (more about context later)
+
+**3. Unmount:**
+
+- The component "dies", being destroyed and removed from the screen, alongisde with its states and props.
+
+It's important to understand that it's possible to hook into these different stages, allowing to run code at these specific stages, by making use of the **useEffect** hook.
+
+<hr>
+
+### useEffect hook:
+
+As already discussed, we can't create any kind of side effects inside the code component (which would happen for example if we force a look of renders inside it - which can simply be shown in with the code snippet below).
+
+```javascript
+// some code...
+
+export default function InfiniteLoop() {
+  const [movies, setMovies] = useState([]);
+  const [watched, setWatched] = useState([]);
+
+  // Any of the lines below you force an infinite loop and can cause the application to crash.
+  //There are many other ways of examplifying infinite loops, but this is the simplest of them
+  setMovies([]);
+  setState([]);
+
+  // some more code...
+}
+```
+
+As a way to **safelly** create side effects like the one displayed above, is by using the **userEffect** hook. Doing this is possible because the "side effects" created by the **useEffect** will be registered end executed only after specifc render stages, for example write some data inside the component after the initial render.
+
+The snippet below, is a simple example of how the **useEffect** hook can be added to a small application in order to fecth some data.
+
+> **IMPORTANT:**
+>
+> Each effect should be responsible for only ONE THING, meaning that useEffect has to be responsible for a single side effect.
+
+```javascript
+export default function MoviesApp() {
+  const [movies, setMovies] = useState([]);
+  const [watched, setWatched] = useState([]);
+
+  // By passing an empty arry as dependecy_array, means the useEffect will run only during the mount stage of the component lifecycle.
+  // This means the code inside useEffect() will be executed ONLY after the component is rendered, meaning it will run just one time, for this small piece of code.
+
+  useEffect(function () {
+    fetch(`https://www.omdbapi.com/?apikey=${OMDB_KEY}&s=matrix`)
+      .then((res) => res.json())
+      .then((data) => setMovies(data.Search));
+  }, []);
+  // some more code...
+}
+```
+
+<hr>
+
+### A deeper look on Effects:
+
+Before we can have a look on what Effects really, are, it's important to remember where React creates side effects and what side effects are:
+
+> "Side effect is basically any kind of "interaction between a component and the world outside it". Think in this as any kind of code that actually "does something", eg. data fetching, setting timers, accessing the DOM manually, etc."
+>
+> Because of this (sometimes) required side effects, we do need them all the time in React because they are what really makes our application do something useful, be we also know that they can't not be inside the render logic.
+
+- Where to create side effects?
+
+  - Event handlers:
+
+    Functions triggered when an event they are listening to happens (this most times is not enough to "give life" to an application)
+
+  - Effects (making use of userEffect):
+
+    Functions triggered by rendering a component. Effects allows us to write code to run ad different moments of the component lifecycle (mount, re-render or unmount)
+
+#### Quick comparison between event handlers and effects:
+
+1. Event handlers:
+   1. Exececuted when the corresponding event happens
+   1. This is used to "**react**" to an event
+   1. Preferred way of creating side effects
+
+Example:
+
+```javascript
+// some code...
+function handleClick() {
+  fetch(`https://www.omdbapi.com/?apikey=${OMDB_KEY}&s=matrix`)
+    .then((res) => res.json())
+    .then((data) => setMovies(data.Search));
+}
+// some more code...
+```
+
+1. Effects (useEffect):
+   1. Executed after the component is mounted (initial render) and after subsequent re-renders defined by the dependency array of **useEffect**
+   1. This is used to keep the component in synchonization with some external system, such as an API we are using to fetch some data, for example
+
+Example:
+
+```javascript
+// some code...
+useEffect(function () {
+  fetch(`https://www.omdbapi.com/?apikey=${OMDB_KEY}&s=matrix`)
+    .then((res) => res.json())
+    .then((data) => setMovies(data.Search));
+  return () => console.log('Cleanup');
+}, []);
+// some more code...
+```
+
+<hr>
+
+### The useEffect dependency array:
+
+By default, and effect will run after every render. This can be prevented by passing a dependecy array to the **useEffect** function.
+
+This array tells React when to run the effect, by tracking changes on the dependecies listed on the dependency array, executing the effect again.
+
+Every state variable and prop used inside the effect must be included in the dependency array, or a **stale closure** error can be created in the code.
+
+The snippet below exemplifies the correct way of declaring the **useEffect** function inside a component:
+
+```javascript
+// some code...
+const name = props.name;
+const [userAge, setUserAge] = useState(0);
+useEffect(
+  function () {
+    // "1st part of useEffect"
+    // specifies the side effects the event will create
+    if (!title) return;
+    document.title = `${name} has ${userAge}`;
+    // "3rd part of useEffect" - specifie
+    // specifies the cleanup function (more about this later)
+    return () => (document.title = `Tell me your age!`);
+  },
+  // "2nd part of useEffect"
+  // specifies when the effect will be run
+  [name, userAge]
+);
+//some more code...
+```
+
+It's safe to assume **useEffect** as an event listener listening for dependecies changes. This means that effects react to upates to state and props listed in the dependency array, because the effect **depends** on them.
+
+To sumarize, we can use dependency array to run effects when the component renders or re-renders as a way to synchronze components in our code whenever any of the dependencies is updated.
+
+#### Diferent types of dependency array:
+
+- `useEffect(fn, [x, y, z])`: the effect syncronizes with changes happened on either x, y, or z and so, it runs on mount and re-renders triggered by updating either x, y or z
+- `useEffect(fn, [])`: the effect has no synchonization to any state or prop and so, it runs only during the mounting of the component
+- `useEffect(fn)`: the effect synchronizes with everything is run on every render/re-render (this is knwon for being a bad practice)
+
+<hr>
+
+### The useEffect cleanup function:
+
+Cleaning up effects in react can easly be done inside the **userEffect** function, by adding a so called "clean up function". This function is optional, meaning that not always we don't have to return one from a specific effect.
+
+It's important to know that the clean up function not only runs after unmounting a component, but also when the component is re-rendering.
+
+To sumarize, this function is necessary whenever the created side effect keeps happening after the component has been re-rendered or unmounted.
+
+Some of the most common use cases of the cleanup function are:
+
+- Making a HTTP request - use the cleanup function will cancel the request
+- Making an API subscription - use the cleanup function will cancel the request
+- Starting a timer - use the cleanup function will stop the timer
+- Adding an event listenres - use the cleanup function to remove the listener 
+
+The snippet of code below is a simple example of how to use the cleanup function, which is returned to the application when a certain component is unmounted.
+
+```javascript
+// some code...
+const name = props.name;
+const [userAge, setUserAge] = useState(0);
+useEffect(
+  function () {
+    if (!title) return;
+    document.title = `${name} has ${userAge}`;
+    // this is the clean up function for the component
+    return () => (document.title = `Tell me your age!`);
+  },
+  [name, userAge]
+);
+//some more code...
+```
+
+Having useEffect responsbile for a single side effect makes a lot easier to cleanup those effects. This then suggests that it may be necessary to make use of multiple useEffect. 
+
+But remember DO NOT OVERUSE the useEffect hook. Make use of this ONLY when necessary, because as already discussed, the peferred method for creating side effects are by using event listeners!
+
+<hr>
+<br>
