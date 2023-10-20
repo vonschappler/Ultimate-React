@@ -1,49 +1,59 @@
 import { useEffect, useState } from 'react';
 
 export default function App() {
-  const [value, setValue] = useState('0');
-  const [input, setInput] = useState('USD');
-  const [output, setOutput] = useState('USD');
-  const [converted, setConverted] = useState('0');
+  const [amount, setAmount] = useState(1);
+  const [fromCur, setFromCur] = useState('EUR');
+  const [toCur, setToCur] = useState('USD');
+  const [converted, setConverted] = useState('');
+  const [isLoading, setIsLoading] = useState(true);
 
   useEffect(
     function () {
-      const fetchConversion = async () => {
+      async function convert() {
+        setIsLoading(true);
         const res = await fetch(
-          `https://api.frankfurter.app/latest?amount=${value}&from=${input}&to=${output}`
+          `https://api.frankfurter.app/latest?amount=${amount}&from=${fromCur}&to=${toCur}`
         );
-        console.log(res);
         const data = await res.json();
-        setConverted(data.rates[output]);
-      };
-      if (!value || value === '0') return;
-      if (input === output) return;
-      fetchConversion();
+        setConverted(data.rates[toCur]);
+        setIsLoading(false);
+      }
+      if (fromCur === toCur) return setConverted(amount)
+      convert();
     },
-    [value, input, output]
+    [amount, fromCur, toCur]
   );
 
   return (
     <div>
       <input
         type='text'
-        value={value}
-        onChange={(e) => setValue(e.target.value)}
+        value={amount}
+        onChange={(e) => setAmount(Number(e.target.value))}
+        disabled={isLoading}
       />
-      <select value={input} onChange={(e) => setInput(e.target.value)}>
+      <select
+        value={fromCur}
+        onChange={(e) => setFromCur(e.target.value)}
+        disabled={isLoading}
+      >
         <option value='USD'>USD</option>
         <option value='EUR'>EUR</option>
         <option value='CAD'>CAD</option>
         <option value='INR'>INR</option>
       </select>
-      <select value={output} onChange={(e) => setOutput(e.target.value)}>
+      <select
+        value={toCur}
+        onChange={(e) => setToCur(e.target.value)}
+        disabled={isLoading}
+      >
         <option value='USD'>USD</option>
         <option value='EUR'>EUR</option>
         <option value='CAD'>CAD</option>
         <option value='INR'>INR</option>
       </select>
       <p>
-        ${value} {input} converted to {output} is equal ${converted}
+        $ {converted} {toCur}
       </p>
     </div>
   );
