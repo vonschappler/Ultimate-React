@@ -112,14 +112,29 @@ function MovieDetails({ selectedId, onCloseMovie, onAddWatched, watched }) {
     Genre: genre,
   } = movie;
 
-
   // the lines below force breaking the hook rules of react
   // breaking those rules cause the application to crash
+
+  // disables eslint so it's possible to force some errors in the code, just for learning purpose
+  /* eslint-disable */
+
   // adds a hook changing the linked hook list, if the condition is satisfied, between the inital states and the final three effects
   if (imdbRating > 8) [isTop, setIsTop] = useState(true);
 
   // removes the last three effect hooks, if the condition is sadisfied
   if (imdbRating > 8) return <p>Greatest ever!</p>;
+
+  // will keep the initial state even after re-renders
+  const [isTop, setIsTop] = useState(imdbRating > 8);
+  // if that was something possible to be done, a not optimal fix to this would be...
+  useEffect(
+    function () {
+      setIsTop(imdbRating > 8);
+    },
+    [imdbRating]
+  );
+
+  const [averageRating, setAverageRating] = useState(0);
 
   function handleAdd() {
     const newWatchedMovie = {
@@ -133,6 +148,9 @@ function MovieDetails({ selectedId, onCloseMovie, onAddWatched, watched }) {
     };
     console.log(newWatchedMovie);
     onAddWatched(newWatchedMovie);
+    // we do not have access to states sincronously, to do that, we need callback functions
+    setAverageRating(Number(imdbRating));
+    setAverageRating((averageRating + userRating) / 2);
     onCloseMovie();
   }
 
@@ -200,6 +218,7 @@ function MovieDetails({ selectedId, onCloseMovie, onAddWatched, watched }) {
               </p>
             </div>
           </header>
+          <p>{averageRating}</p>
           <section>
             <div className='rating'>
               {!isWatched && (
