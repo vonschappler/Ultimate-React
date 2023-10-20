@@ -16,6 +16,11 @@ function Logo() {
 }
 
 function Search({ query, setQuery }) {
+  // "wrong way of selecting DOM elements on React"
+  useEffect(function () {
+    const el = document.querySelector('.search')
+    el.focus()
+  }, [])
   return (
     <input
       className='search'
