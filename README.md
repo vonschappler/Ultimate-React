@@ -216,3 +216,23 @@ The (code for the) project completed can be found [here](Section_11/02-eat-n-spl
 
 <hr>
 <br>
+
+## Section_12:
+
+This section features **Effects and Data Fetching** on React.
+
+Notes about this section can be found [here](https://github.com/vonschappler/Ultimate-React/blob/main/Notes.md#section_12).
+
+<details>
+<summary>Project usePopCorn:</summary>
+
+The (code for the) project completed can be found [here](Section_12/01-use-popcorn/).
+
+</details>
+
+<details>
+<summary>Coding challenge 07:</summary>
+
+The (code for the) seventh challenge can be found [here](Challenges/07-currency-converter/).
+
+</details>
