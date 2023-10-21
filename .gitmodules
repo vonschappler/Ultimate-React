@@ -1,0 +1,12 @@
+[submodule "Projects/react-eat-n-split"]
+	path = Projects/react-eat-n-split
+	url = https://github.com/vonschappler/react-eat-n-split.git
+[submodule "Projects/react-far-away"]
+	path = Projects/react-far-away
+	url = https://github.com/vonschappler/react-far-away.git
+[submodule "Projects/react-pizza-menu"]
+	path = Projects/react-pizza-menu
+	url = https://github.com/vonschappler/react-pizza-menu.git
+[submodule "Projects/react-use-popcorn"]
+	path = Projects/react-use-popcorn
+	url = https://github.com/vonschappler/react-use-popcorn.git
