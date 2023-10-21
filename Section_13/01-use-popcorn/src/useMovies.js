@@ -9,7 +9,6 @@ export function useMovies(query) {
 
   useEffect(
     function () {
-      // browser API
       const controller = new AbortController();
       async function fetchMovies() {
         try {
