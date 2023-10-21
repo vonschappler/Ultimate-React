@@ -12,7 +12,7 @@ What is published here is the result of the code produced on each class, with th
 
 This section provides a general overview of React components and its fundamental definitions.
 
-Notes about this section can be found [here](https://github.com/vonschappler/Ultimate-React/blob/main/Notes.md#section_01).
+Notes about this section can be found [here](./Notes.md#Section_01).
 
 <hr>
 <br>
@@ -21,7 +21,7 @@ Notes about this section can be found [here](https://github.com/vonschappler/Ult
 
 This section was an introductory section for the the following section.
 
-Notes about this section can be found [here](https://github.com/vonschappler/Ultimate-React/blob/main/Notes.md#section_02).
+Notes about this section can be found [here](./Notes.md#Section_02).
 
 <hr>
 <br>
@@ -30,7 +30,7 @@ Notes about this section can be found [here](https://github.com/vonschappler/Ult
 
 This section provides a first look over React.
 
-Notes about this section can be found [here](https://github.com/vonschappler/Ultimate-React/blob/main/Notes.md#section_03).
+Notes about this section can be found [here](./Notes.md#Section_03).
 
 <hr>
 <br>
@@ -39,7 +39,7 @@ Notes about this section can be found [here](https://github.com/vonschappler/Ult
 
 This section is focused in reviewing some of the basic concepts of JavaScript required to create React applications.
 
-Notes about this section can be found [here](https://github.com/vonschappler/Ultimate-React/blob/main/Notes.md#section_04).
+Notes about this section can be found [here](./Notes.md#Section_04).
 
 <hr>
 <br>
@@ -48,7 +48,7 @@ Notes about this section can be found [here](https://github.com/vonschappler/Ult
 
 This section is focused on the concepts of Components, Props and JSX used by React.
 
-Notes about this section can be found [here](https://github.com/vonschappler/Ultimate-React/blob/main/Notes.md#section_05).
+Notes about this section can be found [here](./Notes.md#Section_05).
 
 <details>
 <summary>Project Pizza Menu:</summary>
@@ -78,7 +78,7 @@ The (code for the) first challenge can be found [here](Challenges/02-profile-car
 
 This section is focused on the creation of interactive components in react, by using states, events and forms.
 
-Notes about this section can be found [here](https://github.com/vonschappler/Ultimate-React/blob/main/Notes.md#section_06).
+Notes about this section can be found [here](./Notes.md#Section_06).
 
 <details>
 <summary>Project Far Away Travel list:</summary>
@@ -115,7 +115,7 @@ The (code for the) fourth challenge can be found [here](Challenges/04-date-count
 
 This section is focused on providing details on how and when use states in React.
 
-Notes about this section can be found [here](https://github.com/vonschappler/Ultimate-React/blob/main/Notes.md#section_07).
+Notes about this section can be found [here](./Notes.md#Section_07).
 
 <details>
 <summary>Project Far Away Travel list:</summary>
@@ -166,7 +166,7 @@ The (code for the) project completed can be found [here](Section_08/01-eat-n-spl
 
 This section was an introductory section for the the following section.
 
-Notes about this section can be found [here](https://github.com/vonschappler/Ultimate-React/blob/main/Notes.md#section_09).
+Notes about this section can be found [here](./Notes.md#Section_09).
 
 <hr>
 <br>
@@ -175,10 +175,10 @@ Notes about this section can be found [here](https://github.com/vonschappler/Ult
 
 This section features composition of an application using **Composition**, how to make components reusable, how to split an application into components and how to build layouts using React.
 
-Notes about this section can be found [here](https://github.com/vonschappler/Ultimate-React/blob/main/Notes.md#section_10).
+Notes about this section can be found [here](./Notes.md#Section_10).
 
 <details>
-<summary>Project usePopCorn:</summary>
+<summary>Project usePopcorn:</summary>
 
 The (code for the) project completed can be found [here](Section_10/01-use-popcorn/).
 
@@ -198,7 +198,7 @@ The (code for the) sixth challenge can be found [here](Challenges/06-text-expand
 
 This section features the concepts of how React works, while discussing concepts such as **instances**, **render phases**, **diffing** and making use of the **key prop** to reset states.
 
-Notes about this section can be found [here](https://github.com/vonschappler/Ultimate-React/blob/main/Notes.md#section_11).
+Notes about this section can be found [here](./Notes.md#Section_11).
 
 <details>
 <summary>Project howReactWorks:</summary>
@@ -221,10 +221,10 @@ The (code for the) project completed can be found [here](Section_11/02-eat-n-spl
 
 This section features **Effects and Data Fetching** on React.
 
-Notes about this section can be found [here](https://github.com/vonschappler/Ultimate-React/blob/main/Notes.md#section_12).
+Notes about this section can be found [here](./Notes.md#Section_12).
 
 <details>
-<summary>Project usePopCorn:</summary>
+<summary>Project usePopcorn (version 2):</summary>
 
 The (code for the) project completed can be found [here](Section_12/01-use-popcorn/).
 
@@ -236,3 +236,44 @@ The (code for the) project completed can be found [here](Section_12/01-use-popco
 The (code for the) seventh challenge can be found [here](Challenges/07-currency-converter/).
 
 </details>
+
+<hr>
+<br>
+
+## Section_13:
+
+This section features **Creation of custom hooks, refs and states** on React.
+
+Notes about this section can be found [here](./Notes.md#Section_13).
+
+<details>
+<summary>Project usePopcorn (version 3):</summary>
+
+The (code for the) project completed can be found [here](Section_13/01-use-popcorn/).
+
+</details>
+
+<details>
+<summary>Coding challenge 08:</summary>
+
+The (code for the) eighth challenge can be found [here](Challenges/08-use-geolocation/).
+
+</details>
+
+<hr>
+<br>
+
+## List of  completed course projects:
+
+1. **Pizza Menu**: a simple pizza menu
+    1. [Code](./Project/react-pizza-menu/)
+    1. [Preview](https://vonschappler.github.io/react-pizza-menu/)
+1. **Far Away**: a simple travel planner
+    1. [Code](./Projects/react-far-away/)
+    1. [Preview](https://vonschappler.github.io/react-far-away/)
+1. **eat'n split**: a simple split bill calculator
+    1. [Code](./Projects/react-eat-n-split/)
+    1. [Preview](https://vonschappler.github.io/react-eat-n-split/)
+1. **usePopcorn**: a simple movie catalog with personal ratings
+    1. [Code](./Projects/react-use-popcorn/)
+    1. [Preivew](https://vonschappler.github.io/react-use-popcorn/)

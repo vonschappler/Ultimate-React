@@ -1996,7 +1996,7 @@ Some of the most common use cases of the cleanup function are:
 - Making a HTTP request - use the cleanup function will cancel the request
 - Making an API subscription - use the cleanup function will cancel the request
 - Starting a timer - use the cleanup function will stop the timer
-- Adding an event listenres - use the cleanup function to remove the listener 
+- Adding an event listenres - use the cleanup function to remove the listener
 
 The snippet of code below is a simple example of how to use the cleanup function, which is returned to the application when a certain component is unmounted.
 
@@ -2016,9 +2016,250 @@ useEffect(
 //some more code...
 ```
 
-Having useEffect responsbile for a single side effect makes a lot easier to cleanup those effects. This then suggests that it may be necessary to make use of multiple useEffect. 
+Having useEffect responsbile for a single side effect makes a lot easier to cleanup those effects. This then suggests that it may be necessary to make use of multiple useEffect.
 
 But remember DO NOT OVERUSE the useEffect hook. Make use of this ONLY when necessary, because as already discussed, the peferred method for creating side effects are by using event listeners!
+
+<hr>
+<br>
+
+## Section_13:
+
+### Rules of React Hooks:
+
+React hooks are spcial built-in function what allows us to "hook" into some React internal mechanisms. We can define it better as APIs that allows us to:
+
+- Create and access states from the Fiber tree (useState)
+- Register side effects in the Fiber tree (useEffect)
+- Maunally select DOM selections / elements
+- Many other uses
+
+Hooks in React always start with the word **use**, so it's easy to differentiate those from other functions defined in the code.
+
+By creating a function with the word **use**, it's even possible to create custom hooks, by enabling the **reuse of non-visual logic**.
+
+Hooks also give us the ability of creating functional components with their own state and side effects at different life cycle points (this ability was only possible in **class compoments**, before React 16.8).
+
+React comes with lots of built-in hooks:
+
+- Most used hooks
+  - **useSate**
+  - **useEffect**
+  - **useReducer**
+  - **useContext**
+- Less used hooks
+  - **useRef**
+  - **useCallback**
+  - **useTransition**
+  - **useDeferredValue**
+  - **useLayoutEffect**
+  - **useDebugValue**
+  - **useImperativeHandle**
+  - **useId**
+- Library used only:
+  - **useSyncExternalStore**
+  - **useInsertionEffect**
+
+The simple rules of hooks:
+
+1. Hooks can be called only on the top level of a component
+1. Hooks are not called inside conditionals, loops, nested functions of after an early return
+   > This rule ensures that hooks are always called on the same order, since they rely on this to work correctly
+1. Hooks can only be called from React functions
+1. Hooks are called only inside a functional component or a custom hook
+
+<hr>
+<br>
+
+### **useState** hook in details:
+
+The initial values passed inside the **useState** hook just matter during the initial render of a component.
+
+So, if we assume the snippet of code below, the value of the state will not be updated and then, the state will always be the same defined at the initial render.
+
+```javascript
+// some code...
+
+const [isTop, setIsTop] = useState(grade > 8);
+
+//some more code...
+```
+
+A possible way to fix this is by making use of the hook **useEffect** like displayed below.
+
+```javascript
+// some code...
+
+const [isTop, setIsTop] = useState(grade > 8);
+useEffect(
+  function () {
+    setIsTop(grade > 8);
+  },
+  [grade]
+);
+
+// some more code...
+```
+
+The snippet of code above is not the optimal way of setting a state like that. By using the best react practices, the we should make use of derived states, just as displayed in the snippet below:
+
+```javascript
+// some code...
+
+const isTop = grade > 8;
+
+// some more code...
+```
+
+Remember that states are updated asynchronously, meaning that the snippet of code below would update just AFTER the whole component and the rest of code inside it is executed by React.
+
+```javascript
+// some code...
+
+const [avgGrade, setAvgGrade] = useState(2);
+// the state will be set to "6" until a new value is passed to avgGrade - this is called stale state
+//after the RE-RENDER of the compoment which contains this code
+setAvgGrade(8);
+setAvgGrade((agvGrade + 10) / 2);
+
+// some more code...
+```
+
+If it's necessary to update a state during the re-render proccess, the best prectice is to make use o callback functions, like shown below:
+
+```javascript
+// some code here...
+
+const [avgGrade, setAvgGrade] = useState(2);
+// this will have access to the current value passed to agvGrade during the re-render process and it will result in the end as "9"
+setAvgGrade(8);
+setAvgGrade((agvGrande) => (agvGrade + 10) / 2);
+
+// some more code here
+```
+
+On the same way we did set final state values using callback functions, it's possible to starting state values with callback functions... This is called **lazy initial state**. The snippet below is a quick example on how to do that:
+
+```javascript
+const [grade, setGrade] = useState(function () {
+  const newGrade = 10;
+  return newGrade;
+});
+```
+
+> **IMPORNTANT:**
+>
+> Pay attention to the fact that the callback function used in **useState** need to be "pure functions" that returns a value and they can not receive any arguments.
+
+To sumarize:
+
+```javascript
+// creates state "simple way"
+const [count1, setCount1] = useState(23);
+// creates state "lazy way"
+// the function must be pure and accept no arguments
+// this is called only on initial render
+const [count2, setCount2] = useState(() => return 23);
+
+// updates state "simple way"
+setCount1(100);
+// updates state using callback - based on the current state
+// the function must be pure and return the next state
+// the function can not manipulate the current state - instead, we need to create a new "intermediary state" to be maniplated
+setCount2 ((c) => c + 1);
+```
+
+<hr>
+<br>
+
+### **useRef** in details:
+
+Let's assume we need to set focus over a DOM element with a class of `search`. If we make use of the current knowlege we have, it could be done by adding something like the snippet bellow to our code.
+
+```javascript
+// some code here...
+
+useEffect(function () {
+  const el = document.querySelector('.search');
+  el.focus();
+}, []);
+
+// some more code here...
+```
+
+Even though that can work as predicted, that is not declarative (as it should be, because of the way of "React doing things") and also can generate issues in the application in case the dependency array of **useEffect** wasn't empty. So solve this problem, React has a hook, called **useRef**.
+
+The **useRef** is used to create a reference inside React code which presists among renders, just like states. This reference is an **object** with a mutable **.current** property (unlike most of the things in React).
+
+```javascript
+//some code here...
+
+const myRef = useRef('10');
+myRef.current = 'My age is 10';
+
+// some more code here...
+```
+
+The snippet above shows a simple way to make use of the **useRef** hook.
+
+Because of the unique properties already described of refs (persistence and mutability) there are two use cases for refs:
+
+1. Creating variables that presists along multiple renders, like for example storing the ID of a setTimeout function or previous state
+1. Selecting and storing DOM elements
+
+Refs are mainly used for data which are not rendered. They usually appear in event handlers or effects. If they are "related" to something to be rendered as part of a JSX, this means that instead of a ref, we should use a state.
+
+One important aspect of ref is that we are not allowed write or read the `.current` in render logic, like we do with states. That would create undesireable side effects and to avoid those, the best way to work with those mutations to refs is inside a **useEffect** hook.
+
+##### Comparing states and refs:
+
+| **HOOK**   | **Pessists on renders?** | **Updates causes re-render?** | **Is immutable?** | **Has asynchronous updates?** |
+| ---------- | ------------------------ | ----------------------------- | ----------------- | ----------------------------- |
+| **states** | yes                      | yes                           | yes               | yes                           |
+| **refs**   | yes                      | no                            | no                | no                            |
+
+<hr>
+<br>
+
+### Custom hooks:
+
+React is all about reusability and in React there are two things that we can reuse. Parts of the UI by creating components and logic.
+
+Logic can be reused into two different ways:
+
+- Regular functions if the logic does not contain any hooks
+- Custom hooks if the logic contains hooks
+
+Custom hooks allows us to re-use non-visual logic in multiple components when this logic contains one or more React hooks.
+
+Each custom hook still should have a single purpose, so it can be reusable and ported between components or even different projects.
+
+The rules of hooks already discussed still applies to custom hooks, for this being a hook.
+
+```javascript
+// some code...
+
+const useGetData = (url) => {
+  const [data, setData] = useState([]);
+  const [isFetching, setIsFetching] = useState(false);
+  useEffect(() => {
+    fetch(url)
+      .then((res) => res.json())
+      .then((res) => setData(res)),
+      [];
+  });
+  return [data, isFetching];
+};
+
+// some more code...
+```
+
+The code above is a simple example of how a data fetching custom hook could be created.
+
+Note a few things about a custom hook:
+- They are simple javascript functions which start with the word **use**, so React can recognize this as a hook
+- They can receive and return any relevant data (usually objects or arrays)
+- They need to have one or more React built-in hooks to abstract data on it
 
 <hr>
 <br>
