@@ -256,7 +256,30 @@ The (code for the) project completed can be found [here](Section_13/01-use-popco
 <details>
 <summary>Coding challenge 08:</summary>
 
-The (code for the) eighth challenge can be found [here](Challenges/08-use-geolocation/).
+The (code for the) eighth challenge can be found [here](Challenges/08-use-geolocate/).
+
+</details>
+
+<hr>
+<br>
+
+## Section_14:
+
+This section features **Creation of custom hooks, refs and states** on React.
+
+Notes about this section can be found [here](./Notes.md#Section_14).
+
+<details>
+<summary>Project :</summary>
+
+The (code for the) project completed can be found [here](Section_14/).
+
+</details>
+
+<details>
+<summary>Coding challenge 09:</summary>
+
+The (code for the) eighth challenge can be found [here](Challenges/09-/).
 
 </details>
 
@@ -266,14 +289,14 @@ The (code for the) eighth challenge can be found [here](Challenges/08-use-geoloc
 ## List of  completed course projects:
 
 1. **Pizza Menu**: a simple pizza menu
-    1. [Code](./Project/react-pizza-menu/)
+    1. [Code](https://github.com/vonschappler/react-pizza-menu/tree/d593cfe3903b2e96d48e19a594f98109f0f138b5)
     1. [Preview](https://vonschappler.github.io/react-pizza-menu/)
 1. **Far Away**: a simple travel planner
-    1. [Code](./Projects/react-far-away/)
+    1. [Code](https://github.com/vonschappler/react-far-away/tree/c51ee17a1153115b811f5796d77d85703163feb3)
     1. [Preview](https://vonschappler.github.io/react-far-away/)
 1. **eat'n split**: a simple split bill calculator
-    1. [Code](./Projects/react-eat-n-split/)
+    1. [Code](https://github.com/vonschappler/react-eat-n-split/tree/ba45aa22bd0f939e666fc42c2b5a5c963a16c207)
     1. [Preview](https://vonschappler.github.io/react-eat-n-split/)
 1. **usePopcorn**: a simple movie catalog with personal ratings
-    1. [Code](./Projects/react-use-popcorn/)
-    1. [Preivew](https://vonschappler.github.io/react-use-popcorn/)
+    1. [Code](https://github.com/vonschappler/react-use-popcorn/tree/8d34ffd1e3abada27ae5aa128486e812cec33a58)
+    1. [Preview](https://vonschappler.github.io/react-use-popcorn/)
