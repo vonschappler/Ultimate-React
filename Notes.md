@@ -2257,6 +2257,7 @@ const useGetData = (url) => {
 The code above is a simple example of how a data fetching custom hook could be created.
 
 Note a few things about a custom hook:
+
 - They are simple javascript functions which start with the word **use**, so React can recognize this as a hook
 - They can receive and return any relevant data (usually objects or arrays)
 - They need to have one or more React built-in hooks to abstract data on it
@@ -2265,6 +2266,165 @@ Note a few things about a custom hook:
 <br>
 
 ## Section_14
+
+### A bit of history:
+
+Before 2019, components in React were written as classes with a `render()` function, responsible for displaying the component on screen, just like displayed in the "barebones"code for a simple counter below.
+
+```javascript
+import React from 'react';
+
+class Counter extends React.Component {
+  // this is equivalent of the function body
+  render() {
+    return (
+      <div>
+        <button>-</button>
+        <span>0</span>
+        <button>+</button>
+      </div>
+    );
+  }
+}
+
+export default Counter;
+```
+
+Classes components do not support states, so in order to add states to a component, we need to set a constructor function, where we define the states as a huge object of states, instead of a single state variable for each state as done in functional components.
+
+Also the way to access some state is a bit different. Because we are using classes, the use o the keywork `this` (which points to the current components insntace rendered) and the property `state` are required in order to access the state.
+
+```javascript
+// some code here...
+
+constructor(props) {
+  super(props);
+  this.state = {count: 5};
+}
+
+// some more code here...
+
+// accessing the state with the key words "this" and "state"
+<span>{this.state.count}</span>
+```
+
+In order to create event handlers to classes components, we need to define those as class methods, always outside the `render()` function, because class components requires that the code inside the `render()` function to be as clean as possible. Not that to handle events in class components, it's necessary to bind them manually inside the constructor method, so they can be linked to the component instance in order to set states when those are updated on event handlers.
+
+```javascript
+// some code here...
+constructor(props) {
+  super(props);
+  this.state: {count: 0}
+  this.handleDrecrement: this.handleDecrement.bind(this);
+  this.handleIncrement: this.handleIncrement.bind(this);
+  this.handleReset: this.handleReset.bind(this);
+}
+
+handleDecrement() {
+  this.setState((currState) => {
+    return {count: currState.count - 1};
+  });
+}
+
+handleIncrement() {
+  this.setState((currState) => {
+    return {count: currState.count + 1};
+  });
+}
+
+handleReset() {
+  this.setState({count: 0});
+}
+
+// some code here...
+<button onClick={this.handleDecrement}>-</button>
+<button onClick={this.handleIncrement}>+</button>
+<button onClick={this.handleReset}>Reset counter</button>
+
+
+// some more code here
+```
+
+> **IMPORTANT:**
+>
+> Even though the `render()` function needs to be as clean as possible, some small and simple logic can still be added to it!
+
+The full code for a simple counter Component is displayed below:
+
+```javascript
+import React from 'react';
+
+class Counter extends React.Component {
+  constructor(props) {
+    super(props);
+
+    this.state = { count: 5 };
+    this.handleDecrement = this.handleDecrement.bind(this);
+    this.handleIncrement = this.handleIncrement.bind(this);
+    this.handleReset = this.handleReset.bind(this);
+  }
+
+  handleDecrement() {
+    this.setState((currState) => {
+      return { count: currState.count - 1 };
+    });
+  }
+
+  handleIncrement() {
+    this.setState((currState) => {
+      return { count: currState.count + 1 };
+    });
+  }
+
+  handleReset() {
+    this.setState({ count: 0 });
+  }
+
+  render() {
+    const date = new Date('june 21 2027');
+    date.setDate(date.getDate() + this.state.count);
+
+    return (
+      <>
+        <div>
+          <button onClick={this.handleDecrement}>-</button>
+          <span>
+            {date.toDateString()} [{this.state.count}]
+          </span>
+          <button onClick={this.handleIncrement}>+</button>
+        </div>
+        <div>
+          <button onClick={this.handleReset}>Reset counter</button>
+        </div>
+      </>
+    );
+  }
+}
+
+export default Counter;
+```
+
+#### Differences between functional components and class components:
+
+||**Function Components**|**Class Components**|
+|---|---|---|
+|**Introduced in**|v16.8 (2019, with hooks)|v0.13 (2015)|
+|**How to create**|Any type of JavaScript function|ES6 classes definition, extending React.Component|
+|**Reading props**|Destructuring or props.x|this.props.x|
+|Local State|useState hook|this.state = {state: value}<br>this.setState()|
+|**Side effects/lifecycle**|useEffect hook|lifecycle methods|
+|Event handlers|functions|class methods|
+|Returning JSX|Return the JSX from function|Return JSX from ``render()`` method|
+|Advantages|<ul><li>Easier to build (less boilerplate code)</li><li>Cleaner clode: ``useEffect`` combines all lifecycle-related code in a single place</li><li>Easier to share stateful logic</li><li>No need to use the ``this`` keywork</li></ul>|<ul><li>Lifecyle might be easier to understand for beginners</li></ul>|
+
+#### Component lifecycle in class components:
+
+They are special methods that all methods that each react component has access to, so we can manage side effects on each point of the componet lifecycle.
+
+
+- **componentDidMount()**: called imediatelly after the render (similar to ``useEffect`` with empty dependency array)
+- **componentDidUpdate(prevProps, prevState)**: called only during re-renders (similar to ``useEffect`` with variables inside the dependency array)
+- **componentWillUnmount()**: called after a component is unmounted, (similar to return a cleanup function returned from useEffect)
 
 <hr>
 <br>
