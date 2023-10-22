@@ -10,3 +10,6 @@
 [submodule "Projects/react-use-popcorn"]
 	path = Projects/react-use-popcorn
 	url = https://github.com/vonschappler/react-use-popcorn.git
+[submodule "Projects/react-classy-weather"]
+	path = Projects/react-classy-weather
+	url = https://github.com/vonschappler/react-classy-weather.git
