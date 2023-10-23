@@ -300,6 +300,6 @@ The (code for the) third exercise can be found [here](Section_14/02-functionally
 1. **usePopcorn**: a simple movie catalog with personal ratings
    1. [Code](https://github.com/vonschappler/react-use-popcorn/tree/8d34ffd1e3abada27ae5aa128486e812cec33a58)
    1. [Preview](https://vonschappler.github.io/react-use-popcorn/)
-1. **Classy Weather**
+1. **Classy Weather**: a simply weather application to display the weely weather in a given location
    1. [Code](https://github.com/vonschappler/react-classy-weather/tree/7ac373499c7f77a1600c9173bd3157346003461e)
    1. [Preview](https://vonschappler.github.io/react-classy-weather)

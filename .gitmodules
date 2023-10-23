@@ -13,3 +13,6 @@
 [submodule "Projects/react-classy-weather"]
 	path = Projects/react-classy-weather
 	url = https://github.com/vonschappler/react-classy-weather.git
+[submodule "Projects/react-functionally-weather"]
+	path = Projects/react-functionally-weather
+	url = https://github.com/vonschappler/react-functionally-weather.git
