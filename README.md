@@ -286,6 +286,33 @@ The (code for the) third exercise can be found [here](Section_14/02-functionally
 <hr>
 <br>
 
+## Section_15:
+
+This section was an introductory section for the the following section.
+
+Notes about this section can be found [here](./Notes.md#section_15).
+
+<hr>
+<br>
+
+## Section_16:
+
+This section features **the concepts of useReducer** hook on React.
+
+Notes about this section can be found [here](./Notes.md#section_16).
+
+<details>
+<summary>React Quiz:</summary>
+
+The (code for the) project completed can be found [here](Section_16/01-react-quiz).
+
+</details>
+
+
+
+<hr>
+<br>
+
 ## List of completed course projects:
 
 1. **Pizza Menu**: a simple pizza menu
@@ -303,3 +330,6 @@ The (code for the) third exercise can be found [here](Section_14/02-functionally
 1. **Classy Weather**: a simply weather application to display the weely weather in a given location
    1. [Code](https://github.com/vonschappler/react-classy-weather/tree/7ac373499c7f77a1600c9173bd3157346003461e)
    1. [Preview](https://vonschappler.github.io/react-classy-weather)
+1. **React Quiz**: 
+   1. [Code]()
+   1. [Preview](https://vonschappler.github.io/react-quiz)
