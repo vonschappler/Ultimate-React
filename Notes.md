@@ -2406,25 +2406,192 @@ export default Counter;
 
 #### Differences between functional components and class components:
 
-||**Function Components**|**Class Components**|
-|---|---|---|
-|**Introduced in**|v16.8 (2019, with hooks)|v0.13 (2015)|
-|**How to create**|Any type of JavaScript function|ES6 classes definition, extending React.Component|
-|**Reading props**|Destructuring or props.x|this.props.x|
-|Local State|useState hook|this.state = {state: value}<br>this.setState()|
-|**Side effects/lifecycle**|useEffect hook|lifecycle methods|
-|Event handlers|functions|class methods|
-|Returning JSX|Return the JSX from function|Return JSX from ``render()`` method|
-|Advantages|<ul><li>Easier to build (less boilerplate code)</li><li>Cleaner clode: ``useEffect`` combines all lifecycle-related code in a single place</li><li>Easier to share stateful logic</li><li>No need to use the ``this`` keywork</li></ul>|<ul><li>Lifecyle might be easier to understand for beginners</li></ul>|
+|                            | **Function Components**                                                                                                                                                                                                             | **Class Components**                                                   |
+| -------------------------- | ----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | ---------------------------------------------------------------------- |
+| **Introduced in**          | v16.8 (2019, with hooks)                                                                                                                                                                                                            | v0.13 (2015)                                                           |
+| **How to create**          | Any type of JavaScript function                                                                                                                                                                                                     | ES6 classes definition, extending React.Component                      |
+| **Reading props**          | Destructuring or props.x                                                                                                                                                                                                            | this.props.x                                                           |
+| Local State                | useState hook                                                                                                                                                                                                                       | this.state = {state: value}<br>this.setState()                         |
+| **Side effects/lifecycle** | useEffect hook                                                                                                                                                                                                                      | lifecycle methods                                                      |
+| Event handlers             | functions                                                                                                                                                                                                                           | class methods                                                          |
+| Returning JSX              | Return the JSX from function                                                                                                                                                                                                        | Return JSX from `render()` method                                      |
+| Advantages                 | <ul><li>Easier to build (less boilerplate code)</li><li>Cleaner clode: `useEffect` combines all lifecycle-related code in a single place</li><li>Easier to share stateful logic</li><li>No need to use the `this` keywork</li></ul> | <ul><li>Lifecyle might be easier to understand for beginners</li></ul> |
 
 #### Component lifecycle in class components:
 
 They are special methods that all methods that each react component has access to, so we can manage side effects on each point of the componet lifecycle.
 
-
-- **componentDidMount()**: called imediatelly after the render (similar to ``useEffect`` with empty dependency array)
-- **componentDidUpdate(prevProps, prevState)**: called only during re-renders (similar to ``useEffect`` with variables inside the dependency array)
+- **componentDidMount()**: called imediatelly after the render (similar to `useEffect` with empty dependency array)
+- **componentDidUpdate(prevProps, prevState)**: called only during re-renders (similar to `useEffect` with variables inside the dependency array)
 - **componentWillUnmount()**: called after a component is unmounted, (similar to return a cleanup function returned from useEffect)
+
+<hr>
+<br>
+
+## Section_15:
+
+A quick introduction and overview for the next section.
+
+<hr>
+<br>
+
+## Section_16
+
+### **useReducer** hook:
+
+The **useReducer** hook is a more advanced (and more complex) way to mange states in React than the **useState** hook.
+
+The **useReducer** will always receive the previous state and a pure function (reducer function) as na action to produce te next state, just as displayed in the snippet of code below.
+
+```javascript
+import { useReducer } from 'react';
+
+// some code here...
+function reducer(state, action) {
+  if (action.type === 'dec') return state - 1;
+  if (action.type === 'inc') return state + 1;
+  if (action.type === 'setCount') return action.payload;
+}
+
+const [count, dispatch] = useReducer(reducer, 0);
+const dec = function () {
+  // payload is optional here
+  dispatch({ type: 'dec' });
+};
+const inc = function () {
+  // payload is optional here
+  dispatch({ type: 'inc' });
+};
+
+const setCount = function (e) {
+  // payload is required here
+  dispatch({ type: 'setCount', payload: Number(e.target.value) });
+};
+```
+
+The dispatch function from the snippet of code above, works as the new state setter. It's returned by the **useReducer** and then used to set the new state value. As displayed, above, the dispatch function is "dispatching" an object with a pair of `key: values` to the **useReducer**.
+
+This object can be "anything", but it's common to make use of the basic format/structure displayed on the snippet.
+
+- Type usually represents the "name"/"type" of action to be excecuted by the **useReducer**
+- Payload usually represents the value to be sent with the action to the **useReducer** (optional, depending on the logic of the new state to be set)
+
+The **useReducer** is mostly used to manage multiple states at once and a good example of a better use of the **useReducer** is displayed on the code below.
+
+```javascript
+import {useReducer} from 'react;
+
+// some code here...
+const initialState = { count: 0, step: 1 };
+
+function reducer(state, action) {
+  switch (action.type) {
+    case 'dec':
+      return { ...state, count: state.count - state.step };
+    case 'inc':
+      return { ...state, count: state.count + state.step };
+    case 'setCount':
+      return { ...state, count: action.payload };
+    case 'setStep':
+      return { ...state, step: action.payload };
+    case 'reset':
+      return initialState;
+    default:
+      throw new Error('Unknown action');
+  }
+}
+
+// some more code here
+const [state, dispatch] = useReducer(reducer, initialState);
+const { count, step } = state;
+
+const dec = function () {
+    dispatch({ type: 'dec' });
+  };
+
+const inc = function () {
+  dispatch({ type: 'inc' });
+};
+
+const defineCount = function (e) {
+  dispatch({ type: 'setCount', payload: Number(e.target.value) });
+};
+
+const defineStep = function (e) {
+  dispatch({ type: 'setStep', payload: Number(e.target.value) });
+};
+
+const reset = function () {
+  dispatch({ type: 'reset' });
+};
+```
+
+### **useReducer** in details:
+
+Making use of the **useState** for managning states may not be enough for the following sigutations:
+
+1. Components with a lot of state variables and state updates spread across many event handlers all over the component (or multiple components)
+1. Multiple states updates needs to happen at the same time as a "reaction" to the same event
+1. Updating a state which depends on other state(s)
+
+For those cases, the best solution would be making use of the **\*useReducer** hook, because:
+
+- useReducer is an alternative way to set states for complex states and related pieces of state related to each other, usually in a object (this can also be a sigle value).
+- useReducer needs a reducer function, which contains all the logic required to update the state object, decoupling all the logic from the component, making the code more readable.
+
+```javascript
+const [state, dispatch] = useReducer(reducer, inititalState);
+```
+
+- The **reducer function** is a pure function (does not generate side effects) which takes the current state and an action (generally passed as an object) and returns the next state
+
+```javascript
+function reducer (state, action) {
+  switch(action.type) {
+    case 'type_1':
+      // do something
+    case 'type_2':
+      // do something
+    ...
+    case 'type_n":
+      // do something
+    default:
+      throw new Error('Unknown action...')
+  }
+}
+```
+
+- The action is usually an object with a "type" and a payload, which is basically an input data to be passwed with the action, which describes how the state should be updated
+- The disatch function is returned by the **useReducer** hook and that function is used to trigger the state update by "sending actions" from event handlers to the reducer
+
+```javascript
+dispatch({type: 'action_type_with_payload', payload: /* some state update logic or value*/})
+dispatch({type: 'action_type_without_payload'})
+```
+- The **reducer function** works in a similar way as the ``array.reduce()``, by accumulating actions over time
+
+### A quick comparison between **useState** and **useReducer**:
+
+- **useState**:
+  - Ideal for single or independent pieces of state (numbers, strings, singles arrays or object, etc.)
+  - The logic to update the state is places in event handlers or effects, spreading it all over one or multiple components
+  - Direct update states with **setter functions** returned from **useState**
+  - State updates are imperative
+  - Easy to understand and to use
+- **useReducer**:
+  - Ideal for multiple related pieces of state or states with a high level of complexicity(eg., an object with multiple values or nested objects/arrays)
+  - The logic to update the state lives in a central place, decoupled from components, the so called reducer function
+  - The update of the state happens via dispatching actions to the reducer funcion, making the updates more declarative, because complex states are mapped into "well named" actions
+  - Can be more difficult to understand and implement
+
+### When to use **useReducer** hook then?:
+In order to understand when to use the **useReducer** hook, just answer to the questions below:
+1. Do my code updates just a piece of state?
+1. Do my states frequently update together?
+1. Do mu code have 3 or more pieces of related states, including objects?
+1. There are too many event handlers to make the components large and confusing?
+
+**useState** should remain always the default choice for state management, but if by answering those questions or writing your code you find any issues in state managment, **useReducer** is the way to go.
 
 <hr>
 <br>
