@@ -16,3 +16,6 @@
 [submodule "Projects/react-functionally-weather"]
 	path = Projects/react-functionally-weather
 	url = https://github.com/vonschappler/react-functionally-weather.git
+[submodule "Projects/react-quiz"]
+	path = Projects/react-quiz
+	url = https://github.com/vonschappler/react-quiz.git
