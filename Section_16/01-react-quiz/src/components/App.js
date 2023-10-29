@@ -3,7 +3,7 @@ import Error from './Error';
 import Header from './Header';
 import Loader from './Loader';
 import Main from './Main';
-import Question from './Question'
+import Question from './Question';
 import StartScreen from './StartScreen';
 
 const initialState = {
@@ -11,6 +11,7 @@ const initialState = {
 
   // loading, error, ready, active or finished
   status: 'loading',
+  index: 0,
 };
 
 function reducer(state, action) {
@@ -20,17 +21,20 @@ function reducer(state, action) {
     case 'dataFailed':
       return { ...state, status: 'error' };
     case 'start':
-      return {...state, status: 'active'}
+      return { ...state, status: 'active' };
     default:
       throw new Error('Action unknow');
   }
 }
 
 export default function App() {
-  const [{ questions, status }, dispatch] = useReducer(reducer, initialState);
+  const [{ questions, status, index }, dispatch] = useReducer(
+    reducer,
+    initialState
+  );
 
   const numQuestions = questions.length;
-  console.log(numQuestions, questions)
+  console.log(numQuestions, questions);
 
   useEffect(function () {
     fetch('http://localhost:8000/questions')
@@ -44,8 +48,10 @@ export default function App() {
       <Main className='main'>
         {status === 'loading' && <Loader />}
         {status === 'error' && <Error />}
-        {status === 'ready' && <StartScreen numQuestions={numQuestions} dispatch={dispatch}/>}
-        {status === 'active' && <Question />}
+        {status === 'ready' && (
+          <StartScreen numQuestions={numQuestions} dispatch={dispatch} />
+        )}
+        {status === 'active' && <Question question={questions.at(index)} />}
       </Main>
     </div>
   );
