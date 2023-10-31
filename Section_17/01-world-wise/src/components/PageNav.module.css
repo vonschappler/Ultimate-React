@@ -1,0 +1,14 @@
+.nav {
+  background-color: orangered;
+}
+
+.nav ul {
+  list-style: none;
+  display: flex;
+  justify-content: space-between;
+}
+
+/* defines a global class to be used in the whole application if desired */
+.nav :global(.active) {
+  background-color: green;
+}
