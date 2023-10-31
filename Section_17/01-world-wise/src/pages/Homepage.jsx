@@ -1,9 +1,12 @@
+import PageNav from '../components/PageNav';
+
 function Homepage() {
   return (
     <div>
-      WorldWise
+      <PageNav />
+      <h1>WorldWise</h1>
     </div>
-  )
+  );
 }
 
-export default Homepage
+export default Homepage;
