@@ -315,7 +315,21 @@ The (code for the) nith challenge can be found [here](Challenges/09-react-bank/)
 
 </details>
 
+<hr>
+<br>
 
+## Section_17:
+
+This section features re creation of a single page application (SPA) using the **React Router** 3rd party libary using **Vite**.
+
+Notes about this section can be found [here](./Notes.md#section_17).
+
+<details>
+<summary>WorldWise:</summary>
+
+The (code for the) project completed can be found [here](Section_16/01-world-wise).
+
+</details>
 
 <hr>
 <br>
@@ -323,20 +337,20 @@ The (code for the) nith challenge can be found [here](Challenges/09-react-bank/)
 ## List of completed course projects:
 
 1. **Pizza Menu**: a simple pizza menu
-   1. [Code](https://github.com/vonschappler/react-pizza-menu/tree/d593cfe3903b2e96d48e19a594f98109f0f138b5)
+   1. [Code](https://github.com/vonschappler/react-pizza-menu)
    1. [Preview](https://vonschappler.github.io/react-pizza-menu/)
 1. **Far Away**: a simple travel planner
-   1. [Code](https://github.com/vonschappler/react-far-away/tree/c51ee17a1153115b811f5796d77d85703163feb3)
+   1. [Code](https://github.com/vonschappler/react-far-away)
    1. [Preview](https://vonschappler.github.io/react-far-away/)
 1. **eat'n split**: a simple split bill calculator
-   1. [Code](https://github.com/vonschappler/react-eat-n-split/tree/ba45aa22bd0f939e666fc42c2b5a5c963a16c207)
+   1. [Code](https://github.com/vonschappler/react-eat-n-split)
    1. [Preview](https://vonschappler.github.io/react-eat-n-split/)
 1. **usePopcorn**: a simple movie catalog with personal ratings
-   1. [Code](https://github.com/vonschappler/react-use-popcorn/tree/8d34ffd1e3abada27ae5aa128486e812cec33a58)
+   1. [Code](https://github.com/vonschappler/react-use-popcorn/)
    1. [Preview](https://vonschappler.github.io/react-use-popcorn/)
 1. **Classy Weather**: a simply weather application to display the weely weather in a given location
-   1. [Code](https://github.com/vonschappler/react-classy-weather/tree/7ac373499c7f77a1600c9173bd3157346003461e)
+   1. [Code](https://github.com/vonschappler/react-classy-weather)
    1. [Preview](https://vonschappler.github.io/react-classy-weather)
-1. **React Quiz**: 
-   1. [Code]()
+1. **React Quiz**:
+   1. [Code](https://github.com/vonschappler/react-quiz)
    1. [Preview](https://vonschappler.github.io/react-quiz)
