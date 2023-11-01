@@ -1,5 +1,5 @@
-import styles from "./CountryItem.module.css";
-import Flag from "./Flag";
+import styles from './CountryItem.module.css';
+import Flag from './Flag';
 
 function CountryItem({ country }) {
   return (
