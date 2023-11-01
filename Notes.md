@@ -2435,7 +2435,7 @@ A quick introduction and overview for the next section.
 <hr>
 <br>
 
-## Section_16
+## Section_16:
 
 ### **useReducer** hook:
 
@@ -2568,7 +2568,8 @@ function reducer (state, action) {
 dispatch({type: 'action_type_with_payload', payload: /* some state update logic or value*/})
 dispatch({type: 'action_type_without_payload'})
 ```
-- The **reducer function** works in a similar way as the ``array.reduce()``, by accumulating actions over time
+
+- The **reducer function** works in a similar way as the `array.reduce()`, by accumulating actions over time
 
 ### A quick comparison between **useState** and **useReducer**:
 
@@ -2585,13 +2586,376 @@ dispatch({type: 'action_type_without_payload'})
   - Can be more difficult to understand and implement
 
 ### When to use **useReducer** hook then?:
+
 In order to understand when to use the **useReducer** hook, just answer to the questions below:
+
 1. Do my code updates just a piece of state?
 1. Do my states frequently update together?
 1. Do mu code have 3 or more pieces of related states, including objects?
 1. There are too many event handlers to make the components large and confusing?
 
 **useState** should remain always the default choice for state management, but if by answering those questions or writing your code you find any issues in state managment, **useReducer** is the way to go.
+
+<hr>
+<br>
+
+## Section_17:
+
+### Creating a React Application with Vite:
+
+In order to create a React Application with Vite, the steps below are required:
+
+```powershell
+# Creates the React-Vite application on a specific version
+npm create vite@<version_number>
+
+
+# Creates the React-Vite application on the latest version
+npm create vite@latest
+```
+
+If promped with a question asking to install vite on your developement machine, press `y` and continue with the process, by providing the project name, framework and variant (aka, file type):
+
+```powershell
+# Framework: React
+# Variant: Javascript
+```
+
+It's important that vite uses the extention `JSX` for react components instead of `JS` as create-react-app.
+
+Remember to navigate to the directory where the project was created and use `npm install` and `npm run dev` in order to install the dependecies required for the project and to run the project after the dependencies instalation is completed.
+
+Also it's important to notice that some aditional configurations may be required:
+
+- ESLint settings:
+
+  a. Run the following command to install eslint dependencies
+
+  ```powershell
+  npm i eslint vite-plugin-eslint eslint-config-react-app -D
+  ```
+
+  b. Edit the file `.eslintrc.cjs` and write the following code inside it:
+
+  ```javascript
+  module.exports = {
+    root: true,
+    env: { browser: true, es2020: true },
+    extends: [
+      'eslint:recommended',
+      'plugin:react/recommended',
+      'plugin:react/jsx-runtime',
+      'plugin:react-hooks/recommended',
+    ],
+    ignorePatterns: ['dist', '.eslintrc.cjs'],
+    parserOptions: { ecmaVersion: 'latest', sourceType: 'module' },
+    settings: { react: { version: '18.2' } },
+    plugins: ['react-refresh'],
+    rules: {
+      'react-refresh/only-export-components': [
+        'warn',
+        { allowConstantExport: true },
+      ],
+      'react/prop-types': 'off',
+      'react/jsx-uses-react': 'warn',
+      'react/jsx-uses-vars': 'warn',
+      'no-unused-vars': [
+        'warn',
+        { vars: 'all', args: 'after-used', ignoreRestSiblings: false },
+      ],
+    },
+  };
+  ```
+
+  c. Create a new file called `.eslintrc.jon` in the root folder of the project with the following contents:
+
+  ```json
+  {
+    "extends": "react-app"
+  }
+  ```
+
+  d. Config the vite application to use ESLint, by editing the file `vite.config.js`, so it looks like to something like:
+
+  ```javascript
+  import { defineConfig } from 'vite';
+  import react from '@vitejs/plugin-react';
+  import eslint from 'vite-plugin-eslint';
+
+  // https://vitejs.dev/config/
+  export default defineConfig({
+    plugins: [react(), eslint()],
+  });
+  ```
+
+### Concepts of **Routing** and **Single Page** :
+
+When it comes to React, routing means matching different **URLs** to different **UI views / components** using what we call as **routes**.
+
+This enables user to **navigate between different application screens**, using the browser URL, while keeping the UI in sync with the browser URL.
+
+For this, React relies on a 3rd-party library called **React Router**, which is one of the most important part of React developent, because it allows the creating of Single-Page Applications (SPAs).
+
+SPAs are aplications executed entrirely on the client (browser), relying heavly on routes. JavaScript (React) is used to update the DOM, meaning that there is no hard loading of the whole page, but simply a rerender of components, making the whole user experience feels like a native app or a desktop application. Note that additional data from any web API can be loaded in this process without any problems, as long as the code written is not forcing a whole page to load itself.
+
+In order to use routes in React, the instalation of the 3rd-party library **React Router** is required, as follows:
+
+```powershell
+# To install a specific version
+npm i react-router-dom@<version_number>
+
+# To install the latest version
+npm i react-router-dom@latest
+```
+
+To define routes in a declarative way, we make use of some React components provided to us by the react-router librabry just installed as indicated above. The snippet of code below, displays how to declare the routes on a React application.
+
+```javascript
+import { BrowserRouter, Route, Routes } from 'react-router-dom';
+
+import HomePage from 'path/to/HomePage';
+import Component1 from 'path/to/Component1';
+import Component2 from 'path/to/Component2';
+import PageNotFound from path/to/PageNotFound';
+
+function App() {
+  return (
+    <BrowserRouter>
+      <Routes>
+        <Route path='/' element={<HomePage />} />
+        <Route path='relave/path1/from/root' element={<Component1 />} />
+        <Route path='relave/path2/from/root' element={<Component2 />} />
+
+        <Route path='*' element={<PageNotFound />} />
+      </Routes>
+    </BrowserRouter>
+  );
+}
+
+export default App;
+```
+
+Note that the code above is not yet enough for creating a SPA, because the way those routes are defined at this moment will still force a reload of the whole page. In order to fix that, we need to add links between those routes, as displayed below:
+
+```javascript
+import { Link } from 'react-router-dom';
+
+function PageNav() {
+  return (
+    <nav>
+      <ul>
+        <li>
+          <Link to='/'>Home</Link>
+        </li>
+        <li>
+          <Link to='/path1/from/root'>Component1</Link>
+        </li>
+        <li>
+          <Link to='/path2/from/root'>Component2</Link>
+        </li>
+      </ul>
+    </nav>
+  );
+}
+
+export default PageNav;
+```
+
+The code above was added to a reusable **"navigation"** component (which is then imported to each page), but it could also be added manually to all of the pages which need to be loaded with the routes defined in the application. Alternativelly, the component could also be added directly to the application but where to add this component will REALLY depends on how the application is implemented by the developer.
+
+Also notice that the preferrable way to create the "navigation" component is by replacing the `<Link></Link>` to `<NavLink></NavLink>`, so React Router would nicely display which is the current component displayed.
+
+### Styling options for React (or React SPAs):
+
+It's important to remember that React "doesn't care" on how we decide to style our aplication and this is why there are so many different options for styling a React application. Most of those styling options are defined by 3rd-party libraries. The most common options are listed below:
+
+1. **Inline CSS** inside each **JSX element**, by using the **style prop**, with a **local scope to the JSX element** and it's based on **CSS**
+1. **CSS or Sass file** as a **external file**, by using the **className prop**, with a **global scope to the whole application** and it's based on **CSS** (this may cause some problems in big projects)
+1. **CSS Modules** as **one external file per component**, by using the **className prop**, with a **local scope to a single component** and it's based on **CSS**
+1. **CSS-in-Js** as a **external file or component file**, by **creating a new component**, with a **local scope to the component** and it's based on **JavaScript**
+1. **Utility-first CSS, such as tailwindcss** inside each **JSX element**, by using the **className prop**, with a **local scope to the JSX element** and it's based on **CSS**
+1. Using UI libraries such as **Material UI**, **Chakra UI** or **Mantine**, for example.
+
+### Using CSS modules
+
+CSS modules already come installed with both `creact-react-app` and `vite`, so no aditional instalation is necessary. As discussed above, CSS modules are basically a CSS file defined per component. The file created needs to follow a special convention, by naving its name as follows: `Component_Name.module.css`, eg, `PageNavigation.module.css`.
+
+Inside the file we write normal CSS, but with a small ceavat: NO HTML SELECTORS, like for example `<ul>` should be inserted the file. It's really advised to make use of classes only, to ensure that no global selector affect the appliction instead of the single component.
+
+It's important to notice that by doing so,
+
+Then, inside the component, we just import the CSS file created, define the correct `className prop` to where the styles whould be applyed and the styles defined are then applied to the component.
+
+The way to make use of this styling technique is displayed in the code below:
+
+```css
+/* Component.module.css  */
+.ul {
+  list-style: none;
+  display: flex;
+  justify-content: space-between;
+}
+```
+
+```javascript
+import styles from './Component.module.css';
+
+function Component() {
+  return (
+    <ul className={styles.ul}>
+      <li>List item 1</li>
+      <li>List item 2</li>
+      <li>List item 3</li>
+    </ul>
+  );
+}
+
+export default Component;
+```
+
+### Nested routes and Index route:
+
+Nested routes used when part of the UI needs to be controlled by a part of the URL. A nested rounte than exists when a URL changes subs components displayed inside a bigger component.
+
+Nested routes are declared inside an already existing route, just like displayed in the snippets of code below:
+
+```javascript
+// App.jsx
+// some code here...
+<Route path='path/to/parent/component' element={<ParentComponent />}>
+  {/* defines the index route, aka the default children element to be rendered */}
+  <Route index={<DefaultChildElement />} />
+  <Route
+    path='path/to/child1/component/relative/to/parent'
+    element={<Child1Component />}
+  />
+  <Route
+    path='path/to/child2/component/relative/to/parent'
+    element={<Child2Component />}
+  />
+</Route>
+
+// some more code here
+```
+
+```javascript
+// ParentComponent.jsx
+
+import { Outlet } from 'react-router-dom';
+// other required imports
+
+function ParentComponent() {
+  // some code here
+  return (
+    <div>
+      {/*some more code here*/}
+      <Outlet />
+      {/*some more code here*/}
+    </div>
+  );
+}
+
+export default ParentComponent;
+```
+
+### URL's as state management
+
+The URL is an excellent place to store UI states (states what would alter how the UI should look like) and can be used as an alternative to **useState** in some situations such as: opening and closing panels, selected list item, list sorting order, applied filter, etc.
+
+Some advantages of using URL as a state managment are:
+
+1. This is an easy way to store state in a global place which all components in the app have access.
+1. It's a good way to "pass" data from one page to another
+1. Makes possible to bookmark and share the page with the exact UI state it had when bookmarking the URL.
+
+To sotre states using URLs, we make use of the params pr query strings associated to a spepcific path that points to a component.
+
+```powershell
+https://www.mysite.com/app/greet/pt?mygreeting=hello
+
+# app/greet points to the component path "app/greet"
+# pt is a param of the URL (useful to pass data to the next page)
+# mygreeting=hello is a query string (useful to store gobal states)
+```
+
+To make use of this technique, three steps are required:
+
+- Create a new route (can be either a nested route or not - it depends on the application):
+
+```javascript
+// some code here...
+<Route path='path/to/compoment/:paramName' element={compoment} />
+// some more code here...
+```
+
+- Link the new route:
+
+```javascript
+// some code here...
+<Link to='paramName?stateVar1=stateVal1&stateVar2=stateVal2' />
+// some more code here...
+```
+
+- Read the state from the new route, making use of the useParams hook, provided by **React Router**, where the use of those params are necessary
+
+```javascript
+// react imports
+import { useParams, useSearchParams } from 'react-router-dom';
+
+// some code here...
+// access the param part of the URL
+const { paramName } = useParams();
+console.log(paramName);
+
+// access the query string of the URL
+const [seachParams, setSearchParams] = useSearchParams();
+const stateVal1 = searchParams.get('stateVal1');
+const stateVal2 = searchParams.get('stateVal2');
+console.log({ stateVal1, stateVal2 });
+// some more code here...
+```
+
+### Programmatic imperative navigation **useNavigate** custom hook:
+
+Programmatic navigation means navigating (imperativelly) to a specific link without the necessity of an user to interact with the UI to enter that link. A common use case of behavior is right after submiting a form, because most of the times we with to send the user to a different page, without the need of clicking links.
+
+The best way of making use of this hook is by attaction the returned function which "redirects" the URL to a different one inside an event handler, like a button click - for example, as displayed below:
+
+```javascript
+// react imports...
+import { useNavigate } from 'react-router-dom';
+// other imports...
+
+const navigate = useNavigate();
+
+//some code here
+
+// navigates to a specific url
+<button onClick={() => navigate('new/url')}>Click me!</button>;
+
+// navigates back in history
+<button onClick={() => navigate(-1)}>Go back</button>;
+```
+
+### Programmatic declarative navigation with `<Navigate />`:
+
+The `<Navigate>` component is not used anymore after the custom hook **useNavigate** was implement on React. Although there are some specific use cases where making use of this component can be done, and that's mostly inside nested routes, such as displayed below:
+
+```javascript
+// some code here
+
+// the use of replace will allow to "move back" on history, if necessary
+<Route element={<Navigate replace to='path/to/redirect' />} />
+
+//some more code here
+```
+
+This component can be seen as a "redirect" component, because as soon as a specific path is reached, that will automatically "redirect" to the path specified as the `to` property of the `<Navigate />` component.
+
+<hr>
+<br>
+
+## Section_17:
 
 <hr>
 <br>
