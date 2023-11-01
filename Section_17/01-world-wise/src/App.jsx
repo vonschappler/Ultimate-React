@@ -1,6 +1,7 @@
 import { useEffect, useState } from 'react';
 import { BrowserRouter, Route, Routes } from 'react-router-dom';
 import AppLayout from './pages/AppLayout';
+import City from './components/City';
 import CityList from './components/CityList';
 import CountryList from './components/CountryList';
 import Homepage from './pages/Homepage';
@@ -23,7 +24,7 @@ function App() {
         const data = await res.json();
         setCities(data);
       } catch (err) {
-        alert("There was an error loading data...")
+        alert('There was an error loading data...');
       } finally {
         setIsloading(false);
       }
@@ -46,7 +47,11 @@ function App() {
             path='cities'
             element={<CityList cities={cities} isLoading={isLoading} />}
           />
-          <Route path='countries' element={<CountryList cities={cities} isLoading={isLoading}/>} />
+          <Route path='cities/:id' element={<City />} />
+          <Route
+            path='countries'
+            element={<CountryList cities={cities} isLoading={isLoading} />}
+          />
           <Route path='form' element={<p>Form</p>} />
         </Route>
         <Route path='*' element={<PageNotFound />} />
