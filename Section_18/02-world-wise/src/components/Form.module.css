@@ -23,8 +23,8 @@
 .flag {
   position: absolute;
   right: 1rem;
-  top: 2.7rem;
-  font-size: 2.8rem;
+  top: 3.5rem;
+  font-size: large;
 }
 
 .form.loading {

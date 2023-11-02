@@ -13,6 +13,7 @@ import { useCities } from '../contexts/CitiesContext';
 import Flag from './Flag';
 import Button from './Button';
 import { useGeolocation } from '../hooks/useGeolocation';
+import { useUrlPosition } from '../hooks/useURLPosition';
 
 function Map() {
   const { cities } = useCities();
@@ -22,9 +23,7 @@ function Map() {
     position: geolocationPosition,
     getPosition,
   } = useGeolocation();
-  const [searchParams] = useSearchParams();
-  const mapLat = searchParams.get('lat');
-  const mapLng = searchParams.get('lng');
+  const [mapLat, mapLng] = useUrlPosition()
 
   useEffect(
     function () {
