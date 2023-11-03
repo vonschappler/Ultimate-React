@@ -141,7 +141,7 @@ function CitiesProvider({ children }) {
 function useCities() {
   const context = useContext(CitiesContext);
   if (context === undefined)
-    throw new Error('CitiesContext Context used out of scope');
+    throw new Error('CitiesContext used out of scope');
   return context;
 }
 
