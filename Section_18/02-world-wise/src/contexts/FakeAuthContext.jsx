@@ -8,7 +8,7 @@ const FAKE_USER = {
 };
 
 const initialState = {
-  user: '',
+  user: null,
   isAuthenticated: false,
   error: '',
 };
@@ -33,6 +33,7 @@ function AuthProvider({ children }) {
   );
 
   function login(email, password) {
+    console.log(email, password);
     if (email === FAKE_USER.email && password === FAKE_USER.password)
       dispatch({ type: 'login', payload: FAKE_USER });
   }
@@ -53,6 +54,7 @@ function AuthProvider({ children }) {
 function useAuth() {
   const context = useContext(AuthContext);
   if (context === undefined) throw new Error('AuthContext used out of scope');
+  return context;
 }
 
 export { AuthProvider, useAuth };
