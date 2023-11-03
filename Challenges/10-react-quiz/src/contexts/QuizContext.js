@@ -19,7 +19,12 @@ const initialState = {
 function reducer(state, action) {
   switch (action.type) {
     case 'questions/loaded':
-      return { ...state, questions: action.payload, status: 'ready', numQuestions: state.questions.length };
+      return {
+        ...state,
+        questions: action.payload,
+        status: 'ready',
+        numQuestions: state.questions.length,
+      };
     case 'questions/failed':
       return { ...state, status: 'error' };
     case 'quiz/start':
@@ -27,7 +32,7 @@ function reducer(state, action) {
         ...state,
         status: 'active',
         secondsRemaining: state.questions.length * SECS_PER_QUESTION,
-        index: 0
+        index: 0,
       };
     case 'question/answered':
       const question = state.questions.at(state.index);
@@ -38,7 +43,10 @@ function reducer(state, action) {
           action.payload === question.correctOption
             ? state.points + question.points
             : state.points,
-        maxPoints: state.questions.reduce((prev, curr) => prev + curr.points, 0)
+        maxPoints: state.questions.reduce(
+          (prev, curr) => prev + curr.points,
+          0
+        ),
       };
     case 'question/next':
       return { ...state, index: state.index + 1, answer: null };
@@ -50,9 +58,14 @@ function reducer(state, action) {
         status: 'finished',
       };
     case 'quiz/restart':
-      return { ...initialState, status: 'ready', questions: state.questions, numQuestions: state.questions.length };
+      return {
+        ...initialState,
+        status: 'ready',
+        questions: state.questions,
+        numQuestions: state.questions.length,
+      };
     case 'timer/start':
-      console.log(state.secondsRemaining)
+      console.log(state.secondsRemaining);
       return {
         ...state,
         secondsRemaining: state.secondsRemaining - 1,
@@ -77,7 +90,7 @@ function QuizProvider({ children }) {
       highScore,
       secondsRemaining,
       error,
-      maxPoints
+      maxPoints,
     },
     dispatch,
   ] = useReducer(reducer, initialState);
@@ -102,7 +115,7 @@ function QuizProvider({ children }) {
         secondsRemaining,
         error,
         maxPoints,
-        dispatch
+        dispatch,
       }}
     >
       {children}

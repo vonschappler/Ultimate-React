@@ -1,7 +1,7 @@
-import { useQuiz } from "../contexts/QuizContext";
+import { useQuiz } from '../contexts/QuizContext';
 
 function FinishScreen() {
-  const {points, maxPoints, highScore, dispatch} = useQuiz()
+  const { points, maxPoints, highScore, dispatch } = useQuiz();
   const percentage = (points / maxPoints) * 100;
   let emoji;
 
@@ -17,7 +17,12 @@ function FinishScreen() {
         {Math.ceil(percentage)}% right answers!
       </p>
       <p className='highscore'>Your highscore: {highScore} points</p>
-      <button className="btn btn-ui" onClick={()=>dispatch({type: 'quiz/restart'})}>Restart Quiz</button>
+      <button
+        className='btn btn-ui'
+        onClick={() => dispatch({ type: 'quiz/restart' })}
+      >
+        Restart Quiz
+      </button>
     </>
   );
 }
