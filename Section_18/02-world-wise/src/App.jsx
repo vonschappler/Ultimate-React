@@ -11,10 +11,7 @@ import Pricing from './pages/Pricing';
 import Product from './pages/Product';
 import { CitiesProvider } from './contexts/CitiesContext';
 
-
-
 function App() {
-
   return (
     <CitiesProvider>
       <BrowserRouter>

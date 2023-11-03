@@ -14,8 +14,6 @@ import { useNavigate } from 'react-router-dom';
 
 const BASE_URL = 'https://api.bigdatacloud.net/data/reverse-geocode-client';
 
-
-
 function Form() {
   const [cityName, setCityName] = useState('');
   const [country, setCountry] = useState('');
@@ -25,7 +23,7 @@ function Form() {
   const { addCity, isLoading } = useCities();
   const [emoji, setEmoji] = useState('');
   const [geoDataError, setGeoDataError] = useState('');
-  const navigate = useNavigate()
+  const navigate = useNavigate();
 
   const [isLoadingGeoData, setIsLoadingGeoData] = useState(false);
 
@@ -74,7 +72,7 @@ function Form() {
       position: { lat, lng },
     };
     await addCity(newCity);
-    navigate('/app/cities')
+    navigate('/app/cities');
   }
 
   if (isLoadingGeoData) return <Spinner />;

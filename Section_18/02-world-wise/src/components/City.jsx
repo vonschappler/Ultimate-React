@@ -1,4 +1,4 @@
-import { useParams} from 'react-router-dom';
+import { useParams } from 'react-router-dom';
 import styles from './City.module.css';
 import { useCities } from '../contexts/CitiesContext';
 import { useEffect } from 'react';
@@ -18,19 +18,23 @@ function City() {
   const { id } = useParams();
   const { getCity, currentCity, isLoading } = useCities();
 
-  useEffect(function () {
-    getCity(id)
-  }, [id]);
-  
+  useEffect(
+    function () {
+      getCity(id);
+    },
+    [id]
+  );
+
   const { cityName, emoji, date, notes } = currentCity;
-  if(isLoading) return <Spinner />
+
+  if (isLoading) return <Spinner />;
 
   return (
     <div className={styles.city}>
       <div className={styles.row}>
         <h6>City name</h6>
         <h3>
-          <Flag code={emoji} />
+          {emoji && <Flag code={emoji} />}
           {cityName}
         </h3>
       </div>
