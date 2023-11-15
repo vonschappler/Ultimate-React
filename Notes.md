@@ -2776,7 +2776,7 @@ It's important to remember that React "doesn't care" on how we decide to style o
 1. **Utility-first CSS, such as tailwindcss** inside each **JSX element**, by using the **className prop**, with a **local scope to the JSX element** and it's based on **CSS**
 1. Using UI libraries such as **Material UI**, **Chakra UI** or **Mantine**, for example.
 
-### Using CSS modules
+#### Using CSS modules
 
 CSS modules already come installed with both `creact-react-app` and `vite`, so no aditional instalation is necessary. As discussed above, CSS modules are basically a CSS file defined per component. The file created needs to follow a special convention, by naving its name as follows: `Component_Name.module.css`, eg, `PageNavigation.module.css`.
 
@@ -2955,7 +2955,178 @@ This component can be seen as a "redirect" component, because as soon as a speci
 <hr>
 <br>
 
-## Section_17:
+## Section_18:
+
+### The **Context API**:
+
+The Context API can be used to solve the problem known **prop drilling** which is better exemplied as passing a prop from a parent component to a deeply nested child compoment.
+
+We already know that one of the possible solutions to this is creating a better component position. However, doing so it not always possible, meaning that a component composition passing the whole **children prop** not always solve the problem.
+
+So, it would be necessary a way to simply pass that prop from the parent directly to these "deeply nested child components", that is where the Context API comes in place.
+
+The Context API bascially allows components to read states from anywhere in the application, as long as those states are shared by a "context".
+
+Technically, the **Context API** is a system used to pass data through the app without having to pass this data as props down the while app tree, like a "broadcasting of a global state" to the whole application.
+
+The Context API is composed of some parts:
+
+1. **Provider**: give all child components access to a specific `value`, being placed anywhere in the tree, although it's preferentially defined at the top level of the application.
+1. **Value**: data which needs to be available to all components, such states and functions
+1. **Consumers**: components which are "subscribed to the context", with the hability to read the **Value** passed to and by the **Provider**.
+
+Note that because this value is shared between multiple consumers, it means that any update to the values inside the provider update, ALL consumers subscribed to a specific context get re-rendered, as already expected because of the change of props and or states.
+
+### Creating and providing a **Context**:
+
+In order to create a context, firt we need to notice that that is done by calling the **createContext** function import from React, which will return a "component" with the values that we need to share between the subscribers of this context.
+
+The function accepts an optional value, which normally is set to empty or `null`, to prevent that value to change over time.
+
+```javascript
+import { createcontext } from 'react';
+
+// the variable has is decalred like that because it will return a "component"
+// and as we know, components are declared with initial capital letter
+const MyContext = createContext();
+```
+
+The component created is then used as the parent component of all the compoments which require access to the created context with an object with all the "props" to be passed to the child elements as the value property of the component, just as shown below:
+
+```javascript
+// some code here...
+<MyContext.Provider
+  value={{
+    prop1: value_prop1,
+    prop2: value_prop2,
+  }}
+>
+  <Component1 />
+  <Component2 />
+</MyContext.Provider>
+```
+
+And in order to "consume" the values set on the created context, we make use of the **useContext** hook, inside the component which will be registered as the consumer of the context, as follows:
+
+```javascript
+// Component1.js
+
+import { useContext } from 'react';
+
+function Component1() {
+  const { prop1 } = useContext(MyContext);
+
+  return <div>{prop1}</div>;
+}
+
+// some more code here
+```
+
+A optimal way to make use of this tool is mainly creating the context and a custom hook in a separated file, just like the one shown in the code below, then making use of the functions exported from there on the components which required the context.
+
+```javascript
+// MyContext.js
+import {createContext, useContext, useState} from 'react';
+
+const ContextComponent = createContext();
+
+function MyContext ({children}) {
+  const [val1, setVal1] = useState('My value 1');
+  const [val2, setVal2] = useState([1, 2, 3]);
+
+  function handleLogVal() {
+    console.log({val1, val2})
+  }
+
+  return
+    <ContextComponent.Provider
+      value= {
+        val1,
+        val2,
+        handleLogVal
+      }
+    >
+      {children}
+    </ContextComponent.Provid>
+}
+
+function useMyContext() {
+  const context = useContext(ContextComponent)
+  // prevents the use of the context outside the scope on which it was defined
+  if (context === undefined) throw new Error ("Context used out of scope...")
+  return context
+}
+
+export {MyContext, useMyContext}
+```
+
+```javascript
+// App.js
+
+// react imports ...
+import { MyContext, useMyContext } from 'path/to/MyContext';
+
+// some code here
+function App() {
+  return (
+    <>
+      <Component1 />
+      <MyContext>
+        <Component2 />
+      </MyContext>
+    </>
+  );
+}
+
+// some code here and definition of other compoments which do not use the imported context
+
+function Component2() {
+  const { val1, val2, handleLogVal } = useMyContext();
+
+  // do something with the de-structured values from the imported context.
+}
+
+// some more code here
+```
+
+It's HIGHLY advisable that contexts are created only including "props" which are related to each other. For each new set of props that need to be passed from parent to child may be necessary a new context, in order to improve readbility of code and perfomance improvement.
+
+### Context API and state management:
+
+States can be classified into terms of accessibility or domain.
+
+- Acesssiblity:
+  - Local state: needed and accessible by one or few components
+  - Global state: needed by many components and it's accessible to all components in the application
+- Domain - Remote state: application data from a remote server (API) usually is asynchrownous because they may need refetching and updating by the use of some specialized tools - UI state: everything else, like for example, theme, filters, form data, etc - usually synchronous and stored in the application, being easy to manage because this do not interact with any server
+
+#### State placement options:
+
+|                  | Tools used                                       | When to use                               |
+| ---------------- | ------------------------------------------------ | ----------------------------------------- |
+| Local component  | **useState**, **useReducer** or **useRef**       | Local state                               |
+| Parent component | **useState**, **useReducer** or **useRef**       | Lifting up state                          |
+| Context          | **Context API** + **useState** or **useReduger** | Global state (preferably UI state)        |
+| 3rd-party libs   | **Redux**, **React Query**, **SWR**              | Global state (remote or UI)               |
+| URL              | **React Router**                                 | Global state, passing between pages/views |
+| Browser          | **Local storage**, **session storage**           | Storing data on user browser              |
+
+To sumarize, the best tools to manage all the possible types of state are:
+
+1. Local + UI state:
+    1. **useState**, **useReducer**, **useRef**
+1. Local + Remote state:
+    1. **fetch** + **useEffect** + **useState**/**useReducer** (used on small application)
+1. Global + UI state: 
+    1. **Context API** + **useState**/**useReducer**
+    1. **Redux**, **Zustand**, **Recoil**
+    1. **React Router**
+1. Global + Remote state:
+    1. **Context API** + **useState**/**useReducer**
+    1. **Redux**, **Zustand**, **Recoil**
+    1. **React Query**
+    1. **SWR**
+    1. **RTK Query**
 
 <hr>
 <br>
