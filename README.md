@@ -153,7 +153,7 @@ The (code for the) fifth challenge can be found [here](Challenges/05-tip-calcula
 This section is features the creation of a new project, namade **Eat'n Split**, to review the concepts discussed in previous lessons.
 
 <details>
-<summary>Project Eat'n Split:</summary>
+<summary>Project eat'n split (version 1):</summary>
 
 The (code for the) project completed can be found [here](Section_08/01-eat-n-split/).
 
@@ -178,7 +178,7 @@ This section features composition of an application using **Composition**, how t
 Notes about this section can be found [here](./Notes.md#section_10).
 
 <details>
-<summary>Project usePopcorn:</summary>
+<summary>Project usePopcorn (version 1):</summary>
 
 The (code for the) project completed can be found [here](Section_10/01-use-popcorn/).
 
@@ -325,9 +325,39 @@ This section features re creation of a single page application (SPA) using the *
 Notes about this section can be found [here](./Notes.md#section_17).
 
 <details>
-<summary>WorldWise:</summary>
+<summary>WorldWise (version 1):</summary>
 
-The (code for the) project completed can be found [here](Section_16/01-world-wise).
+The (code for the) project completed can be found [here](Section_17/01-world-wise).
+
+</details>
+
+<hr>
+<br>
+
+## Section_18:
+
+This section feature the use of **Context API** for advanced state managment in React.
+
+Notes about this section can be found [here](./Notes.md#section_18).
+
+<details>
+<summary>Atomic Blog:</summary>
+
+The (code for the) project completed can be found [here](Section_18/01-atomic-blog).
+
+</details>
+
+<details>
+<summary>WorldWise (version 2):</summary>
+
+The (code for the) project completed can be found [here](Section_18/02-world-wise).
+
+</details>
+
+<details>
+<summary>Coding challenge 10:</summary>
+
+The (code for the) tenth challenge can be found [here](Challenges/10-react-quiz/).
 
 </details>
 
@@ -354,3 +384,6 @@ The (code for the) project completed can be found [here](Section_16/01-world-wis
 1. **React Quiz**:
    1. [Code](https://github.com/vonschappler/react-quiz)
    1. [Preview](https://vonschappler.github.io/react-quiz)
+1. **World Wise**:
+   1. [Code](https://github.com/vonschappler/react-world-wise)
+   1. [Preview](https://vonschappler.github.io/vonschappler/react-world-wise)
