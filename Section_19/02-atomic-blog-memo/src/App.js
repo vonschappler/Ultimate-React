@@ -1,5 +1,5 @@
-import {memo, useEffect, useState } from "react";
-import { faker } from "@faker-js/faker";
+import { memo, useEffect, useState, useMemo } from 'react';
+import { faker } from '@faker-js/faker';
 
 function createRandomPost() {
   return {
@@ -12,7 +12,7 @@ function App() {
   const [posts, setPosts] = useState(() =>
     Array.from({ length: 30 }, () => createRandomPost())
   );
-  const [searchQuery, setSearchQuery] = useState("");
+  const [searchQuery, setSearchQuery] = useState('');
   const [isFakeDark, setIsFakeDark] = useState(false);
 
   // Derived state. These are the posts that will actually be displayed
@@ -36,18 +36,25 @@ function App() {
   // Whenever `isFakeDark` changes, we toggle the `fake-dark-mode` class on the HTML element (see in "Elements" dev tool).
   useEffect(
     function () {
-      document.documentElement.classList.toggle("fake-dark-mode");
+      document.documentElement.classList.toggle('fake-dark-mode');
     },
     [isFakeDark]
   );
+
+  const archiveOpts = useMemo(() => {
+    return {
+      show: false,
+      title: `Post archives found in addition to ${posts.length}`,
+    };
+  }, [posts.length]);
 
   return (
     <section>
       <button
         onClick={() => setIsFakeDark((isFakeDark) => !isFakeDark)}
-        className="btn-fake-dark-mode"
+        className='btn-fake-dark-mode'
       >
-        {isFakeDark ? "☀️" : "🌙"}
+        {isFakeDark ? '☀️' : '🌙'}
       </button>
 
       <Header
@@ -57,7 +64,7 @@ function App() {
         setSearchQuery={setSearchQuery}
       />
       <Main posts={searchedPosts} onAddPost={handleAddPost} />
-      <Archive show={false} />
+      <Archive archiveOpts={archiveOpts} />
       <Footer />
     </section>
   );
@@ -86,7 +93,7 @@ function SearchPosts({ searchQuery, setSearchQuery }) {
     <input
       value={searchQuery}
       onChange={(e) => setSearchQuery(e.target.value)}
-      placeholder="Search posts..."
+      placeholder='Search posts...'
     />
   );
 }
@@ -113,15 +120,15 @@ function Posts({ posts }) {
 }
 
 function FormAddPost({ onAddPost }) {
-  const [title, setTitle] = useState("");
-  const [body, setBody] = useState("");
+  const [title, setTitle] = useState('');
+  const [body, setBody] = useState('');
 
   const handleSubmit = function (e) {
     e.preventDefault();
     if (!body || !title) return;
     onAddPost({ title, body });
-    setTitle("");
-    setBody("");
+    setTitle('');
+    setBody('');
   };
 
   return (
@@ -129,12 +136,12 @@ function FormAddPost({ onAddPost }) {
       <input
         value={title}
         onChange={(e) => setTitle(e.target.value)}
-        placeholder="Post title"
+        placeholder='Post title'
       />
       <textarea
         value={body}
         onChange={(e) => setBody(e.target.value)}
-        placeholder="Post body"
+        placeholder='Post body'
       />
       <button>Add post</button>
     </form>
@@ -154,20 +161,20 @@ function List({ posts }) {
   );
 }
 
-const Archive = memo (function Archive({ show }) {
+const Archive = memo(function Archive({ archiveOpts }) {
   // Here we don't need the setter function. We're only using state to store these posts because the callback function passed into useState (which generates the posts) is only called once, on the initial render. So we use this trick as an optimization technique, because if we just used a regular variable, these posts would be re-created on every render. We could also move the posts outside the components, but I wanted to show you this trick 😉
   const [posts] = useState(() =>
     // 💥 WARNING: This might make your computer slow! Try a smaller `length` first
     Array.from({ length: 10000 }, () => createRandomPost())
   );
 
-  const [showArchive, setShowArchive] = useState(show);
+  const [showArchive, setShowArchive] = useState(archiveOpts.show);
 
   return (
     <aside>
-      <h2>Archived posts</h2>
+      <h2>{archiveOpts.title}</h2>
       <button onClick={() => setShowArchive((s) => !s)}>
-        {showArchive ? "Hide archive posts" : "Show archive posts"}
+        {showArchive ? 'Hide archive posts' : 'Show archive posts'}
       </button>
 
       {showArchive && (
@@ -183,7 +190,7 @@ const Archive = memo (function Archive({ show }) {
       )}
     </aside>
   );
-})
+});
 
 function Footer() {
   return <footer>&copy; by The Atomic Blog ✌️</footer>;
