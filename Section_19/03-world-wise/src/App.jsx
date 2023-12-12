@@ -8,14 +8,7 @@ import Form from './components/Form';
 import { CitiesProvider } from './contexts/CitiesContext';
 import { AuthProvider } from './contexts/FakeAuthContext';
 import ProtectedRoute from './pages/ProtectedRoute';
-import SpinnerFullPage from './components/SpinnerFullPage'
-
-// import AppLayout from './pages/AppLayout';
-// import Homepage from './pages/Homepage';
-// import Login from './pages/Login';
-// import PageNotFound from './pages/PageNotFound';
-// import Pricing from './pages/Pricing';
-// import Product from './pages/Product';
+import SpinnerFullPage from './components/SpinnerFullPage';
 
 const Homepage = lazy(() => import('./pages/Homepage'));
 const Product = lazy(() => import('./pages/Product'));
