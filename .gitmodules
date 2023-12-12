@@ -19,9 +19,6 @@
 [submodule "Projects/react-quiz"]
 	path = Projects/react-quiz
 	url = https://github.com/vonschappler/react-quiz.git
-[submodule "Progects/react-world-wise"]
-	path = Progects/react-world-wise
-	url = https://github.com/vonschappler/react-world-wise.git
 [submodule "Projects/react-world-wise"]
 	path = Projects/react-world-wise
 	url = https://github.com/vonschappler/react-world-wise.git
