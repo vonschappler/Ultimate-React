@@ -15,9 +15,7 @@ function formatTime(date) {
 function App() {
   const [allowSound, setAllowSound] = useState(true);
   const [time, setTime] = useState(formatTime(new Date()));
-  // const [workot, setWorkout] = useState(workouts)
 
-  // Will be be AM or PM
   const partOfDay = time.slice(-2);
 
   const workouts = useMemo(() => {
