@@ -1,12 +1,18 @@
-import { createStore } from 'redux';
+import { createStore, combineReducers } from 'redux';
 
-const initialState = {
+const initialStateAccount = {
   balance: 0,
   loan: 0,
   loanPurpose: '',
 };
 
-function reducer(state = initialState, action) {
+const inititalStateCustomer = {
+  fullName: '',
+  nationalId: '',
+  createdAt: '',
+};
+
+function accountReducer(state = initialStateAccount, action) {
   switch (action.type) {
     case 'account/deposit':
       return { ...state, balance: state.balance + action.payload };
@@ -33,7 +39,27 @@ function reducer(state = initialState, action) {
   }
 }
 
-const store = createStore(reducer);
+function customerReducer(state = inititalStateCustomer, action) {
+  switch (action.type) {
+    case 'customer/createCustomer':
+      return {
+        ...state,
+        fullName: action.payload.fullName,
+        nationalId: action.payload.nationalId,
+        createdAt: action.payload.createdAt,
+      };
+    case 'customer/updateName':
+      return { ...state, fullName: action.payload };
+    default:
+      return state;
+  }
+}
+
+const rootReducer = combineReducers({
+  account: accountReducer,
+  customer: customerReducer,
+});
+const store = createStore(rootReducer);
 
 function deposit(amount) {
   return { type: 'account/deposit', payload: amount };
@@ -57,6 +83,21 @@ function payLoan() {
   return { type: 'account/payLoan' };
 }
 
+function createCustomer(fullName, nationalId) {
+  return {
+    type: 'customer/createCustomer',
+    payload: {
+      fullName,
+      nationalId,
+      createdAt: new Date().toISOString(),
+    },
+  };
+}
+
+function updateName(fullName) {
+  return { type: 'customer/updateName', payload: fullName };
+}
+
 store.dispatch(deposit(500));
 console.log(store.getState());
 
@@ -67,4 +108,10 @@ store.dispatch(requestLoan(1000, 'Buy a extremely cheap car'));
 console.log(store.getState());
 
 store.dispatch(payLoan());
+console.log(store.getState());
+
+store.dispatch(createCustomer('Customer H', '11111111'));
+console.log(store.getState());
+
+store.dispatch(updateName('Customer K'));
 console.log(store.getState());
