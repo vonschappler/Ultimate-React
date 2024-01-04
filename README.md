@@ -364,6 +364,36 @@ The (code for the) tenth challenge can be found [here](Challenges/10-react-quiz/
 <hr>
 <br>
 
+## Section_19:
+
+This section features discussion about **optimization** of React applications, by using advanced tools.
+
+Notes about this section can be found [here](./Notes.md#section_19).
+
+<details>
+<summary>Atomic Blog (version 2):</summary>
+
+The (code for the) project completed can be found [here](Section_19/01-atomic-blog).
+
+</details>
+
+<details>
+<summary>Atomic Blog (version 3):</summary>
+
+The (code for the) project completed can be found [here](Section_19/02-atomic-blog-memo).
+
+</details>
+
+<details>
+<summary>Coding challenge 11:</summary>
+
+The (code for the) tenth challenge can be found [here](Challenges/11-workout-timer/).
+
+</details>
+
+<hr>
+<br>
+
 ## List of completed course projects:
 
 1. **Pizza Menu**: a simple pizza menu
@@ -378,12 +408,12 @@ The (code for the) tenth challenge can be found [here](Challenges/10-react-quiz/
 1. **usePopcorn**: a simple movie catalog with personal ratings
    1. [Code](https://github.com/vonschappler/react-use-popcorn/)
    1. [Preview](https://vonschappler.github.io/react-use-popcorn/)
-1. **Classy Weather**: a simply weather application to display the weely weather in a given location
+1. **Classy Weather**: a simple weather application to display the weely weather in a given location
    1. [Code](https://github.com/vonschappler/react-classy-weather)
    1. [Preview](https://vonschappler.github.io/react-classy-weather)
-1. **React Quiz**:
+1. **React Quiz**: a simple quiz applicatio with fundamentals of React questions
    1. [Code](https://github.com/vonschappler/react-quiz)
    1. [Preview](https://vonschappler.github.io/react-quiz)
-1. **World Wise**:
+1. **World Wise**: a simple Application to manage travel
    1. [Code](https://github.com/vonschappler/react-world-wise)
-   1. [Preview](https://vonschappler.github.io/vonschappler/react-world-wise)
+   1. [Preview](https://vonschappler.github.io/react-world-wise)
