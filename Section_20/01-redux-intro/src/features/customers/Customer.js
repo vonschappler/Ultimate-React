@@ -1,7 +1,7 @@
 import { useSelector } from 'react-redux';
 
 function Customer() {
-  const { fullName, nationalId, createdAt } = useSelector(
+  const { fullName } = useSelector(
     (store) => store.customer
   );
 
