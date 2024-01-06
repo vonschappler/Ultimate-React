@@ -22,3 +22,6 @@
 [submodule "Projects/react-world-wise"]
 	path = Projects/react-world-wise
 	url = https://github.com/vonschappler/react-world-wise.git
+[submodule "Projects/react-redux-bank"]
+	path = Projects/react-redux-bank
+	url = https://github.com/vonschappler/react-redux-bank.git
