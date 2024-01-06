@@ -1,419 +1,421 @@
-# Ultimate-React
+# Ultimate React Course Repository
 
 This course is organized into a "folder per section" structure, where each section which contains code has its own folder. Any course resources/materials provided were not pushed to the repository.
 
-What is published here is the result of the code produced on each class, with their commits to match what was done on them.
+What is published here is the result of the code produced on each class, with their commits to match what was done on them. For detailed personal notes taken during the classes, check the [wiki](https://github.com/vonschappler/Ultimate-React/wiki/Ultimate-React-Course)
 
 <hr>
 
-# Sections details:
+# Sections Overview:
 
-## Section_01:
+## 1. A first look at React
 
-This section provides a general overview of React components and its fundamental definitions.
+This section is focused in providing a first look over React.
 
-Notes about this section can be found [here](./Notes.md#section_01).
-
-<hr>
-<br>
-
-## Section_02:
-
-This section was an introductory section for the the following section.
-
-Notes about this section can be found [here](./Notes.md#section_02).
+Notes about this section can be found [here](https://github.com/vonschappler/Ultimate-React/wiki/A-First-Look-at-React).
 
 <hr>
 <br>
 
-## Section_03:
-
-This section provides a first look over React.
-
-Notes about this section can be found [here](./Notes.md#section_03).
-
-<hr>
-<br>
-
-## Section_04:
+## 2. Review of Essential JavaScript for React
 
 This section is focused in reviewing some of the basic concepts of JavaScript required to create React applications.
 
-Notes about this section can be found [here](./Notes.md#section_04).
+Notes about this section can be found [here](https://github.com/vonschappler/Ultimate-React/wiki/Review-of-Essential-JavaScript-for-React).
 
 <hr>
 <br>
 
-## Section_05:
+## 3. Working with Components, Props and JSX
 
-This section is focused on the concepts of Components, Props and JSX used by React.
+This section is focused on presenting the concepts of Components, Props and JSX used by React.
 
-Notes about this section can be found [here](./Notes.md#section_05).
+Notes about this section can be found [here](https://github.com/vonschappler/Ultimate-React/wiki/Working-with-Components-Props-and-JSX).
 
 <details>
 <summary>Project Pizza Menu:</summary>
 
-The (code for the) project completed can be found [here](Section_05/01-pizza-menu/).
+The code for the project completed can be found [here](Section_05/01-pizza-menu/).
 
 </details>
 
 <details>
 <summary>Coding challenge 01:</summary>
 
-The (code for the) first challenge can be found [here](Challenges/01-profile-card-v1/).
+The code for the challenge can be found [here](Challenges/01-profile-card-v1/).
 
 </details>
 
 <details>
 <summary>Coding challenge 02:</summary>
 
-The (code for the) first challenge can be found [here](Challenges/02-profile-card-v2/).
+The code for the challenge can be found [here](Challenges/02-profile-card-v2/).
 
 </details>
 
 <hr>
 <br>
 
-## Section_06:
+## 4. State, Events and Forms: Interactive components
 
 This section is focused on the creation of interactive components in react, by using states, events and forms.
 
-Notes about this section can be found [here](./Notes.md#section_06).
+Notes about this section can be found [here](https://github.com/vonschappler/Ultimate-React/wiki/State-Events-and-Forms-interactive-components).
 
 <details>
 <summary>Project Far Away Travel list:</summary>
 
-The (code for the) project completed can be found [here](Section_06/02-far-away/).
+The code for the project completed can be found [here](Section_06/02-far-away/).
 
 </details>
 
 <details>
 <summary>Coding challenge 03:</summary>
 
-The (code for the) third challenge can be found [here](Challenges/03-date-counter-v1/).
+The code for the challenge can be found [here](Challenges/03-date-counter-v1/).
 
 </details>
 
 <details>
 <summary>Exercise 01:</summary>
 
-The (code for the) first exercise can be found [here](Section_06/03-flashcard/).
+The code for the exercise can be found [here](Section_06/03-flashcard/).
 
 </details>
 
 <details>
 <summary>Coding challenge 04:</summary>
 
-The (code for the) fourth challenge can be found [here](Challenges/04-date-counter-v2/).
+The code for the challenge can be found [here](Challenges/04-date-counter-v2/).
 
 </details>
 
 <hr>
 <br>
 
-## Section_07:
+## 5. Thinking in React: State Management
 
 This section is focused on providing details on how and when use states in React.
 
-Notes about this section can be found [here](./Notes.md#section_07).
+Notes about this section can be found [here](https://github.com/vonschappler/Ultimate-React/wiki/Thinking-in-React-State-management).
 
 <details>
 <summary>Project Far Away Travel list:</summary>
 
-The (code for the) project completed can be found [here](Section_07/01-far-away/).
+The code for the project completed can be found [here](Section_07/01-far-away/).
 
 </details>
 
 <details>
 <summary>Exercise 02:</summary>
 
-The (code for the) second exercise can be found [here](Section_07/02-accordion/).
+The code for the exercise can be found [here](Section_07/02-accordion/).
 
 </details>
 
 <details>
 <summary>Exercise 03:</summary>
 
-The (code for the) third exercise can be found [here](Section_07/04-accordion/).
+The code for the exercise can be found [here](Section_07/04-accordion/).
 
 </details>
 
 <details>
 <summary>Coding challenge 05:</summary>
 
-The (code for the) fifth challenge can be found [here](Challenges/05-tip-calculator/).
+The code for the challenge can be found [here](Challenges/05-tip-calculator/).
 
 </details>
 
 <hr>
 <br>
 
-## Section_08:
+## 6. Thinking in React: Components, Composition and Reusablity
 
-This section is features the creation of a new project, namade **Eat'n Split**, to review the concepts discussed in previous lessons.
+This section is focused in creating an application using **Composition**, how to make components reusable, explaining how to split an application into components and how to build layouts using React.
 
-<details>
-<summary>Project eat'n split (version 1):</summary>
-
-The (code for the) project completed can be found [here](Section_08/01-eat-n-split/).
-
-</details>
-
-<hr>
-<br>
-
-## Section_09:
-
-This section was an introductory section for the the following section.
-
-Notes about this section can be found [here](./Notes.md#section_09).
-
-<hr>
-<br>
-
-## Section_10:
-
-This section features composition of an application using **Composition**, how to make components reusable, how to split an application into components and how to build layouts using React.
-
-Notes about this section can be found [here](./Notes.md#section_10).
+Notes about this section can be found [here](https://github.com/vonschappler/Ultimate-React/wiki/Thinking-in-React-Components-Composition-and-Reusability).
 
 <details>
 <summary>Project usePopcorn (version 1):</summary>
 
-The (code for the) project completed can be found [here](Section_10/01-use-popcorn/).
+The code for the project completed can be found [here](Section_10/01-use-popcorn/).
 
 </details>
 
 <details>
 <summary>Coding challenge 06:</summary>
 
-The (code for the) sixth challenge can be found [here](Challenges/06-text-expander/).
+The code for the challenge can be found [here](Challenges/06-text-expander/).
 
 </details>
 
 <hr>
 <br>
 
-## Section_11:
+## 7. How React works behind the scenes
 
-This section features the concepts of how React works, while discussing concepts such as **instances**, **render phases**, **diffing** and making use of the **key prop** to reset states.
+This section is focused in presenting the concepts of how React works, while discussing concepts such as **instances**, **render phases**, **diffing** and making use of the **key prop** to reset states.
 
-Notes about this section can be found [here](./Notes.md#section_11).
+Notes about this section can be found [here](https://github.com/vonschappler/Ultimate-React/wiki/How-React-works-behind-the-Scenes).
 
 <details>
 <summary>Project howReactWorks:</summary>
 
-The (code for the) project completed can be found [here](Section_11/01-how-react-works/).
+The code for the project completed can be found [here](Section_11/01-how-react-works/).
 
 </details>
 
 <details>
 <summary>Project eat'n split (version 2):</summary>
 
-The (code for the) project completed can be found [here](Section_11/02-eat-n-split/).
+The code for the project completed can be found [here](Section_11/02-eat-n-split/).
 
 </details>
 
 <hr>
 <br>
 
-## Section_12:
+## 8. Effects and Data Fetching
 
-This section features **Effects and Data Fetching** on React.
+This section is focused in presetings how to work **Effects and Data Fetching** in React.
 
-Notes about this section can be found [here](./Notes.md#section_12).
+Notes about this section can be found [here](https://github.com/vonschappler/Ultimate-React/wiki/Effects-and-Data-Fetching).
 
 <details>
 <summary>Project usePopcorn (version 2):</summary>
 
-The (code for the) project completed can be found [here](Section_12/01-use-popcorn/).
+The code for the project completed can be found [here](Section_12/01-use-popcorn/).
 
 </details>
 
 <details>
 <summary>Coding challenge 07:</summary>
 
-The (code for the) seventh challenge can be found [here](Challenges/07-currency-converter/).
+The code for the challenge can be found [here](Challenges/07-currency-converter/).
 
 </details>
 
 <hr>
 <br>
 
-## Section_13:
+## 9. Custom Hooks, Refs and more State
 
-This section features **Creation of custom hooks, refs and states** on React.
+This section is focused in the **creation of custom hooks, refs and states** in React.
 
-Notes about this section can be found [here](./Notes.md#section_13).
+Notes about this section can be found [here](https://github.com/vonschappler/Ultimate-React/wiki/Custom-hooks-Refs-and-more-State).
 
 <details>
 <summary>Project usePopcorn (version 3):</summary>
 
-The (code for the) project completed can be found [here](Section_13/01-use-popcorn/).
+The code for the project completed can be found [here](Section_13/01-use-popcorn/).
 
 </details>
 
 <details>
 <summary>Coding challenge 08:</summary>
 
-The (code for the) eighth challenge can be found [here](Challenges/08-use-geolocate/).
+The code for the challenge can be found [here](Challenges/08-use-geolocate/).
 
 </details>
 
 <hr>
 <br>
 
-## Section_14:
+## 10. React before hooks: Class-based React
 
-This section features **the concepts of class-based** components on React.
+This section is focused in presenting how **React** code was written before the hooks implementation.
 
-Notes about this section can be found [here](./Notes.md#section_14).
+Notes about this section can be found [here](./React-before-hooks-class-based-React).
 
 <details>
 <summary>Project Classy Weather:</summary>
 
-The (code for the) project completed can be found [here](Section_14/01-classy-weather).
+The code for the project completed can be found [here](Section_14/01-classy-weather).
 
 </details>
 
 <details>
 <summary>Exercise 04:</summary>
 
-The (code for the) third exercise can be found [here](Section_14/02-functionally-weather/).
+The code for the exercise can be found [here](Section_14/02-functionally-weather/).
 
 </details>
 
 <hr>
 <br>
 
-## Section_15:
+## 11. The advanced useReducer hook:
 
-This section was an introductory section for the the following section.
+This section is focused in presenting how to use **useReducer** hook in React.
 
-Notes about this section can be found [here](./Notes.md#section_15).
-
-<hr>
-<br>
-
-## Section_16:
-
-This section features **the concepts of useReducer** hook on React.
-
-Notes about this section can be found [here](./Notes.md#section_16).
+Notes about this section can be found [here](https://github.com/vonschappler/Ultimate-React/wiki/The-advanced-useReducer-hook).
 
 <details>
-<summary>React Quiz:</summary>
+<summary>Project React Quiz:</summary>
 
-The (code for the) project completed can be found [here](Section_16/01-react-quiz).
+The code for the project completed can be found [here](Section_16/01-react-quiz).
 
 </details>
 
 <details>
 <summary>Coding challenge 09:</summary>
 
-The (code for the) nith challenge can be found [here](Challenges/09-react-bank/).
+The code for the challenge can be found [here](Challenges/09-react-bank/).
 
 </details>
 
 <hr>
 <br>
 
-## Section_17:
+## 12. React Router: building Single-page Applications (SPA)
 
-This section features re creation of a single page application (SPA) using the **React Router** 3rd party libary using **Vite**.
+This section is focused on the creation of a single page application (SPA) using the **React Router** 3rd party libary using **Vite**.
 
-Notes about this section can be found [here](./Notes.md#section_17).
+Notes about this section can be found [here](./React-Router-Building-Single-page-Applications-SPA).
 
 <details>
-<summary>WorldWise (version 1):</summary>
+<summary>Project WorldWise (version 1):</summary>
 
-The (code for the) project completed can be found [here](Section_17/01-world-wise).
+The code for the project completed can be found [here](Section_17/01-world-wise).
 
 </details>
 
 <hr>
 <br>
 
-## Section_18:
+## 13. Advanced State management: the Context API:
 
-This section feature the use of **Context API** for advanced state managment in React.
+This section is focused on presenting use of **Context API** for advanced state managment in React.
 
-Notes about this section can be found [here](./Notes.md#section_18).
+Notes about this section can be found [here](./Advanced-State-management-the-context-API).
 
 <details>
-<summary>Atomic Blog:</summary>
+<summary>Project Atomic Blog:</summary>
 
-The (code for the) project completed can be found [here](Section_18/01-atomic-blog).
+The code for the project completed can be found [here](Section_18/01-atomic-blog).
 
 </details>
 
 <details>
-<summary>WorldWise (version 2):</summary>
+<summary>Project WorldWise (version 2):</summary>
 
-The (code for the) project completed can be found [here](Section_18/02-world-wise).
+The code for the project completed can be found [here](Section_18/02-world-wise).
 
 </details>
 
 <details>
 <summary>Coding challenge 10:</summary>
 
-The (code for the) tenth challenge can be found [here](Challenges/10-react-quiz/).
+The code for the challenge can be found [here](Challenges/10-react-quiz/).
 
 </details>
 
 <hr>
 <br>
 
-## Section_19:
+## 14. Performance Optimization and Advanced useEffect:
 
-This section features discussion about **optimization** of React applications, by using advanced tools.
+This section is focused in presenting **optimization** techniques for **React** applications, by using advanced tools.
 
-Notes about this section can be found [here](./Notes.md#section_19).
+Notes about this section can be found [here](./Performance-optimization-and-advanced-useEffect).
 
 <details>
-<summary>Atomic Blog (version 2):</summary>
+<summary>Project Atomic Blog (version 2):</summary>
 
-The (code for the) project completed can be found [here](Section_19/01-atomic-blog).
+The code for the project completed can be found [here](Section_19/01-atomic-blog).
 
 </details>
 
 <details>
-<summary>Atomic Blog (version 3):</summary>
+<summary>Project Atomic Blog (version 3):</summary>
 
-The (code for the) project completed can be found [here](Section_19/02-atomic-blog-memo).
+The code for the project completed can be found [here](Section_19/02-atomic-blog-memo).
 
 </details>
 
 <details>
 <summary>Coding challenge 11:</summary>
 
-The (code for the) tenth challenge can be found [here](Challenges/11-workout-timer/).
+The code for the challenge can be found [here](Challenges/11-workout-timer/).
 
 </details>
 
 <hr>
 <br>
 
-## List of completed course projects:
+## 15. Redux and Modern Redux Toolkit (with Thunks):
 
-1. **Pizza Menu**: a simple pizza menu
-   1. [Code](https://github.com/vonschappler/react-pizza-menu)
-   1. [Preview](https://vonschappler.github.io/react-pizza-menu/)
-1. **Far Away**: a simple travel planner
-   1. [Code](https://github.com/vonschappler/react-far-away)
-   1. [Preview](https://vonschappler.github.io/react-far-away/)
-1. **eat'n split**: a simple split bill calculator
-   1. [Code](https://github.com/vonschappler/react-eat-n-split)
-   1. [Preview](https://vonschappler.github.io/react-eat-n-split/)
-1. **usePopcorn**: a simple movie catalog with personal ratings
-   1. [Code](https://github.com/vonschappler/react-use-popcorn/)
-   1. [Preview](https://vonschappler.github.io/react-use-popcorn/)
-1. **Classy Weather**: a simple weather application to display the weely weather in a given location
-   1. [Code](https://github.com/vonschappler/react-classy-weather)
-   1. [Preview](https://vonschappler.github.io/react-classy-weather)
-1. **React Quiz**: a simple quiz applicatio with fundamentals of React questions
-   1. [Code](https://github.com/vonschappler/react-quiz)
-   1. [Preview](https://vonschappler.github.io/react-quiz)
-1. **World Wise**: a simple Application to manage travel
-   1. [Code](https://github.com/vonschappler/react-world-wise)
-   1. [Preview](https://vonschappler.github.io/react-world-wise)
+This section is focused in presenting the concepts behind **Redux** and **Thunks**, while using the **Modern Redux Toolkit**.
+
+Notes about this section can be found [here](https://github.com/vonschappler/Ultimate-React/wiki/Redux-and-Modern-Redux-Toolkit-with-Thunks).
+
+<details>
+<summary>Project Redux Intro:</summary>
+
+The code for the project completed can be found [here](Section_20/01-redux-intro).
+
+</details>
+
+<!--
+## 16. **React** Router with data loading (v6.4+)
+
+Notes about this section can be found [here](./React-Router-with-data-loading)
+
+<hr>
+<br>
+
+## 17. Tailwind CSS Crash Course: Styling the App
+
+Notes about this section can be found [here](https://github.com/vonschappler/Ultimate-React/wiki/Tailwind-CSS-Cracsh-Course-styling-the-app)
+
+<hr>
+<br>
+
+# 18. Adding Redux and Advanced **React** Router
+
+Notes about this section can be found [here](https://github.com/vonschappler/Ultimate-React/wiki/Adding-Redux-and-advanced-React-Router)
+
+<hr>
+<br>
+
+# 19. Setting up the biggest project + styled components
+
+Notes about this section can be found [here](https://github.com/vonschappler/Ultimate-React/wiki/Setting-up-the-biggest-project)
+
+<hr>
+<br>
+
+# 20. Supabase Crash Course: Building a Back-End
+
+Notes about this section can be found [here](https://github.com/vonschappler/Ultimate-React/wiki/Supabase-Crash-Course-building-a-Back-end)
+
+<hr>
+<br>
+
+
+# 21. **React** Query: managing remote state
+
+Notes about this section can be found [here](https://github.com/vonschappler/Ultimate-React/wiki/React-Query-managing-remote-state)
+
+<hr>
+<br>
+
+# 22. Advanced **React** patterns
+
+Notes about this section can be found [here](https://github.com/vonschappler/Ultimate-React/wiki/Advanced-React-patterns)
+
+<hr>
+<br>
+
+
+# 23. Implementing more features: Authentication, Dashboard, etc
+
+Notes about this section can be found [here](https://github.com/vonschappler/Ultimate-React/wiki/Implemeting-more-features-Authentication-Dashboard-etc)
+
+<hr>
+<br>
+
+## 24. Deployment with Netlify and Vercel
+
+Notes about this section can be found [here](https://github.com/vonschappler/Ultimate-React/wiki/Deployment-with-Netlify-and-Vercel) -->
