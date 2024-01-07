@@ -357,11 +357,20 @@ The code for the project completed can be found [here](Section_20/01-redux-intro
 
 </details>
 
-<!--
 ## 16. **React** Router with data loading (v6.4+)
+
+This section is focused in developing a full aplication from scratch using **React** and **Vite**
 
 Notes about this section can be found [here](./React-Router-with-data-loading)
 
+<details>
+<summary>Project React Fast Pizza:</summary>
+
+The code for the project completed can be found [here](Section_22/01-fast-react-pizza).
+
+</details>
+
+<!--
 <hr>
 <br>
 
