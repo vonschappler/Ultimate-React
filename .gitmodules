@@ -25,3 +25,6 @@
 [submodule "Projects/react-redux-bank"]
 	path = Projects/react-redux-bank
 	url = https://github.com/vonschappler/react-redux-bank.git
+[submodule "Projects/react-fast-pizza"]
+	path = Projects/react-fast-pizza
+	url = https://github.com/vonschappler/react-fast-pizza.git
