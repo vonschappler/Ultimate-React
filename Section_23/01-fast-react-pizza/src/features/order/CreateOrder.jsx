@@ -43,27 +43,26 @@ function CreateOrder() {
     <div>
       <h2>Ready to order? Let&apos;s go!</h2>
 
-      {/* <Form method='POST' action='/order/new'> */}
+      {/* 
+        This can also be done, but it's not necessary since React Router 6.4+ will take care of the action for us
+
+        <Form method='POST' action='/order/new'>
+      */}
       <Form method="POST" action="">
         <div>
           <label>First Name:</label>
-          <input type="text" name="customer" required />
+          <input type="text" name="customer" required className="input" />
         </div>
 
         <div>
           <label>Phone number: </label>
-          <input type="tel" name="phone" required />
+          <input type="tel" name="phone" required className="input" />
           <div>{formErrors?.phone && <p>{formErrors.phone}</p>}</div>
         </div>
 
         <div>
           <label>Address</label>
-          <input
-            className="w-full rounded-full border border-stone-200 px-4 py-2 text-sm outline-none transition-all duration-300 placeholder:text-stone-400 focus:ring focus:ring-yellow-400 md:px-6 md:py-3"
-            type="text"
-            name="address"
-            required
-          />
+          <input className="input" type="text" name="address" required />
         </div>
 
         <div>
