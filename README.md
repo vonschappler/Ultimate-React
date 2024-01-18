@@ -359,25 +359,33 @@ The code for the project completed can be found [here](Section_20/01-redux-intro
 
 ## 16. **React** Router with data loading (v6.4+)
 
-This section is focused in developing a full aplication from scratch using **React** and **Vite**
+This section is focused in developing a full aplication from scratch using **React** and **Vite**.
 
-Notes about this section can be found [here](./React-Router-with-data-loading)
+Notes about this section can be found [here](./React-Router-with-data-loading).
 
 <details>
-<summary>Project React Fast Pizza:</summary>
+<summary>Project React Fast Pizza (version 1):</summary>
 
 The code for the project completed can be found [here](Section_22/01-fast-react-pizza).
 
 </details>
 
-<!--
 <hr>
 <br>
 
 ## 17. Tailwind CSS Crash Course: Styling the App
 
-Notes about this section can be found [here](https://github.com/vonschappler/Ultimate-React/wiki/Tailwind-CSS-Cracsh-Course-styling-the-app)
+This section is focused in creating the styling of the previously developed project using **Tailwind CSS**.
 
+Notes about this section can be found [here](https://github.com/vonschappler/Ultimate-React/wiki/Tailwind-CSS-Cracsh-Course-styling-the-app).
+
+<details>
+<summary>Project React Fast Pizza (version 2):</summary>
+
+The code for the project completed can be found [here](Section_23/01-fast-react-pizza/).
+</details>
+
+<!--
 <hr>
 <br>
 
