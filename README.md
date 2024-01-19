@@ -226,7 +226,7 @@ The code for the challenge can be found [here](Challenges/08-use-geolocate/).
 
 This section is focused in presenting how **React** code was written before the hooks implementation.
 
-Notes about this section can be found [here](./React-before-hooks-class-based-React).
+Notes about this section can be found [here](https://github.com/vonschappler/Ultimate-React/wiki/React-before-hooks-class-based-React).
 
 <details>
 <summary>Project Classy Weather:</summary>
@@ -272,7 +272,7 @@ The code for the challenge can be found [here](Challenges/09-react-bank/).
 
 This section is focused on the creation of a single page application (SPA) using the **React Router** 3rd party libary using **Vite**.
 
-Notes about this section can be found [here](./React-Router-Building-Single-page-Applications-SPA).
+Notes about this section can be found [here](https://github.com/vonschappler/Ultimate-React/wiki/React-Router-Building-Single-page-Applications-SPA).
 
 <details>
 <summary>Project WorldWise (version 1):</summary>
@@ -288,7 +288,7 @@ The code for the project completed can be found [here](Section_17/01-world-wise)
 
 This section is focused on presenting use of **Context API** for advanced state managment in React.
 
-Notes about this section can be found [here](./Advanced-State-management-the-context-API).
+Notes about this section can be found [here](https://github.com/vonschappler/Ultimate-React/wiki/Advanced-State-management-the-context-API).
 
 <details>
 <summary>Project Atomic Blog:</summary>
@@ -318,7 +318,7 @@ The code for the challenge can be found [here](Challenges/10-react-quiz/).
 
 This section is focused in presenting **optimization** techniques for **React** applications, by using advanced tools.
 
-Notes about this section can be found [here](./Performance-optimization-and-advanced-useEffect).
+Notes about this section can be found [here](https://github.com/vonschappler/Ultimate-React/wiki/Performance-optimization-and-advanced-useEffect).
 
 <details>
 <summary>Project Atomic Blog (version 2):</summary>
@@ -361,7 +361,7 @@ The code for the project completed can be found [here](Section_20/01-redux-intro
 
 This section is focused in developing a full aplication from scratch using **React** and **Vite**.
 
-Notes about this section can be found [here](./React-Router-with-data-loading).
+Notes about this section can be found [here](https://github.com/vonschappler/Ultimate-React/wiki/React-Router-with-data-loading).
 
 <details>
 <summary>Project React Fast Pizza (version 1):</summary>
@@ -377,22 +377,32 @@ The code for the project completed can be found [here](Section_22/01-fast-react-
 
 This section is focused in creating the styling of the previously developed project using **Tailwind CSS**.
 
-Notes about this section can be found [here](https://github.com/vonschappler/Ultimate-React/wiki/Tailwind-CSS-Cracsh-Course-styling-the-app).
+Notes about this section can be found [here](https://github.com/vonschappler/Ultimate-React/wiki/Tailwind-CSS-Crash-Course-styling-the-app).
 
 <details>
 <summary>Project React Fast Pizza (version 2):</summary>
 
 The code for the project completed can be found [here](Section_23/01-fast-react-pizza/).
+
 </details>
 
-<!--
 <hr>
 <br>
 
 # 18. Adding Redux and Advanced **React** Router
 
+This section is focused in making use of **Redux** in conjuction with some advanced **React Router**.
+
 Notes about this section can be found [here](https://github.com/vonschappler/Ultimate-React/wiki/Adding-Redux-and-advanced-React-Router)
 
+<details>
+<summary>Project React Fast Pizza (version 3):</summary>
+
+The code for the project completed can be found [here](Section_24/01-fast-react-pizza/).
+
+</details>
+
+<!--
 <hr>
 <br>
 
