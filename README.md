@@ -402,14 +402,23 @@ The code for the project completed can be found [here](Section_24/01-fast-react-
 
 </details>
 
-<!--
 <hr>
 <br>
 
 # 19. Setting up the biggest project + styled components
 
+This section is focused in setting up the project and working with styled components, while also going through the process of planning the application.
+
 Notes about this section can be found [here](https://github.com/vonschappler/Ultimate-React/wiki/Setting-up-the-biggest-project)
 
+<details>
+<summary>Project Wild Oasis (version 1):</summary>
+
+The code for the project completed can be found [here](Section_25/01-wild-oasis/).
+
+</details>
+
+<!--
 <hr>
 <br>
 
