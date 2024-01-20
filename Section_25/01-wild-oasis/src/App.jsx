@@ -23,10 +23,10 @@ function App() {
             <Route path='account' element={<Account />} />
             <Route path='bookings' element={<Bookings />} />
             <Route path='cabins' element={<Cabins />} />
-            <Route path='login' element={<Login />} />
+            <Route path='users' element={<Users />} />
             <Route path='settings' element={<Settings />} />
           </Route>
-          <Route path='users' element={<Users />} />
+          <Route path='login' element={<Login />} />
           <Route path='*' element={<PageNotFound />} />
         </Routes>
       </BrowserRouter>
