@@ -418,14 +418,23 @@ The code for the project completed can be found [here](Section_25/01-wild-oasis/
 
 </details>
 
-<!--
 <hr>
 <br>
 
 # 20. Supabase Crash Course: Building a Back-End
 
+This section is focused in building the back-end for the application using **Supabase**.
+
 Notes about this section can be found [here](https://github.com/vonschappler/Ultimate-React/wiki/Supabase-Crash-Course-building-a-Back-end)
 
+<details>
+<summary>Project Wild Oasis (version 2):</summary>
+
+The code for the project completed can be found [here](Section_26/01-wild-oasis/).
+
+</details>
+
+<!--
 <hr>
 <br>
 
