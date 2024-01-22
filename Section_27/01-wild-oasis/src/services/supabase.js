@@ -1,6 +1,9 @@
 import { createClient } from '@supabase/supabase-js';
 const supabaseUrl = 'https://cbyspthjndaovuxvmmvn.supabase.co';
 
+// error testing url
+// const supabaseUrl = 'https://cbyspthjndaovuxvmmvn.supabase.com';
+
 // here we are placing the key directly only because this is a public key protected by RLS with READ only permissions
 // this may later be changed to something more secure, hidden by environmental variables
 const supabaseKey =
