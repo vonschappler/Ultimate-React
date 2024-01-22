@@ -1,5 +1,5 @@
 import { createClient } from '@supabase/supabase-js';
-const supabaseUrl = 'https://cbyspthjndaovuxvmmvn.supabase.co';
+export const supabaseUrl = 'https://cbyspthjndaovuxvmmvn.supabase.co';
 
 // error testing url
 // const supabaseUrl = 'https://cbyspthjndaovuxvmmvn.supabase.com';
