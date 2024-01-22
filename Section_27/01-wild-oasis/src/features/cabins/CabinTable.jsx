@@ -1,4 +1,4 @@
-import styled from "styled-components";
+import styled from 'styled-components';
 
 const Table = styled.div`
   border: 1px solid var(--color-grey-200);
