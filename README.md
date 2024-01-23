@@ -357,6 +357,9 @@ The code for the project completed can be found [here](Section_20/01-redux-intro
 
 </details>
 
+<hr>
+<br>
+
 ## 16. **React** Router with data loading (v6.4+)
 
 This section is focused in developing a full aplication from scratch using **React** and **Vite**.
@@ -389,7 +392,7 @@ The code for the project completed can be found [here](Section_23/01-fast-react-
 <hr>
 <br>
 
-# 18. Adding Redux and Advanced **React** Router
+## 18. Adding Redux and Advanced **React** Router
 
 This section is focused in making use of **Redux** in conjuction with some advanced **React Router**.
 
@@ -405,7 +408,7 @@ The code for the project completed can be found [here](Section_24/01-fast-react-
 <hr>
 <br>
 
-# 19. Setting up the biggest project + styled components
+## 19. Setting up the biggest project + styled components
 
 This section is focused in setting up the project and working with styled components, while also going through the process of planning the application.
 
@@ -421,7 +424,7 @@ The code for the project completed can be found [here](Section_25/01-wild-oasis/
 <hr>
 <br>
 
-# 20. Supabase Crash Course: Building a Back-End
+## 20. Supabase Crash Course: Building a Back-End
 
 This section is focused in building the back-end for the application using **Supabase**.
 
@@ -434,19 +437,27 @@ The code for the project completed can be found [here](Section_26/01-wild-oasis/
 
 </details>
 
+<hr>
+<br>
+
+## 21. **React Query**: managing remote state
+
+This section is focused in managing remote state, making use of **React Query** library.
+
+Notes about this section can be found [here](https://github.com/vonschappler/Ultimate-React/wiki/React-Query-managing-remote-state)
+
+<details>
+<summary>Project Wild Oasis (version 3):</summary>
+
+The code for the project completed can be found [here](Section_27/01-wild-oasis/).
+
+</details>
+
 <!--
 <hr>
 <br>
 
-
-# 21. **React** Query: managing remote state
-
-Notes about this section can be found [here](https://github.com/vonschappler/Ultimate-React/wiki/React-Query-managing-remote-state)
-
-<hr>
-<br>
-
-# 22. Advanced **React** patterns
+## 22. Advanced **React** patterns
 
 Notes about this section can be found [here](https://github.com/vonschappler/Ultimate-React/wiki/Advanced-React-patterns)
 
@@ -454,7 +465,7 @@ Notes about this section can be found [here](https://github.com/vonschappler/Ult
 <br>
 
 
-# 23. Implementing more features: Authentication, Dashboard, etc
+## 23. Implementing more features: Authentication, Dashboard, etc
 
 Notes about this section can be found [here](https://github.com/vonschappler/Ultimate-React/wiki/Implemeting-more-features-Authentication-Dashboard-etc)
 
