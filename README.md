@@ -453,14 +453,37 @@ The code for the project completed can be found [here](Section_27/01-wild-oasis/
 
 </details>
 
-<!--
 <hr>
 <br>
 
 ## 22. Advanced **React** patterns
 
+This section is focused in presenting some advanced react patterns, such as compund components, render props, and many others.
+
 Notes about this section can be found [here](https://github.com/vonschappler/Ultimate-React/wiki/Advanced-React-patterns)
 
+<details>
+<summary>Render props example:</summary>
+
+The code for the project completed can be found [here](Section_28/01-render-pops/).
+
+</details>
+
+<details>
+<summary>Compound component example:</summary>
+
+The code for the project completed can be found [here](Section_28/02-compound-component/).
+
+</details>
+
+<details>
+<summary>Project Wild Oasis (version 4):</summary>
+
+The code for the project completed can be found [here](Section_28/03-wild-oasis/).
+
+</details>
+
+<!--
 <hr>
 <br>
 
