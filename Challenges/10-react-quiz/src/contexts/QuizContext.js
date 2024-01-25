@@ -65,7 +65,6 @@ function reducer(state, action) {
         numQuestions: state.questions.length,
       };
     case 'timer/start':
-      console.log(state.secondsRemaining);
       return {
         ...state,
         secondsRemaining: state.secondsRemaining - 1,

@@ -6,7 +6,6 @@ function Options() {
   const hasAnswered = answer !== null;
   return (
     <div className='options'>
-      {console.log(question.options)}
       {question.options.map((opt, index) => (
         <button
           className={`btn btn-option ${index === answer ? 'answer' : ''} ${
