@@ -23,7 +23,6 @@ function Form() {
       id: Date.now(),
     };
     
-    console.log(newItem);
     setDesc('');
     setQty(1);
   }
