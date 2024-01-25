@@ -6,6 +6,7 @@ import Spinner from '../../ui/Spinner';
 import Table from '../../ui/Table';
 import Menus from '../../ui/Menus';
 import Empty from '../../ui/Empty';
+import Pagination from '../../ui/Pagination';
 
 function CabinTable() {
   const { isLoading, cabins } = useCabins();
@@ -46,6 +47,9 @@ function CabinTable() {
           data={sortedCabins}
           render={(cabin) => <CabinRow cabin={cabin} key={cabin.id} />}
         />
+        <Table.Footer>
+          <Pagination count={cabins.length} />
+        </Table.Footer>
       </Table>
     </Menus>
   );
