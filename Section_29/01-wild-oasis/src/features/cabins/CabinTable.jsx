@@ -48,7 +48,7 @@ function CabinTable() {
           render={(cabin) => <CabinRow cabin={cabin} key={cabin.id} />}
         />
         <Table.Footer>
-          <Pagination count={cabins.length} />
+          <Pagination count={sortedCabins.length} />
         </Table.Footer>
       </Table>
     </Menus>
