@@ -146,7 +146,6 @@ function MovieDetails({ selectedId, onCloseMovie, onAddWatched, watched }) {
       runtime: Number(runtime.split(' ').at(0)),
       userRating,
     };
-    console.log(newWatchedMovie);
     onAddWatched(newWatchedMovie);
     // we do not have access to states sincronously, to do that, we need callback functions
     setAverageRating(Number(imdbRating));
@@ -339,12 +338,10 @@ export default function App() {
 
   function handleSelectMovie(id) {
     setSelectedId((selectedId) => (id === selectedId ? null : id));
-    console.log(id);
   }
 
   function handleCloseMovie() {
     setSelectedId(null);
-    console.log('clicked!');
   }
 
   function handleAddWatched(movie) {
@@ -375,7 +372,7 @@ export default function App() {
           setError('');
         } catch (err) {
           if (err.name !== 'AbortError') {
-            console.log(err.message);
+            console.error(err.message);
             setError(err.message);
           }
         } finally {

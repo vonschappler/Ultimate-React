@@ -144,7 +144,6 @@ function MovieDetails({ selectedId, onCloseMovie, onAddWatched, watched }) {
       userRating,
       countRatingDecisions: countRef.current,
     };
-    console.log(newWatchedMovie);
     onAddWatched(newWatchedMovie);
     onCloseMovie();
   }
@@ -318,12 +317,10 @@ export default function App() {
 
   function handleSelectMovie(id) {
     setSelectedId((selectedId) => (id === selectedId ? null : id));
-    console.log(id);
   }
 
   function handleCloseMovie() {
     setSelectedId(null);
-    console.log('clicked!');
   }
 
   function handleAddWatched(movie) {
