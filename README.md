@@ -483,15 +483,23 @@ The code for the project completed can be found [here](Section_28/03-wild-oasis/
 
 </details>
 
-<!--
 <hr>
 <br>
 
-
 ## 23. Implementing more features: Authentication, Dashboard, etc
+
+This section is focused in implemeting the final features to our project.
 
 Notes about this section can be found [here](https://github.com/vonschappler/Ultimate-React/wiki/Implemeting-more-features-Authentication-Dashboard-etc)
 
+<details>
+<summary>Project Wild Oasis (version 5):</summary>
+
+The code for the project completed can be found [here](Section_29/01-wild-oasis/).
+
+</details>
+
+<!--
 <hr>
 <br>
 
