@@ -31,7 +31,6 @@ function Button({ onClick, children }) {
 
 function Friend({ friend, onSelectFriend, selectedFriend }) {
   const isSelected = selectedFriend?.id === friend.id;
-  console.log(isSelected);
   return (
     <li className={isSelected ? 'selected' : ''}>
       <img src={friend.image} alt={friend.name} />
@@ -55,7 +54,6 @@ function Friend({ friend, onSelectFriend, selectedFriend }) {
 }
 
 function FriendsList({ friends, onSelectFriend, selectedFriend }) {
-  console.log(selectedFriend);
   return (
     <ul>
       {friends.map((friend) => (
@@ -92,7 +90,6 @@ function FormAddFriend({ onAddFriend }) {
 
     setNewFriendName('');
     setNewFriendImage('https://i.pravatar.cc/48');
-    console.log(newFriend);
 
     onAddFriend(newFriend);
   }
