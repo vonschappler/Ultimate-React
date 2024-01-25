@@ -31,7 +31,6 @@ function CreateGuestForm({ onSuccessNewGuest, closeModal }) {
       label: country.name,
     };
   });
-  console.log(countryOptions);
 
   const onSubmit = function (data) {
     const countryFlag = countries.find(

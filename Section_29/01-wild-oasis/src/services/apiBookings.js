@@ -9,7 +9,7 @@ export async function getBookings() {
     );
 
   if (error) {
-    console.log(error);
+    console.error(error);
     throw new Error('Unable to fetch bookings data');
   }
 
