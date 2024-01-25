@@ -10,13 +10,17 @@ export function useBookings() {
       ? null
       : { field: 'status', value: filterValue };
 
+  const sortBy = searchParams.get('sort') || 'startDate-desc';
+  const [field, direction] = sortBy.split('-');
+  const sort = { field, direction };
+
   const {
     isLoading,
     data: bookings,
     error,
   } = useQuery({
-    queryKey: ['bookings', filter],
-    queryFn: () => getBookingsApi({ filter }),
+    queryKey: ['bookings', filter, sort],
+    queryFn: () => getBookingsApi({ filter, sort }),
   });
 
   return { isLoading, bookings, error };
