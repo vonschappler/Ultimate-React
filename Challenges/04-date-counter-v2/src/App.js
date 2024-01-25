@@ -50,13 +50,11 @@ function Counter() {
   };
 
   const handleChange = (evt) => {
-    console.log(evt.target.value);
     setCounter(Number(evt.target.value));
   };
 
   const handleSubmit = (evt) => {
     evt.preventDefault();
-    console.log(evt);
     setDate(new Date(Date.now()).getTime() + counter * 86400000);
   };
 
