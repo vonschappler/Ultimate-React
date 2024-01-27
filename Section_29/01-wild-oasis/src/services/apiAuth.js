@@ -1,17 +1,16 @@
 import supabase from './supabase';
 
 export function signUp({ fullName, email, password }) {
-  const { data, error } = supabase.auth.signUp(
-    { email, password },
-    {
-      options: {
-        data: {
-          fullName,
-          avatar: '',
-        },
+  const { data, error } = supabase.auth.signUp({
+    email,
+    password,
+    options: {
+      data: {
+        fullName,
+        avatar: '',
       },
-    }
-  );
+    },
+  });
 
   if (error) {
     console.error(error);
