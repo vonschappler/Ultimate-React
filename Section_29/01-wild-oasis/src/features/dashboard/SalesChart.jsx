@@ -15,6 +15,7 @@ import { useDarkMode } from '../../context/DarkModeContext';
 import {
   eachDayOfInterval,
   format,
+  formatDate,
   isDate,
   isSameDay,
   subDays,
@@ -22,6 +23,8 @@ import {
 
 const StyledSalesChart = styled(DashboardBox)`
   grid-column: 1 / -1;
+  width: 100%;
+  height: 500px;
 
   /* Hack to change grid line colors */
   & .recharts-cartesian-grid-horizontal line,
@@ -65,9 +68,12 @@ function SalesChart({ bookings, numDays }) {
       };
   return (
     <StyledSalesChart>
-      <Heading>Sales</Heading>
+      <Heading>
+        Sales from {formatDate(allDates.at(0), 'MMM dd yyyy')} to{' '}
+        {formatDate(allDates.at(-1), 'MMM dd yyyy')}
+      </Heading>
       <ResponsiveContainer>
-        <AreaChart data={data} width='100%' height={300}>
+        <AreaChart data={data}>
           <CartesianGrid strokeDasharray='4' />
           <Tooltip contentStyle={{ backgroundColor: colors.background }} />
           <XAxis
