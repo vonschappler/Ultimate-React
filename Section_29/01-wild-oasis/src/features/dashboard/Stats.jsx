@@ -39,7 +39,6 @@ function Stats({ bookings, confirmedStays, numDays, cabinsCount }) {
         key='checkins'
       />
       <Stat
-        // value={`${Math.floor(occupancy * 100)}%`}
         value={`${Math.floor(occupancy * 100)}%`}
         title='Occupancy Rate'
         color='yellow'
