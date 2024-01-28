@@ -28,3 +28,6 @@
 [submodule "Projects/react-fast-pizza"]
 	path = Projects/react-fast-pizza
 	url = https://github.com/vonschappler/react-fast-pizza.git
+[submodule "Projects/react-wild-oasis"]
+	path = Projects/react-wild-oasis
+	url = https://github.com/vonschappler/react-wild-oasis.git
