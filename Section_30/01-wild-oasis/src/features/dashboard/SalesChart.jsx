@@ -16,7 +16,6 @@ import {
   eachDayOfInterval,
   format,
   formatDate,
-  isDate,
   isSameDay,
   subDays,
 } from 'date-fns';
