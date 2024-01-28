@@ -499,10 +499,9 @@ The code for the project completed can be found [here](Section_29/01-wild-oasis/
 
 </details>
 
-<!--
 <hr>
 <br>
 
 ## 24. Deployment with Netlify and Vercel
 
-Notes about this section can be found [here](https://github.com/vonschappler/Ultimate-React/wiki/Deployment-with-Netlify-and-Vercel) -->
+Notes about this section can be found [here](https://github.com/vonschappler/Ultimate-React/wiki/Deployment-with-Netlify-and-Vercel)
