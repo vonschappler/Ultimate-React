@@ -505,3 +505,10 @@ The code for the project completed can be found [here](Section_29/01-wild-oasis/
 ## 24. Deployment with Netlify and Vercel
 
 Notes about this section can be found [here](https://github.com/vonschappler/Ultimate-React/wiki/Deployment-with-Netlify-and-Vercel)
+
+<hr>
+<br>
+
+## 25. Overview of Next.js and the "App" Router
+
+Notes about this section can be found [here](https://github.com/vonschappler/Ultimate-React/wiki/Oververview-of-Next.js-with-App-Router)
