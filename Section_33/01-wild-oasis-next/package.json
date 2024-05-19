@@ -1,6 +1,6 @@
 {
-  "name": "02-wild-oasis-next",
-  "version": "0.1.0",
+  "name": "01-wild-oasis-next",
+  "version": "0.2.0",
   "private": true,
   "scripts": {
     "dev": "next dev",
