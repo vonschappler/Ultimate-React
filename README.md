@@ -539,7 +539,7 @@ The code for the project completed can be found [here](Section_32/02-wild-oasis-
 
 ## 26. Building the website
 
-Notes about this section can be found [here](https://github.com/vonschappler/Ultimate-React/wiki/Building-the-Website)
+Notes about this section can be found [here](https://github.com/vonschappler/Ultimate-React/wiki/Building-a-website)
 
 <details>
 <summary>Project Wild Oasis Website (version 2):</summary>
