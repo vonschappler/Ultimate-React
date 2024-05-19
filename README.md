@@ -506,9 +506,44 @@ The code for the project completed can be found [here](Section_29/01-wild-oasis/
 
 Notes about this section can be found [here](https://github.com/vonschappler/Ultimate-React/wiki/Deployment-with-Netlify-and-Vercel)
 
+<details>
+<summary>Project Wild Oasis (version 5):</summary>
+
+The code for the project completed can be found [here](Section_30/01-wild-oasis/).
+
+</details>
+
 <hr>
 <br>
 
 ## 25. Overview of Next.js and the "App" Router
 
-Notes about this section can be found [here](https://github.com/vonschappler/Ultimate-React/wiki/Oververview-of-Next.js-with-App-Router)
+Notes about this section can be found [here](https://github.com/vonschappler/Ultimate-React/wiki/Overview-of-NextJs-with-App-Router)
+
+<details>
+<summary>Project Manualy Server-Side Rendering an application:</summary>
+
+The code for the project completed can be found [here](Section_32/01-manual-ssr/).
+
+</details>
+
+<details>
+<summary>Project Wild Oasis Website (version 1):</summary>
+
+The code for the project completed can be found [here](Section_32/02-wild-oasis-next/).
+
+</details>
+
+<hr>
+<br>
+
+## 26. Building the website
+
+Notes about this section can be found [here](https://github.com/vonschappler/Ultimate-React/wiki/Building-the-Website)
+
+<details>
+<summary>Project Wild Oasis Website (version 2):</summary>
+
+The code for the project completed can be found [here](Section_33/01-wild-oasis-next/).
+
+</details>
