@@ -555,18 +555,15 @@ The code for the project completed can be found [here](Section_33/01-wild-oasis-
 Notes about this section can be found [here](https://github.com/vonschappler/Ultimate-React/wiki/Data-fetching-caching-and-rendering)
 
 <details>
-<summary>Coding challenge 12:</summary>
-
-The code for the challenge can be found [here](Challenges/12-wild-oasis-next-clg-01/).
-
-</details>
-
-<details>
 <summary>Project Wild Oasis Website (version 3):</summary>
 
 The code for the project completed can be found [here](Section_34/01-wild-oasis-next/).
 
 </details>
 
+<details>
+<summary>Coding challenge 12:</summary>
 
+The code for the challenge can be found [here](Challenges/12-wild-oasis-next-clg-01/).
 
+</details>
