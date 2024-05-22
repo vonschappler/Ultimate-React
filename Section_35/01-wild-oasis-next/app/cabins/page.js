@@ -1,21 +1,21 @@
-import { Suspense } from 'react';
+import { Suspense } from "react";
 
-import CabinList from '@/app/_components/CabinList';
-import Spinner from './loading';
+import CabinList from "@/app/_components/CabinList";
+import Spinner from "./loading";
 
 export const revalidate = 3600;
 
 export const metadata = {
-  title: 'Cabins',
+  title: "Cabins",
 };
 
 export default function Page() {
   return (
     <div>
-      <h1 className='text-4xl mb-5 text-accent-400 font-medium'>
+      <h1 className="mb-5 text-4xl font-medium text-accent-400">
         Our Luxury Cabins
       </h1>
-      <p className='text-primary-200 text-lg mb-10'>
+      <p className="mb-10 text-lg text-primary-200">
         Cozy yet luxurious cabins, located right in the heart of the Italian
         Dolomites. Imagine waking up to beautiful mountain views, spending your
         days exploring the dark forests around, or just relaxing in your private
