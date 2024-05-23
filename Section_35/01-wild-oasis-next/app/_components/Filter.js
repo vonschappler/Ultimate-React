@@ -18,7 +18,7 @@ export default function Filter() {
     router.replace(`${pathname}?${params.toString()}`, { scroll: false });
   }
 
-  // the code below is a simpler way of handling the same logic...
+  // the code below is a simpler way of handling the same logic for simpler situations...
   // const path = usePathname();
   // const router = useRouter();
 
