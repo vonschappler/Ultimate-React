@@ -577,9 +577,6 @@ Notes about this section can be found [here](https://github.com/vonschappler/Ult
 <details>
 <summary>Project Wild Oasis Website (version 4):</summary>
 
-The code for the project completed can be found [here](Section_34/01-wild-oasis-next/).
+The code for the project completed can be found [here](Section_35/01-wild-oasis-next/).
 
 </details>
-
-
-
