@@ -580,15 +580,36 @@ Notes about this section can be found [here](https://github.com/vonschappler/Ult
 The code for the project completed can be found [here](Section_35/01-wild-oasis-next/).
 
 </details>
-
+<hr>
+<br>
 
 ## 29. Authentication with NextAuth
 
 Notes about this section can be found [here](https://github.com/vonschappler/Ultimate-React/wiki/Authentication-with-NextAuth)
 
 <details>
-<summary>Project Wild Oasis Website (version 4):</summary>
+<summary>Project Wild Oasis Website (version 5):</summary>
 
 The code for the project completed can be found [here](Section_36/01-wild-oasis-next/).
+
+</details>
+<hr>
+<br>
+
+## 30. Mutation and Server Actions
+
+Notes about this section can be found [here](https://github.com/vonschappler/Ultimate-React/wiki/Mutation-and-Server-Actions)
+
+<details>
+<summary>Project Wild Oasis Website (version 6):</summary>
+
+The code for the project completed can be found [here](Section_37/01-wild-oasis-next/).
+
+</details>
+
+<details>
+<summary>Coding challenge 13:</summary>
+
+The code for the challenge can be found [here](Challenges/13-wild-oasis-next-clg-02/).
 
 </details>
