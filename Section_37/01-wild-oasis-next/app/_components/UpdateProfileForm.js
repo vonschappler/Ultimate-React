@@ -1,16 +1,21 @@
 "use client";
 
-import { useState } from "react";
+import { updateProfile } from "../_lib/actions";
 
-export default function UpdateProfileForm({ children }) {
-  const [count, setCount] = useState(0);
+export default function UpdateProfileForm({ children, guest }) {
+  const { fullName, email, nationality, nationalId, countryFlag } = guest;
 
   return (
-    <form className="flex flex-col gap-6 bg-primary-900 px-12 py-8 text-lg">
+    <form
+      className="flex flex-col gap-6 bg-primary-900 px-12 py-8 text-lg"
+      action={updateProfile}
+    >
       <div className="space-y-2">
         <label>Full name</label>
         <input
+          name="fullName"
           disabled
+          defaultValue={fullName}
           className="w-full rounded-sm bg-primary-200 px-5 py-3 text-primary-800 shadow-sm disabled:cursor-not-allowed disabled:bg-gray-600 disabled:text-gray-400"
         />
       </div>
@@ -18,7 +23,9 @@ export default function UpdateProfileForm({ children }) {
       <div className="space-y-2">
         <label>Email address</label>
         <input
+          name="email"
           disabled
+          defaultValue={email}
           className="w-full rounded-sm bg-primary-200 px-5 py-3 text-primary-800 shadow-sm disabled:cursor-not-allowed disabled:bg-gray-600 disabled:text-gray-400"
         />
       </div>
@@ -39,6 +46,7 @@ export default function UpdateProfileForm({ children }) {
       <div className="space-y-2">
         <label htmlFor="nationalID">National ID number</label>
         <input
+          defaultValue={nationalId}
           name="nationalID"
           className="w-full rounded-sm bg-primary-200 px-5 py-3 text-primary-800 shadow-sm"
         />
