@@ -580,3 +580,15 @@ Notes about this section can be found [here](https://github.com/vonschappler/Ult
 The code for the project completed can be found [here](Section_35/01-wild-oasis-next/).
 
 </details>
+
+
+## 29. Authentication with NextAuth
+
+Notes about this section can be found [here](https://github.com/vonschappler/Ultimate-React/wiki/Authentication-with-NextAuth)
+
+<details>
+<summary>Project Wild Oasis Website (version 4):</summary>
+
+The code for the project completed can be found [here](Section_36/01-wild-oasis-next/).
+
+</details>
