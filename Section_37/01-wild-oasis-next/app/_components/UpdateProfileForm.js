@@ -1,6 +1,7 @@
 "use client";
 
 import { updateProfile } from "../_lib/actions";
+import FormButton from "./FormButton";
 
 export default function UpdateProfileForm({ children, guest }) {
   const { fullName, email, nationality, nationalId, countryFlag } = guest;
@@ -53,9 +54,7 @@ export default function UpdateProfileForm({ children, guest }) {
       </div>
 
       <div className="flex items-center justify-end gap-6">
-        <button className="bg-accent-500 px-8 py-4 font-semibold text-primary-800 transition-all hover:bg-accent-600 disabled:cursor-not-allowed disabled:bg-gray-500 disabled:text-gray-300">
-          Update profile
-        </button>
+        <FormButton>Update profile</FormButton>
       </div>
     </form>
   );
