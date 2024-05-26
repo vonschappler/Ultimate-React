@@ -2,7 +2,11 @@
 
 import { useFormStatus } from "react-dom";
 
-export default function FormButton({ children, handleClick }) {
+export default function FormButton({
+  children,
+  handleClick,
+  pendingLabel = "Processing data...",
+}) {
   const { pending } = useFormStatus();
 
   return (
@@ -11,7 +15,7 @@ export default function FormButton({ children, handleClick }) {
       onClick={handleClick}
       disabled={pending}
     >
-      {pending ? "Processing data..." : <>{children}</>}
+      {pending ? pendingLabel : <>{children}</>}
     </button>
   );
 }

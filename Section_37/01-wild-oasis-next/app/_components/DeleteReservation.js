@@ -1,9 +1,8 @@
 "use client";
 
 import { TrashIcon } from "@heroicons/react/24/solid";
-import { deleteResevation } from "../_lib/actions";
 import { useTransition } from "react";
-import Spinner from "./Spinner";
+import { deleteResevation } from "@/app/_lib/actions";
 import SpinnerMini from "./SpinnerMini";
 
 function DeleteReservation({ bookingId }) {
