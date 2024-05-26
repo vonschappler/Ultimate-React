@@ -4,7 +4,7 @@ import { getBooking, getCabin } from "@/app/_lib/data-service";
 
 export default async function Page({ params }) {
   const { reservationId } = params;
-  const { cabinId, numGuests } = await getBooking(reservationId);
+  const { cabinId, numGuests, observations } = await getBooking(reservationId);
   const cabin = await getCabin(cabinId);
   const { maxCapacity } = cabin;
 
@@ -45,11 +45,19 @@ export default async function Page({ params }) {
           <textarea
             name="observations"
             className="w-full rounded-sm bg-primary-200 px-5 py-3 text-primary-800 shadow-sm"
+            defaultValue={observations}
           />
         </div>
-        <input hidden value={reservationId} name="reservationId" />
+        <input
+          type="hidden"
+          value={reservationId}
+          name="reservationId"
+          readOnly
+        />
         <div className="flex items-center justify-end gap-6">
-          <FormButton>Update reservation</FormButton>
+          <FormButton pendingLabel="Updating reservation...">
+            Update reservation
+          </FormButton>
         </div>
       </form>
     </div>

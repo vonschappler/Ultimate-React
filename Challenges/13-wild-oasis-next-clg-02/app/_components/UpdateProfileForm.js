@@ -1,5 +1,3 @@
-"use client";
-
 import { updateProfile } from "../_lib/actions";
 import FormButton from "./FormButton";
 
