@@ -30,6 +30,34 @@ export async function updateProfile(formData) {
   revalidatePath("/account/profile");
 }
 
+export async function createReservation(reservationData, formData) {
+  const session = await auth();
+  if (!session) throw new Error("You must be logged in to peform this action");
+  const guestId = session.user.guestId;
+  const submitedData = Object.fromEntries(formData);
+
+  const createFields = {
+    ...reservationData,
+    ...submitedData,
+    guestId,
+    extrasPrice: 0,
+    totalPrice: reservationData.cabinPrice,
+    isPaid: false,
+    hasBreakfast: false,
+    status: "unconfirmed",
+  };
+
+  console.log(createFields);
+  const { error } = await supabase.from("bookings").insert([createFields]);
+
+  if (error) {
+    console.error(error);
+    throw new Error("Reservation could not be created");
+  }
+  revalidatePath(`/cabins/${reservationData.cabinId}`);
+  redirect("/cabins/thank-you");
+}
+
 export async function deleteResevation(bookingId) {
   const session = await auth();
   if (!session) throw new Error("You must be logged in to peform this action");
@@ -38,7 +66,7 @@ export async function deleteResevation(bookingId) {
   const guestBookingsIds = guestBookings.map((booking) => booking.id);
 
   if (!guestBookingsIds.includes(bookingId))
-    throw new Error("You are not allowed to delete this booking");
+    throw new Error("You are not allowed to delete this reservation");
 
   const { error } = await supabase
     .from("bookings")
@@ -47,7 +75,7 @@ export async function deleteResevation(bookingId) {
 
   if (error) {
     console.log(error);
-    throw new Error("Booking could not be deleted");
+    throw new Error("Reservation could not be deleted");
   }
   revalidatePath("/account/reservations");
 }
@@ -67,7 +95,7 @@ export async function updateReservation(formData) {
   const guestBookingsIds = guestBookings.map((booking) => booking.id);
 
   if (!guestBookingsIds.includes(reservationId))
-    throw new Error("You are not allowed to update this booking");
+    throw new Error("You are not allowed to update this reservation");
 
   const { error } = await supabase
     .from("bookings")
@@ -78,7 +106,7 @@ export async function updateReservation(formData) {
 
   if (error) {
     console.error(error);
-    throw new Error("Booking could not be updated");
+    throw new Error("Reservation could not be updated");
   }
   revalidatePath(`/account/reservations`);
   revalidatePath(`/account/reservations/edit/${reservationId}`);

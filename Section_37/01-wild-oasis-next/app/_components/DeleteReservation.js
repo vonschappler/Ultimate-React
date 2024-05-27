@@ -2,7 +2,6 @@
 
 import { TrashIcon } from "@heroicons/react/24/solid";
 import { useTransition } from "react";
-import { deleteResevation } from "@/app/_lib/actions";
 import SpinnerMini from "./SpinnerMini";
 
 function DeleteReservation({ bookingId, onDelete }) {
