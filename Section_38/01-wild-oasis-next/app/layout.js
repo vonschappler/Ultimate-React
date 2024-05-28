@@ -1,14 +1,12 @@
+import Header from "@/app/_components/Header";
+import { ReservationProvider } from "@/app/_components/ReservationContext";
+import "@/app/_styles/globals.css";
 import { Josefin_Sans } from "next/font/google";
 
 const josefin = Josefin_Sans({
   subsets: ["latin"],
   display: "swap",
 });
-
-import "@/app/_styles/globals.css";
-
-import Header from "@/app/_components/Header";
-import { ReservationProvider } from "@/app/_components/ReservationContext";
 
 export const metadata = {
   title: {

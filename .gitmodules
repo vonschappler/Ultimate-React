@@ -31,3 +31,6 @@
 [submodule "Projects/react-wild-oasis"]
 	path = Projects/react-wild-oasis
 	url = https://github.com/vonschappler/react-wild-oasis.git
+[submodule "Projects/vercel-wild-oasis"]
+	path = Projects/vercel-wild-oasis
+	url = https://github.com/vonschappler/vercel-wild-oasis.git

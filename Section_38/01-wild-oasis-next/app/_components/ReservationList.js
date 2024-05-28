@@ -1,13 +1,16 @@
 "use client";
 
+import { deleteResevation } from "@/app/_lib/actions";
 import { useOptimistic } from "react";
 import ReservationCard from "./ReservationCard";
-import { deleteResevation } from "../_lib/actions";
 
 export default function ReservationList({ bookings }) {
-  const [opmisticBookings, opmisticDelete] = useOptimistic(bookings, (currentBookings, bookingId) => {
-    return currentBookings.filter(booking => booking.id !== bookingId)
-  });
+  const [opmisticBookings, opmisticDelete] = useOptimistic(
+    bookings,
+    (currentBookings, bookingId) => {
+      return currentBookings.filter((booking) => booking.id !== bookingId);
+    },
+  );
 
   async function handleDelete(bookingId) {
     opmisticDelete(bookingId);

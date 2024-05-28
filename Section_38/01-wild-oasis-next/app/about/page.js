@@ -1,8 +1,8 @@
-import Image from "next/image";
-
+import { getCabins } from "@/app/_lib/data-service";
 import about_1 from "@/public/about-1.jpg";
 import about_2 from "@/public/about-2.jpg";
-import { getCabins } from "@/app/_lib/data-service";
+import Image from "next/image";
+import Link from "next/link";
 
 export const metadata = {
   title: "About",
@@ -42,21 +42,23 @@ export default async function Page() {
         </div>
       </div>
 
-      <div className="col-span-2">
+      <div className="relative col-span-2 aspect-square">
         <Image
           src={about_1}
           alt="Family sitting around a fire pit in front of cabin"
           placeholder="blur"
-          quality={80}
+          fill
+          className="object-cover object-top"
         />
       </div>
 
       <div className="relative col-span-2 aspect-square">
         <Image
-          src="/about-2.jpg"
+          src={about_2}
           alt="Family that manages The Wild Oasis"
           fill
           className="object-cover object-top"
+          placeholder="blur"
         />
       </div>
 
@@ -82,12 +84,12 @@ export default async function Page() {
           </p>
 
           <div>
-            <a
+            <Link
               href="/cabins"
               className="mt-4 inline-block bg-accent-500 px-8 py-5 text-lg font-semibold text-primary-800 transition-all hover:bg-accent-600"
             >
               Explore our luxury cabins
-            </a>
+            </Link>
           </div>
         </div>
       </div>

@@ -1,8 +1,9 @@
-import { updateProfile } from "../_lib/actions";
+import { updateProfile } from "@/app/_lib/actions";
+import Image from "next/image";
 import FormButton from "./FormButton";
 
 export default function UpdateProfileForm({ children, guest }) {
-  const { fullName, email, nationality, nationalId, countryFlag } = guest;
+  const { fullName, email, nationalId, countryFlag } = guest;
 
   return (
     <form
@@ -32,11 +33,14 @@ export default function UpdateProfileForm({ children, guest }) {
       <div className="space-y-2">
         <div className="flex items-center justify-between">
           <label htmlFor="nationality">Where are you from?</label>
-          <img
-            src={countryFlag}
-            alt="Country flag"
-            className="h-5 rounded-sm"
-          />
+          <div className="relative h-5 w-auto">
+            <Image
+              src={countryFlag}
+              alt="Country flag"
+              className="h-5 rounded-sm object-cover"
+              fill
+            />
+          </div>
         </div>
 
         {children}

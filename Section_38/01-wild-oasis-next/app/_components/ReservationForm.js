@@ -1,14 +1,12 @@
 "use client";
 
-import { differenceInDays } from "date-fns";
-import { useReservation } from "./ReservationContext";
 import { createReservation } from "@/app/_lib/actions";
-
+import { differenceInDays } from "date-fns";
+import Image from "next/image";
 import FormButton from "./FormButton";
+import { useReservation } from "./ReservationContext";
 
 function ReservationForm({ cabin, user }) {
-  // CHANGE
-  // const session = await auth();
   const { maxCapacity, regularPrice, discount, id } = cabin;
   const { range, resetRange } = useReservation();
 
@@ -25,7 +23,6 @@ function ReservationForm({ cabin, user }) {
     numNights,
     cabinPrice,
     cabinId: id,
-    // guestId: session.user.guestId,
   };
 
   const createFormData = createReservation.bind(null, reservationData);
@@ -36,20 +33,21 @@ function ReservationForm({ cabin, user }) {
         <p>Logged in as</p>
 
         <div className="flex items-center gap-4">
-          <img
-            // Important to display google profile images
-            referrerPolicy="no-referrer"
-            className="h-8 rounded-full"
-            src={user.image}
-            alt={user.name}
-          />
+          <div className="relative h-8 w-8">
+            <Image
+              referrerPolicy="no-referrer"
+              className="h-8 rounded-full object-cover"
+              src={user.image}
+              alt={user.name}
+              fill
+            />
+          </div>
           <p>{user.name}</p>
         </div>
       </div>
 
       <form
         className="flex flex-col gap-5 bg-primary-900 px-16 py-10 text-lg"
-        // action={createFormData}
         action={async (formData) => {
           await createFormData(formData);
           resetRange();

@@ -5,8 +5,6 @@ import { format } from "date-fns";
 import { useReservation } from "./ReservationContext";
 
 function ReservationReminder() {
-  // CHANGE
-  // const range = { from: null, to: null };
   const { range, resetRange } = useReservation();
 
   if (!range.from || !range.to) return null;

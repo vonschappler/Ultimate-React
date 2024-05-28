@@ -1,9 +1,6 @@
 "use client";
 
-// import { usePathname, useRouter} from "next/navigation";
-
 import { usePathname, useRouter, useSearchParams } from "next/navigation";
-
 import Button from "./Button";
 
 export default function Filter() {
@@ -18,14 +15,6 @@ export default function Filter() {
     router.replace(`${pathname}?${params.toString()}`, { scroll: false });
   }
 
-  // the code below is a simpler way of handling the same logic for simpler situations...
-  // const path = usePathname();
-  // const router = useRouter();
-
-  // function handleFilter(filter) {
-  //   const url = path.concat(`?capacity=${filter}`);
-  //   router.replace(url);
-  // }
   return (
     <div className="flex border border-solid border-primary-700 ">
       <Button handleClick={() => handleFilter("all")} active={"all" === active}>

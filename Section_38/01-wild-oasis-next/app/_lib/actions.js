@@ -1,10 +1,10 @@
 "use server";
 
 import { revalidatePath } from "next/cache";
-import { auth, signIn, signOut } from "./auth";
-import { supabase } from "./supabase";
-import { getBookings } from "./data-service";
 import { redirect } from "next/navigation";
+import { auth, signIn, signOut } from "./auth";
+import { getBookings } from "./data-service";
+import { supabase } from "./supabase";
 
 export async function updateProfile(formData) {
   const session = await auth();
@@ -19,7 +19,7 @@ export async function updateProfile(formData) {
     countryFlag,
     nationalId,
   };
-  const { data, error } = await supabase
+  const { error } = await supabase
     .from("guests")
     .update(updateData)
     .eq("id", session.user.guestId);
@@ -47,11 +47,9 @@ export async function createReservation(reservationData, formData) {
     status: "unconfirmed",
   };
 
-  console.log(createFields);
   const { error } = await supabase.from("bookings").insert([createFields]);
 
   if (error) {
-    console.error(error);
     throw new Error("Reservation could not be created");
   }
   revalidatePath(`/cabins/${reservationData.cabinId}`);
@@ -74,7 +72,6 @@ export async function deleteResevation(bookingId) {
     .eq("id", bookingId);
 
   if (error) {
-    console.log(error);
     throw new Error("Reservation could not be deleted");
   }
   revalidatePath("/account/reservations");
@@ -100,12 +97,9 @@ export async function updateReservation(formData) {
   const { error } = await supabase
     .from("bookings")
     .update(updateFields)
-    .eq("id", reservationId)
-    .select()
-    .single();
+    .eq("id", reservationId);
 
   if (error) {
-    console.error(error);
     throw new Error("Reservation could not be updated");
   }
   revalidatePath(`/account/reservations`);

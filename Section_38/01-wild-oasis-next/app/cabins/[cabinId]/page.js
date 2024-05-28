@@ -1,8 +1,8 @@
 import Cabin from "@/app/_components/Cabin";
 import Reservation from "@/app/_components/Reservantion";
 import { getCabin, getCabins } from "@/app/_lib/data-service";
+import Loading from "@/app/cabins/loading";
 import { Suspense } from "react";
-import Loading from "../loading";
 
 export async function generateMetadata({ params }) {
   const { name } = await getCabin(params.cabinId);
