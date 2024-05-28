@@ -616,7 +616,7 @@ The code for the challenge can be found [here](Challenges/13-wild-oasis-next-clg
 <hr>
 <br>
 
-## 31. Deploying the Application to Verce
+## 31. Deploying the Application to Vercel
 
 Notes about this section can be found [here](https://github.com/vonschappler/Ultimate-React/wiki/Deploying-a-Nextjs-project-to-Vercel)
 
@@ -624,5 +624,18 @@ Notes about this section can be found [here](https://github.com/vonschappler/Ult
 <summary>Project Wild Oasis Website (version 7):</summary>
 
 The code for the project completed can be found [here](Section_38/01-wild-oasis-next/).
+
+</details>
+<hr>
+<br>
+
+## 32. Using the Pages Router
+
+Notes about this section can be found [here](https://github.com/vonschappler/Ultimate-React/wiki/Using-the-pages-router)
+
+<details>
+<summary>Project Wild Oasis Website (version 8):</summary>
+
+The code for the project completed can be found [here](Section_39/01-wild-oasis-next/).
 
 </details>
