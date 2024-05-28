@@ -613,3 +613,16 @@ The code for the project completed can be found [here](Section_37/01-wild-oasis-
 The code for the challenge can be found [here](Challenges/13-wild-oasis-next-clg-02/).
 
 </details>
+<hr>
+<br>
+
+## 31. Deploying the Application to Verce
+
+Notes about this section can be found [here](https://github.com/vonschappler/Ultimate-React/wiki/Deploying-a-Nextjs-project-to-Vercel)
+
+<details>
+<summary>Project Wild Oasis Website (version 7):</summary>
+
+The code for the project completed can be found [here](Section_38/01-wild-oasis-next/).
+
+</details>
