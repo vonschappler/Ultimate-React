@@ -4,7 +4,15 @@ import Head from "next/head";
 
 export async function getServerSideProps({ params }) {
   const cabin = await getCabin(params.cabinId);
-  return { props: { cabin }, revalidate: 0 };
+  return {
+    props: {
+      cabin,
+    },
+    // Next.js will attempt to re-generate the page:
+    // - When a request comes in
+    // - At most once every 10 seconds
+    // revalidate: 10, // In seconds
+  };
 }
 
 export default function Cabin({ cabin }) {

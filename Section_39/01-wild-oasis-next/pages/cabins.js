@@ -4,7 +4,16 @@ import Head from "next/head";
 
 export async function getStaticProps() {
   const cabins = await getCabins();
-  return { props: { cabins }, revalidate: 3600 };
+
+  return {
+    props: {
+      cabins,
+    },
+    // Next.js will attempt to re-generate the page:
+    // - When a request comes in
+    // - At most once every 10 seconds
+    revalidate: 10, // In seconds
+  };
 }
 
 export default function Cabins({ cabins }) {
